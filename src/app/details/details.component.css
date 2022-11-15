@@ -1,0 +1,160 @@
+.box {
+padding: 0px 15px 15px;
+background: #FFFFFF;
+box-shadow: 0px 5px 18px rgba(0, 0, 0, 0.14);
+border-radius: 8px;
+
+
+}
+.id {
+    background: #F6F6F6;
+    border: 1px solid #EAEAEA;
+    border-radius: 180px;
+
+ 
+}
+.mt-6 {
+    padding-top: 11px;
+}
+.row_container {
+    position: relative;
+    display: flex;
+    /* border-bottom: 1px solid; */
+    border-bottom: 1px dashed #E5E5E5;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+.row_label {
+    width: 70%;
+}
+.row_value.float-end {
+    float: none !important;
+    width: 30%;
+    text-align: right;
+    word-break: break-word;
+}
+.first {
+    margin-top: 20px;
+}
+
+input {
+    padding: 8px 60px;
+    border-radius: 10px;
+}
+
+.text {
+    font-size: 11px;
+    font-weight: bold;
+    margin-top: -51px;
+    margin-left: 15px;
+}
+
+.range {
+    margin-top: -5px;
+    font-size: 12px;
+}
+
+.Disclaimer {
+    margin-top: -10px;
+    background-color: rgb(230, 161, 129);
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+
+
+h5 {
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+span{
+    font-size: 14px;
+}
+.flex{
+    display: flex;
+}
+
+.box{
+    width: 577px;
+    height: 154px;
+/* left: 432px; */
+/* top: 196px; */
+
+    background: #FFFFFF;
+    box-shadow: 0px 5px 18px rgba(0, 0, 0, 0.14);
+    border-radius: 8px;
+}
+.label1{
+    font-family: 'Akkurat-Bold';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    color: #000000;
+}
+.id{
+    background: #F6F6F6;
+    border: 1px solid #EAEAEA;
+    border-radius: 180px;
+
+    font-family: 'Akkurat'; 
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 16px;
+    color: #000000;
+}
+.label2{
+    background: #F6F6F6;
+    border: 1px solid #EAEAEA;
+    border-radius: 180px;
+
+    font-family: 'Akkurat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: right;
+    color: #616162;
+}
+
+input{
+    padding: 10px 10px;
+    border: 1px solid #EB1935;
+    border-radius: 5px;
+}
+.detail{
+    padding: 6px 30px;
+    border: none;
+    background: #EB1935;
+    border-radius: 3px;
+
+    font-family: 'Akkurat-Bold';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: #FFFFFF;
+}
+.lastText{
+    font-family: 'Akkurat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 14px;
+    color: #616162;
+}
+button#amtamount {
+    margin-left: 15px;
+    width: 161px;
+    left: 829px;
+    top: 257px;
+}
+.range{
+    margin: -6px -8px -40px -13px;
+}
+@media only screen and (max-width: 768px) {
+
+
+
+}

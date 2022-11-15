@@ -1,0 +1,374 @@
+.box-sizing {
+    background: #FFFFFF;
+    /* border: 1px solid #E5E5E5; */
+    /* border-radius: 5px; */
+    cursor: pointer;
+}
+.line{
+    padding-right: 15px;
+}
+.rightbtn {
+    margin-top: -13px;
+    background-color: #FFF5CB;;
+    color: #796101;
+    font-weight: bold;
+    font-size: 1.1rem;
+    font-family: 'Akkurat-Bold';
+    font-style: normal;
+    font-size: 10px;
+    /* line-height: 13px; */
+    text-align: right;
+    opacity: 0.6;
+        
+    background: #FFF5CB;
+    border-radius: 3px;
+    font-family: 'Akkurat-Bold';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 13px;
+    padding: 4px 5px 3px 5px;
+}
+
+p {
+    left: 430px;
+    top: 292px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #000000;
+
+}
+.headtext{
+    left: 430px;
+    top: 292px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #000000;
+    opacity: 0.5;    
+}
+
+h5 {
+    margin-top: -10px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+
+}
+
+.box {
+    width: 100%;
+    padding: 10px;
+    background-color:#F7F7F7;;
+    
+    left: 431px;
+top: 438px;
+cursor: pointer;
+}
+
+.box:hover {
+    cursor: pointer;
+}
+
+.mainbox {
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.row1 {
+    padding: 10px 10px;
+}
+
+.cashbtn {
+    margin-top: -30px;
+    margin-left: 20px;
+    /* padding: 5px 20px; */
+    padding: 4px 8px;
+    background: #06C270;
+ 
+    font-style: normal;
+    font-weight: 400;
+    font-size: 8px;
+    line-height: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+b {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 20px;
+}
+
+.toprightbtn {
+background: #F2F2F2;
+border-radius: 2px;
+padding: 5px;
+}
+.toprightbtn .icon{
+    vertical-align: middle;
+    padding-left: 5px;
+
+}
+.toprightbtn .filter{
+ color: black;
+ font-weight: 400;
+font-size: 11px;
+line-height: 16px;
+color: #000000;
+
+}
+.card-text {
+    font-size: 1.2rem;
+    font-weight: 400;
+
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 15px;
+
+color: #616162;
+
+}
+.icon{
+    /* padding: 13px; */
+    padding-left: 22px;
+}
+.float-end{
+    float: right !important;
+    cursor: pointer;
+}
+.search{
+    border-style: none;
+    display: flex;
+background: #FFFFFF;
+border-width: 0px;
+padding: 11px 25px;
+width: 60%;
+}
+.scheme-card-container{
+    /* padding: 0px 15px; */
+    position: relative;
+    margin: 0px !important;
+    background: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    border-radius: 5px;
+    margin-top: 20px !important;
+}
+
+.scheme-card-container .cashbtn{
+    position: absolute;
+    top: 20px;
+    left: 15px;
+}
+
+.scheme-card-container .scheme-card-header .scheme-header{
+    font-family: 'Akkurat-Bold';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #000000;
+    display: flex;
+    
+}
+
+.scheme-card-container .scheme-card-header .scheme-header svg{
+    margin-left: 13.16px;
+    align-self: flex-end;
+    height: 100%;
+}
+
+.scheme-card-container .schema-body p{
+ 
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #616162;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+.scheme-card-container .schema-body b{
+    font-style: normal;
+    /* font-weight: 500; */
+    font-size: 14px;
+    line-height: 20px;
+    color: #000000;
+}
+.scheme-card-container .scheme-footer{
+    padding: 8px 12 px;
+}
+
+.scheme-card-container .scheme-footer p{
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 14px;
+    color: #000000;
+    opacity: 0.7;
+    margin-bottom: 0px;
+}
+.navbar{
+    padding-left: 15px;
+    background: #FFFFFF;
+    box-shadow: 0px 5px 18px rgb(0 0 0 / 14%);
+    border-radius: 244px;
+}
+.btnc{
+    width: 68px;
+height: 32px;
+left: 555px;
+top: 409px;
+
+border: 1px solid #E5E5E5;
+border-radius: 38px;
+padding: 0px 15px;
+}
+.btnSelect{
+    background: #EB1935;
+border: 1px solid #E5E5E5;
+border-radius: 38px;
+}
+.popup .wrapper{
+    position:relative; 
+    left:-50%;
+  }  
+ .dialog{
+    vertical-align: middle;
+ }
+
+ .checkbox input{
+    display: none;
+    width: 68px;
+    height: 32px;
+    left: 555px;
+    top: 409px;
+    
+    border: 1px solid #E5E5E5;
+    border-radius: 38px;
+    padding: 0px 15px;
+}
+.checkbox input:checked + label{
+    /* color: #16B67F; */
+    color: #FFFFFF;
+    background: #EB1935;
+border-radius: 38px;
+cursor: pointer;
+padding: 9px;
+}
+
+.checkbox label i{
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    /* background: red url('http://kuzroman.com/images/jswiddler/circle.svg') no-repeat 50%; */
+    background-size: 12px;
+    position: relative;
+    top: 1px;
+    left: -2px;
+}
+.span {
+    display:flex;   
+        margin-right: 16px;
+        cursor: pointer;
+    }
+   
+
+
+
+
+button.btn.btn-outline-dark {
+    width: 120px;
+    margin-right: 17px;
+    float: right;
+    margin-top: 76px;
+  
+}
+.modal-header .close{
+    border: white;
+    background-color: unset;
+}
+.modal-header .close span{
+    margin: 0px auto;
+    
+}
+.cashb .inputcheckbox{
+    margin-right: 12px;
+
+}
+
+.fitlerbttn{
+    border: none;
+ 
+    font-family: 'Akkurat-Bold';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000000;
+}
+.canclebttn{
+    border: none;
+}
+.form-check-input{
+    background-color: #E31B36;
+}
+label{
+    font-family: 'Akkurat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+}
+.btn2{
+    border: 1px solid #E5E5E5;;
+    border-radius: 38px;
+}
+.btn2:hover{
+    background: #EB1935;
+    border: 1px solid #E5E5E5;
+    border-radius: 38px;
+}
+.lastbtn{
+    font-family: 'Akkurat-Bold';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+}
+.reset{
+    padding: 10px 50px; 
+    border-radius: 3px;   
+    border: 1px solid #EB1935;
+    color: #EB1935;
+}
+.apply{
+    padding: 10px 50px; 
+    background: #EB1935;
+    border-radius: 3px;   
+    color: #FFFFFF;
+    border: none;
+}
+
+.dropdown-padding{
+ width: 178px;
+left: 808px;
+top: 267px;
+}
+
+
+@media only screen and (max-width: 768px) {
+
+
+
+}

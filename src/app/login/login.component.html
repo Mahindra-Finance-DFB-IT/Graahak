@@ -1,0 +1,85 @@
+
+<div class="mwrapper login">
+    <div class="login-area">
+        <h3 class="mb-4">Login</h3>
+        <div class="login-box">
+            <!--<div *ngIf="this.error" class="alert alert-danger d-flex align-items-center mb-2" role="alert">
+                <div *ngIf="errorObj.error">{{errorObj.error}}</div>
+                <div *ngFor="let err of errorObj.errors">{{err}}</div>
+            </div>-->
+            <ngb-alert class="mt-1" #selfClosingErrorAlert *ngIf="invalidMessage" type="danger" (closed)="invalidMessage = ''">{{ invalidMessage }}
+            </ngb-alert>
+          <form [formGroup]="loginForm" class="form" (ngSubmit)=onSubmit() autocomplete="off">
+                <div class="form-group">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input"  type="radio" formControlName="loginType" name="loginType" value="{{this.loginType.SALESEXECUTIVE.toString()}}" id="sales_executive"/> 
+                        <label class="form-check-label" for="sales_executive" >Sales Executive</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input"  type="radio" formControlName="loginType" name="loginType"  value="{{this.loginType.SMRSM.toString()}}"  id="sm_rsm" />
+                        <label class="form-check-label" for="sm_rsm">SM/RSM</label>
+                    </div>
+                    <span *ngIf="(loginFormControl.loginType.touched || submitted) && loginFormControl.loginType.errors?.['required']">
+                        Login Type is required
+                    </span>
+                </div>
+              <div formGroupName="salesExecutive" *ngIf="this.loginForm.value.loginType == this.loginType.SALESEXECUTIVE.toString()">
+                    <div class="form-group floating-label">
+                        <input placeholder="Mobile Number"  minlength="10" maxlength="10" class="form-control" [ngClass]="((loginFormControl.salesExecutive.controls.mobileNumber.touched || submitted) && loginFormControl.salesExecutive.controls.mobileNumber.errors?.['required'])?'is-invalid':''"  id="mobileNumber" type="number" formControlName="mobileNumber"  />
+                        <label  for="mobileNumber">Mobile Number</label>
+                        <small class="invalid-feedback" [style.display]="((loginFormControl.salesExecutive.controls.mobileNumber.touched || submitted) && loginFormControl.salesExecutive.controls.mobileNumber.errors?.['required'])?'block':'none'">
+                          Mobile Number is required
+                        </small>
+                        <small class="invalid-feedback" [style.display]="((loginFormControl.salesExecutive.controls.mobileNumber.touched || submitted) && loginFormControl.salesExecutive.controls.mobileNumber.errors?.['minlength'])?'block':'none'">
+                            Mobile Number must be 10 Character Long
+                        </small>
+                    </div>
+                    <div class="form-group floating-label">
+                        <input placeholder="Pos Id" class="form-control" [ngClass]="((loginFormControl.salesExecutive.controls.posId.touched || submitted) && loginFormControl.salesExecutive.controls.posId.errors?.['required'])?'is-invalid':''"   id="posId"  type="number" formControlName="posId" />
+                        <label for="posId">Pos Id</label>
+                        <small class="invalid-feedback"  [style.display]="((loginFormControl.salesExecutive.controls.posId.touched || submitted) && loginFormControl.salesExecutive.controls.posId.errors?.['required'])?'block':'none'">
+                            Pos ID is required
+                        </small>
+                    </div>
+                    <div class="form-group floating-label">
+                        <input  placeholder="Store Id" class="form-control" [ngClass]="((loginFormControl.salesExecutive.controls.storeId.touched || submitted) && loginFormControl.salesExecutive.controls.storeId.errors?.['required'])?'is-invalid':''"  id="storeId"  type="number" formControlName="storeId" />
+                        <label  for="storeId">Store Id</label>
+                        <small class="invalid-feedback"  [style.display]="((loginFormControl.salesExecutive.controls.storeId.touched || submitted) && loginFormControl.salesExecutive.controls.storeId.errors?.['required'])?'block':'none'">
+                            Store ID is required
+                        </small>
+                    </div>                  
+              </div>
+              <div formGroupName="smRsm" *ngIf="this.loginForm.value.loginType == this.loginType.SMRSM.toString()">
+                  <div class="form-group floating-label">
+                      <input placeholder="SAP Id" class="form-control" [ngClass]="((loginFormControl.smRsm.controls.sapId.touched || submitted) && loginFormControl.smRsm.controls.sapId.errors?.['required'])?'is-invalid':''" id="sapId" type="text" formControlName="sapId" />
+                      <label for="sapId">SAP Id</label>
+                      <small class="invalid-feedback" [style.display]="((loginFormControl.smRsm.controls.sapId.touched || submitted) && loginFormControl.smRsm.controls.sapId.errors?.['required'])?'block':'none'">
+                          SAP ID is required
+                      </small>
+                  </div>
+                  <div class="form-group ">
+                        <div class="input-group">
+                            <div class="floating-label">
+                                <input placeholder="Password"  class="form-control border-r-none"  [ngClass]="((loginFormControl.smRsm.controls.password.touched || submitted) && loginFormControl.smRsm.controls.password.errors?.['required'])?'is-invalid':''" id="passWord" [type]="(showPassword)?'text':'password'" formControlName="password"/>
+                                <label for="passWord">Password</label>
+                            </div>
+                            <span class="input-group-text password-eye" [ngClass]="((loginFormControl.smRsm.controls.password.touched || submitted) && loginFormControl.smRsm.controls.password.errors?.['required'])?'is-invalid':''" id="basic-addon1">
+                                <i class="bi" [ngClass]="(showPassword)?'bi-eye-fill':'bi-eye-slash'" (click)="toggleShowPassword()"></i>
+                            </span>
+                        </div>    
+                      <small class="invalid-feedback" [style.display]="((loginFormControl.smRsm.controls.password.touched || submitted) && loginFormControl.smRsm.controls.password.errors?.['required'])?'block':'none'">
+                          Password is required
+                      </small>
+                  </div>
+              </div>
+              <div class="d-grid gap-2">
+                  <button class="btn btn-primary btn-block login-btn-mf" type="submit" *ngIf="this.loginForm.value.loginType == this.loginType.SALESEXECUTIVE.toString()" [disabled]="!this.loginForm.valid">
+                    Send OTP
+                   </button>
+                  <button class="btn btn-primary btn-block login-btn-mf" type="submit" *ngIf="this.loginForm.value.loginType == this.loginType.SMRSM.toString()"  [disabled]="!this.loginForm.valid">Login</button>
+              </div>
+          </form>
+        </div>
+
+    </div>
+</div>

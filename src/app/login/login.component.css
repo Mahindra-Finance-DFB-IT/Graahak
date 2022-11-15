@@ -1,0 +1,18 @@
+.border-r-none{
+    border-right: none;
+}
+.password-eye{
+    background-color: transparent !important;
+    border-top: 1px solid #747478;
+    border-bottom: 1px solid #747478;
+    border-right: 1px solid #747478;
+    cursor: pointer;
+}
+
+.password-eye.is-invalid{
+    border-color: #dc3545;
+}
+.input-group:focus-within > .password-eye {
+    border-color: #EAEAEA;
+    outline: 0;
+}

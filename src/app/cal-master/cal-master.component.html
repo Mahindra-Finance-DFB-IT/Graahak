@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- CSS Link -->
+   
+    <title>Second Card..!</title>
+  </head>
+  <body>
+                <!-- First -->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="row">
+                    <input type="button" value="Back to Search" class="btn btn-sm">
+                </div>
+            </div>
+            <div class="col-sm-6 mt-5">
+                <div class="row text-center">
+                    <h5 class="fw-bold">Scheme Guide</h5>
+                </div>
+                <div class="box" *ngFor="let mydata of data">
+                    <div class="row first">
+                        <span class="fw-bold fs-5">{{mydata.data.OEM}}</span>
+                        <span style="margin-top: -30px;">
+                            <div class="btn-group float-end">
+                              <button class="btn btn-secondary btn-sm dropdown-toggle rounded-pill" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <b>ID: {{mydata.data.SCHEME_ID}}</b>
+                              </button>
+                              <ul class="dropdown-menu">
+                                ...
+                              </ul>
+                            </div></span>
+                    </div>
+
+                    <div class="row mt-3" *ngFor="let mydata of data">
+                        <div class="col">
+                            <input type="text">
+                            <button type="button" *ngFor="let mydata of data" class="btn btn-danger btn-lg float-end" >Get Details</button>
+                            <p class="text">Transaction Amount</p>
+                        </div>
+                        <div class="row">
+                            <p class="range">Range: <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12"
+                                fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
+                                <path
+                                    d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z" />
+                            </svg>9,990 to <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12"
+                            fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
+                            <path
+                                d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z" />
+                        </svg>14,990</p>
+                        </div>
+                    </div>
+                    <div class="row Disclaimer">
+                        <P><b>Disclaimer:- </b>Please check scheme chart to ensure product is offered for selected scheme.</P>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+    </div>
+
+                    <!-- Second -->
+
+    <div class="container" *ngFor="let mydata of data">
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <div class="row gx-1">
+                    <div class="col box2 g-5">
+                        <h5 class="mb-3">Scheme Details</h5>
+                        <div>
+                            <span>Description</span>
+                            <span class="float-end"><b> {{mydata.data.TENURE}} X {{mydata.data.ADVANCE_EMI}}</b></span>
+                            <hr>
+                            <span>Number of Adv. EMI's</span>
+                            <span class="float-end"><b>{{mydata.data.ADVANCE_EMI}}</b></span>
+                            <hr>
+                            <span>Number of remaining EMI's</span>
+                            <span class="float-end"><b>{{mydata.data.TENURE}} - {{mydata.data.ADVANCE_EMI}}</b></span>
+                            <hr>
+                            <span>Range</span>
+                            <span class="float-end"><b><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
+                                <path
+                                    d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z" />
+                            </svg>{{mydata.data.MIN_AMOUNT}} - <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
+                            <path
+                                d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z" />
+                        </svg>{{mydata.data.MAX_AMOUNT}}</b></span>
+                            <hr>
+                            <span>Type</span>
+                            <span class="float-end"><b>{{mydata.data.OEM}} </b></span>
+                            <hr>
+                            <span>Portal Description</span>
+                            <span class="float-end"><b>Cashback Scheme</b></span>
+                            <hr>
+                            <span>Validity</span>
+                            <span class="float-end"><b>{{mydata.data.SCHEME_END_DATE}} </b></span>
+                            <hr>
+                            <span>Status</span>
+                            <span class="float-end"><b class="text-success">{{mydata.data.STATUS}} </b></span>
+                            <br>
+                            <br>
+                            <br>
+                            <p style="font-weight: bold; font-size: 1.1rem;">Transaction Summary for Customer</p>
+                            <span>EMI Amount</span>
+                            <span class="float-end"><b><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
+                                <path
+                                    d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z" />
+                            </svg>2,360.00</b></span>
+                            <hr>
+                            <span>Advance EMI Amount</span>
+                            <span class="float-end"><b><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
+                                <path
+                                    d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z" />
+                            </svg>0.00</b></span>        
+                            <hr>
+                            <span>Processing Fee</span>
+                            <span class="float-end"><b><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
+                                <path
+                                    d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z" />
+                            </svg>{{mydata.data.PROCESSING_FEE}}</b></span>
+                            <hr>
+                            <span>Total Payment white transaction</span>
+                            <span class="float-end"><b><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
+                                <path
+                                    d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z" />
+                            </svg>450.00</b></span>
+                        </div>
+                    </div>
+                    <div class="col box2 g-5">
+                        <h5 class="mb-3">Cost to Customer</h5>
+                        <div>
+                            <span>Total Intrest during loan tenure</span>
+                            <span class="float-end"><b><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
+                                <path
+                                    d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z" />
+                            </svg>2,140.00</b></span>
+                            <hr>
+                            <span>Total of intrest & processing fees</span>
+                            <span class="float-end"><b><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
+                                <path
+                                    d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z" />
+                            </svg>2,590.00</b></span>
+                            <hr>
+                            <span>Cashback expected</span>
+                            <span class="float-end"><b><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
+                                <path
+                                    d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z" />
+                            </svg>0.00</b></span>
+                            <hr>
+                            <span>Additional Cashback expected</span>
+                            <span class="float-end"><b><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
+                                <path
+                                    d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z" />
+                            </svg>0.00</b></span>
+                            <hr>
+                            <span>Net Cost to Customer</span>
+                            <span class="float-end"><b><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
+                                <path
+                                    d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z" />
+                            </svg>2,590.00</b></span>
+                            <br>
+                            <br>
+                            <br>
+                            <p style="font-weight: bold; font-size: 1.3rem;">Transaction Summary to Dealer</p>
+                            <span>Processing fee</span>
+                            <span class="float-end"><b><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
+                                <path
+                                    d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z" />
+                            </svg>2,140.00</b></span>
+                            <hr>
+                            <span>Advance EMI</span>
+                            <span class="float-end"><b><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
+                                <path
+                                    d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z" />
+                            </svg>2,590.00</b></span>
+                            <hr>
+                            <span>Amount to be paid by dealer to MMFSL</span>
+                            <span class="float-end"><b><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
+                                <path
+                                    d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z" />
+                            </svg>0.00</b></span>
+                            <hr>
+                            <span>DOB Amount to be paid by dealer to MMFSL</span>
+                            <span class="float-end"><b><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
+                                <path
+                                    d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z" />
+                            </svg>0.00</b></span>
+                            <hr>
+                            <span>Disbursement to dealer by MMFSL</span>
+                            <span class="float-end"><b><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
+                                <path
+                                    d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z" />
+                            </svg>2,590.00</b></span>
+                        </div>
+                        
+                    </div>
+                </div><br>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+    </div>
+
+    
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+  </body>
+</html>
+

@@ -1,0 +1,63 @@
+<!--<div class="row justify-content-center">
+    <div class="col-6">
+        <h3>Welcome Again!</h3>
+        <div class="list-group mt-2">
+            <a href="/customer_search" class="list-group-item list-group-item-action" aria-current="true">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">Customer Details</h5>
+                <small>></small>
+              </div>
+              <p class="mb-1">Some placeholder content in a paragraph.</p>
+              <small>And some small print.</small>
+            </a>
+            <a href="/report" class="list-group-item list-group-item-action">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">FOS Report</h5>
+                <small class="text-muted">></small>
+              </div>
+              <p class="mb-1">Some placeholder content in a paragraph.</p>
+              <small class="text-muted">And some muted small print.</small>
+            </a>
+          </div>
+    </div>
+</div>-->
+
+<div class="row justify-content-md-center">
+  <div class="col col-md-5 customer-dashboard">
+      <h3 class="welcome mb-3">Welcome Again!</h3>
+      <ngb-alert class="mt-1" #selfClosingErrorAlert *ngIf="invalidMessage" type="danger" (closed)="invalidMessage = ''">{{ invalidMessage }}
+      </ngb-alert>
+      <!-- Start of Card -->
+      <a routerLink="/customer_search">
+          <div class="card mb-3">
+              <div class="card-body">
+                  <i class="bi bi-chevron-right"></i>
+                  <h4>Customer Details</h4>
+                  View customer loan details and status
+              </div>
+          </div>
+      </a>
+      <!-- End of Card -->
+      <!-- Start of Card -->
+      <a (click)="getReport()" href="javascript:void(0);">
+          <div class="card mb-3">
+              <div class="card-body">
+                  <i class="bi bi-chevron-right"></i>
+                  <h4>SE Report</h4>
+                  View mandate, overdue, DPD etc. report
+              </div>
+          </div>
+      </a>
+     
+    <a (click)="getScheme()">
+      <div class="card mb-3">
+          <div class="card-body">
+              <i class="bi bi-chevron-right"></i>
+              <h4>Scheme Guide</h4>
+              calculate scheme wise data
+          </div>
+      </div>
+  </a>
+      <!-- End of Card -->
+  </div>
+</div>

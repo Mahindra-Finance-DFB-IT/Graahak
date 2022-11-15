@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row mb-3">
+        <div class="col-md-12 back-history">
+            <a routerLink="/home"><i class="bi bi-chevron-left arrow-red"></i> Back to Home</a>
+        </div>
+    </div>
+</div>
+<div class="customer-search">
+    <div class="customer-search-area">
+        <h3 class="mb-4">Search Customer</h3>
+        <div class="customer-search-box">
+            <p><img src="assets/img-customer.svg"></p>
+            <ngb-alert class="mt-1" #selfClosingErrorAlert *ngIf="invalidMessage" type="danger" (closed)="invalidMessage = ''">{{ invalidMessage }}
+            </ngb-alert>
+            <form [formGroup]="custSearchForm" (ngSubmit)=onSubmit()>
+                <div class="mb-3">
+                    <label for="customerSearch" class="form-label">Customer Mobile Number or PAN Card Number</label>
+                    <input type="text" id="customerSearch" (keypress)="keyPressAlphaNumeric($event)" maxlength="10" class="form-control" formControlName="searchCustomer" [ngClass]="((custSearchFormControl.searchCustomer.touched || submitted) && custSearchFormControl.searchCustomer.errors?.['required'])?'is-invalid':''"  aria-describedby="emailHelp" placeholder="Mobile Number or PAN Card Number">
+                    <div class="invalid-feedback" [style.display]="((custSearchFormControl.searchCustomer.touched || submitted) &&  custSearchFormControl.searchCustomer.errors?.['showErrorPan'] )?'block':'none'">
+                        Please enter correct PAN Card number
+                    </div>
+                    <div class="invalid-feedback" [style.display]="((custSearchFormControl.searchCustomer.touched || submitted) && custSearchFormControl.searchCustomer.errors?.['showErrorMob'])?'block':'none'">
+                        Please enter correct Mobile number
+                    </div>
+                </div>
+                <div class="form-group d-grid gap-2">
+                    <button type="submit" class="btn btn-primary btn-block fs-5" [disabled]="(custSearchFormControl.searchCustomer.errors?.['validPanCard'] && custSearchFormControl.searchCustomer.errors?.['validMobileNumber'])">Get Details</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

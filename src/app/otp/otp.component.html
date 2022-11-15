@@ -1,0 +1,25 @@
+<div class="modal-body verify-otp text-center">
+    <div class="row">
+        <div class="col-md-12">
+            <p><img src="assets/icon-verifyotp.svg"></p>
+            <h4>Verify by OTP</h4>
+            <p *ngIf="login.fromPage == pageName.CustomerDetails">Please enter OTP sent to registered mobile number {{login?.SmMobileNumber?.toString()  | mask:true}}/{{login?.RsmMobileNumber?.toString() | mask:true}}</p>
+            <p *ngIf="login.fromPage == pageName.LoginPage">Please enter OTP sent to registered mobile number {{login?.salesExecutive?.mobileNumber?.toString()| mask:true}}</p>
+            <p *ngIf="login.fromPage == pageName.Home">Please enter OTP sent to registered mobile number {{login?.salesExecutive?.mobileNumber?.toString()| mask:true}}</p>
+        </div>
+        <div class="col-md-12">
+            <div class="otp-overlay" *ngIf="otpOverlayOpacity">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+            <ng-otp-input #ngOtpInput (onInputChange)="onOtpChange($any($event))"  [config]="config"></ng-otp-input>
+            <p *ngIf="counter > 0 && showTimer">Wait to resend OTP <span class="ms-2">{{counter | formatTime}}</span></p>
+            <p *ngIf="counter <= 0 && showTimer">Didn't recieve OTP? <span class="ms-2"><a class="noclass" (click)="resendOTP()">Resend OTP</a></span></p>
+            <ngb-alert class="mt-2" #selfClosingAlert *ngIf="successOtpMessage" type="success" (closed)="successOtpMessage = ''">{{ successOtpMessage }}
+            </ngb-alert>
+            <ngb-alert class="mt-2" #selfClosingErrorAlert *ngIf="invalidOtpMessage" type="danger" (closed)="invalidOtpMessage = ''">{{ invalidOtpMessage }}
+            </ngb-alert>
+        </div>
+    </div>
+</div>

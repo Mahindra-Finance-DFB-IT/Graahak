@@ -1,0 +1,320 @@
+<div class="col-md-12 back-history">
+    <a routerLink="/home"><i class="bi bi-chevron-left arrow-red"></i> Back to Home</a>
+</div>
+<br>
+<div class="fluid-container mt-4 mb-3">
+    <div class="row text-center">
+        <h5 class="fw-bold">Scheme Guide</h5>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8 ">
+            <div class="row">
+                <div class="container searchBox">
+                    <div class="row ">
+                        <nav class="navbar">
+                            <img class="icon" src="../../assets/img/serach.png" />
+                            <input class="search" type="search" [(ngModel)]="searchText" placeholder="Search by OEM and Product Name"
+                                aria-label="Search">
+                            <!-- <div class="col float-start">
+                            </div> -->
+                            <div class="col">
+                                <div class="dropdown float-end">
+                                    <img class="line" src="../../assets/img/Line 41.png" />
+                                    Tenure:
+
+                                    <select class="dropdown-for " name="dog-names" #mySelect
+                                        (change)='onOptionsSelected(mySelect.value)' id="dog-names">
+                                        <option class="dropdown-item" value="0">All</option>
+                                        <option class="dropdown-item" value="6-9">6 to 9 months
+                                        </option>
+                                        <option class="dropdown-item" value="10-12">10 to 12 months
+                                        </option>
+                                        <option class="dropdown-item" value="12">more than 12 months</option>
+                                    </select>
+                                    <!-- <ul class="dropdown-menu" aria-labelledby="">
+                                      <li><a class="dropdown-item" href="#">Action</a></li>
+                                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    </ul> -->
+                                </div>
+                            </div>
+                        </nav>
+
+                    </div>
+                    <br>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p class="headtext">Select scheme to calculate loan</p>
+
+
+
+
+                        <ng-template #content let-modal>
+                            <!-- <div class="modal-header">
+                                <h6 class="modal-title" id="modal-basic-title">
+                                    <b>Filter</b>
+                                </h6>
+                                <button type="button" class="close" aria-label="Close"
+                                    (click)="modal.dismiss('Cross click')">
+    
+                                    <span aria-hidden="true">
+                                        ×
+                                    </span>
+                                </button>
+                            </div> -->
+                            <!-- <div class="modal-body"> -->
+                            <!-- <div class="cashb">
+                                    <input class="inputcheckbox" type="checkbox" id="horns" name="horns">
+                                    <label class="" for="horns">Show All Cashback</label>
+                                  </div> -->
+
+
+                            <form>
+
+                                <!-- <div class="form-group">
+                                        <label for="dateOfBirth">
+                                            <b>Advance EMI</b>
+                                        </label>
+                                    </div> -->
+                                <br>
+                                <!-- <button id="btn01" class="btnc" (click)="btncl('0') "
+                                        ng-click="selectedClass = 'btnSelected'"
+                                        ng-class="{btnc:selectedClass == 'btn01'}">0</button>
+                                    <button id="btn02" (click)="btncl('1')" class="btnc"
+                                        ng-click="selectedClass = 'btnSelected'"
+                                        ng-class="{btnc:selectedClass == 'btn02'}">1</button>
+                                    <button id="btn03" (click)="btncl('2')" class="btnc"
+                                        ng-click="selectedClass = 'btnSelected'"
+                                        ng-class="{btnc:selectedClass == 'btn03'}">2</button>
+                                    <button (click)="btncl('3')" class="btnc">3</button>
+                                    <button (click)="btncl('4')" class="btnc">4</button><br>
+                                    <button (click)="btncl('5')" class="btnc">5</button>
+                                    <button (click)="btncl('6')" class="btnc">6</button> -->
+                                <!--     
+                                    <div class="checkbox">
+                                        <input type="radio" name="sort" value="popularity" id="sort0" (click)="btncl('0') ">
+                                        <label  for="sort0" >
+                                              <i></i>
+                                              <span>0 Month</span>
+                                          </label>
+                                        <input type="radio" name="sort" value="popularity" id="sort1"(click)="btncl('1') " >
+                                        <label for="sort1" >
+                                              <i></i>
+                                              <span>1 Month</span>
+                                          </label>
+                                      
+                                        <input type="radio" name="sort" value="price" id="sort2" (click)="btncl('2') "> 
+                                        <label for="sort2">
+                                              <i></i>
+                                              <span>2 Month</span>
+                                          </label>
+                                          <input type="radio" name="sort" value="price" id="sort3" (click)="btncl('3') " > 
+                                          <label for="sort3">
+                                                <i></i>
+                                                <span>3 Month</span>
+                                            </label>
+    
+                                            <input type="radio" name="sort" value="popularity" id="sort4"(click)="btncl('4') " >
+                                            <label for="sort4" >
+                                                  <i></i>
+                                                  <span>4 Month</span>
+                                              </label>
+                                          
+                                            <input type="radio" name="sort" value="price" id="sort5" (click)="btncl('5') "> 
+                                            <label for="sort5">
+                                                  <i></i>
+                                                  <span>5 Month</span>
+                                              </label>
+                                              <input type="radio" name="sort" value="price" id="sort6" (click)="btncl('6') " > 
+                                              <label for="sort6">
+                                                    <i></i>
+                                                    <span>6 Month</span>
+                                                </label>
+                                      </div> -->
+
+                                <div class="box-filter">
+                                    <div class="">
+                                        <button type="button" class="ms-4 mt-4 fitlerbttn">Filter</button>
+                                        <button type="button" class="float-end me-4 mt-4 canclebttn" aria-label="Close"
+                                            (click)="modal.dismiss('Cross click')">
+
+                                            <span aria-hidden="true">
+                                                ×
+                                            </span>
+                                        </button>
+                                    </div>
+                                    <div class="form-check mt-4 ms-4">
+                                        <input class="form-check-input " type="checkbox" value="" id="flexCheckDefault">
+                                        <label class="form-check-label label1" for="flexCheckDefault">
+                                            Show All Cashback Offers
+                                        </label>
+                                    </div>
+                                    <div class="">
+                                        <hr>
+                                    </div>
+                                    <div class="mt-2 ms-4">
+                                        <label for="" class="label2">Advanced EMI</label>
+                                    </div>
+                                    <!-- <div class="">
+                                            <div class="row1 col-sm-12  mt-3 ms-5">
+                                                <button type="button" id="btn01" class="btn2 me-4"   ng-click="selectedClass = 'btnSelected'"(click)="btncl('0')" ng-click="selectedClass = 'btnSelected'"
+                                                ng-class="{btnc:selectedClass == 'btn01'}">0 Month</button>
+                                                <button type="button" id="btn02" class="btn2 me-4" (click)="btncl('1')" ng-click="selectedClass = 'btnSelected'"
+                                                ng-class="{btnc:selectedClass == 'btn02'}">1 Month</button>
+                                                <button type="button" id="btn03" class="btn2 me-4" (click)="btncl('2')">2 Month</button>
+                                                <button type="button" id="btn04" class="btn2 me-4" (click)="btncl('3')">3 Month</button> 
+                                                <button type="button"  id="btn05" class="btn2 me-4" (click)="btncl('4')">4 Month</button>     
+                                            </div>
+                                            <div class="row2 col-sm-12  mt-4 ms-5">
+                                                <button type="button" id="btn06"class="btn2 me-4" (click)="btncl('5')">5 Month</button>
+                                                <button type="button" id="btn07" class="btn2 me-4" (click)="btncl('6')">6 Month</button>    
+                                            </div>
+                                        </div> -->
+                                    <div class="checkbox">
+                                        <div class="row1 col-sm-12  mt-3 ms-5">
+                                            <input class="btn2 me-4" type="radio" name="sort" value="popularity"
+                                                id="sort0" (click)="btncl('0') ">
+                                            <label for="sort0">
+                                                <div class="span">0 Month</div>
+                                            </label>
+                                            <input class="btn2 me-4" type="radio" name="sort" value="popularity"
+                                                id="sort1" (click)="btncl('1') ">
+                                            <label for="sort1">
+                                                <div class="span">1 Month</div>
+                                            </label>
+                                            <input class="btn2 me-4" type="radio" name="sort" value="price" id="sort2"
+                                                (click)="btncl('2') ">
+                                            <label for="sort2">
+                                                <div class="span">2 Month</div>
+                                            </label>
+                                            <input class="btn2 me-4" type="radio" name="sort" value="price" id="sort3"
+                                                (click)="btncl('3') ">
+                                            <label for="sort3">
+
+                                                <div class="span">3 Month</div>
+                                            </label>
+
+                                            <input class="btn2 me-4" type="radio" name="sort" value="popularity"
+                                                id="sort4" (click)="btncl('4') ">
+                                            <label for="sort4">
+
+                                                <div class="span">4 Month</div>
+                                            </label>
+                                            <input type="radio" name="sort" value="price" id="sort5"
+                                                (click)="btncl('5') ">
+                                            <label for="sort5">
+
+                                                <div class="span">5 Month</div>
+                                            </label>
+                                            <input class="btn2 me-4" type="radio" name="sort" value="price" id="sort6"
+                                                (click)="btncl('6') ">
+                                            <label for="sort6">
+
+                                                <div class="span">6 Month</div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- <div class="float-end mt-4 lastbtn">
+                                    <button type="button" class="reset me-2"
+                                        (click)="refresh();modal.close('Save click')">Reset</button>
+                                    <button type="button" class="apply border-outline-danger me-4"
+                                        (click)="add_filter();modal.close('Save click')">Apply</button>
+                                </div> -->
+
+                            </form>
+                            <!-- </div>
+                            <div> -->
+
+
+                            <!-- <button type="button" class="btn btn-outline-dark"
+                                    (click)="refresh();modal.close('Save click')">
+                                    Reset
+                                </button>
+                                <button type="button" class="btn btn-outline-dark"
+                                    (click)="add_filter();modal.close('Save click')">
+                                    Apply
+                                </button> -->
+                            <!-- </div> -->
+                            <div class="modal-footer">
+                                <div _ngcontent-rcl-c113="" class="float-end mt-4 lastbtn"><button
+                                        _ngcontent-rcl-c113="" type="button" class="reset me-2"
+                                        (click)="refresh();modal.close('Save click')">Reset</button><button
+                                        _ngcontent-rcl-c113="" type="button" class="apply border-outline-danger me-4"
+                                        (click)="add_filter();modal.close('Save click')">Apply</button></div>
+                            </div>
+                        </ng-template>
+                    </div>
+
+
+                    <div class="col ">
+                        <a class=" float-end toprightbtn" (click)="open(content)">
+                            <a class="filter">Filter</a>
+                            <img class="icon" src="../../assets/img/filter.png" /></a>
+                    </div>
+                </div>
+                <div class="box-sizing" *ngFor="let mydata of data | filter: searchText"
+                    routerLink="{{'/detail/'+mydata.oem + '/'+ mydata.id}}">
+
+                    <div class="fluid-container mainbox mt-2 scheme-card-container">
+                        <a *ngIf="mydata.oem.toLowerCase() != 'mmfsl'" class="cashbtn">CASHBACK</a>
+                        <div class="fluid-container row1">
+                            <div class="row mt-3 scheme-card-header">
+                                <div class="col ">
+                                    <h5 class="scheme-header">Scheme ID:{{mydata.scheme_id}}</h5>
+                                </div>
+                                <div class="col">
+                                    <div class="float-end rightbtn">{{mydata.oem}}</div>
+                                    <div *ngFor="let mydata of data | filter: searchText"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6 col-md-3 ">
+                                    <div class="card-body schema-body">
+                                        <p class="card-text ">Scheme Min-Max</p>
+                                        <b>₹{{mydata.min_amount}} - ₹{{mydata.max_amount}}</b>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-3 gx-0">
+                                    <div class="card-body schema-body">
+                                        <p class="card-text">Scheme Type</p>
+                                        <b>{{mydata.tenure}} X {{mydata.advance_emi}}</b>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-3 gx-0">
+                                    <div class="card-body schema-body">
+                                        <p class="card-text">DBD</p>
+                                        <b>{{mydata.dbd}}</b>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-3 gx-0">
+                                    <div class="card-body schema-body">
+                                        <p class="card-text">Processing Fee</p>
+                                        <b>₹{{mydata.processing_fee}}</b>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <!-- Box -->
+
+                        <div class="box scheme-footer">
+                            <p>{{mydata.portal_description}}</p>
+                        </div>
+                        
+                        <!-- <div class="box scheme-footer">
+                            <p>{{mydata.pname}}</p>
+                        </div> -->
+                    </div>
+
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+        </div>
+
+    </div>

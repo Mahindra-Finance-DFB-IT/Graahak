@@ -1,0 +1,15 @@
+<nav class="navbar navbar-expand-sm fixed-top">
+    <div class="container">
+        <a class="navbar-brand" routerLink="/home">
+            <img src="assets/logo.svg"/>
+        </a>
+        <div *ngIf="isAuth" class="d-flex">
+            <button class="btn btn-primary btn-logout" type="button" (click)="logout()">Logout</button>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="mwrapper">
+        <router-outlet></router-outlet>
+    </div>
+</div>

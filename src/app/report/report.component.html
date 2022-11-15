@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row mb-3">
+        <div class="col-3 back-history">
+            <a routerLink="/home"><i class="bi bi-chevron-left arrow-red"></i> Back</a>
+        </div>
+        <div class="col-9 text-end update-date-and-time">
+            Last updated: {{this.scheduleData?.LastSchedule || curDate  | date:'dd/MM/yyyy'}} | {{this.scheduleData?.LastSchedule || curDate | date:'hh:mm a'}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col col-md-12">
+            <h3 class="text-center mb-3">Sales Executive Report</h3>
+            <form [formGroup]="reportSearchForm" class="form">
+                <div class="row d-flex justify-content-between">
+                    <div class="col-md-3 mb-3">
+                        <select class="form-select select-report" formControlName="selectReport">
+                            <option value="all#all">List of cases done by SE</option>
+                            <option value="all#abnd">List of ABND cases</option>
+                            <option value="overdue#nonstarter">List of Non starter cases</option>
+                            <option value="overdue#starter">List of Overdue /DPD cases</option>
+                            <option value="mandate#initial_mandate">List of Initial Mandate Rejection</option>
+                            <option value="mandate#rejected_mandate">List of Total Mandate Rejection</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4" style="position: relative">
+                        <i class="bi bi-search search-icon"></i>
+                        <input type="number" maxlength="10" formControlName="searchData" class="form-control search-filter" placeholder="Search by mobile no.">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row ">
+        <div class="col-md-12 mb-3">
+            <table  datatable  [dtTrigger]="dtTrigger" class="table table-striped display nowrap mb-3">
+            </table>
+        </div>
+    </div>
+</div>

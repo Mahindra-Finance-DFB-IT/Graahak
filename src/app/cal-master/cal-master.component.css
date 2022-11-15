@@ -1,0 +1,46 @@
+.box {
+    width: 100%;
+    padding: 26px;
+    background: #FFFFFF;
+box-shadow: 0px 5px 18px rgba(0, 0, 0, 0.14);
+border-radius: 8px;
+}
+
+.first {
+    margin-top: -20px;
+}
+
+input {
+    padding: 8px 60px;
+    border-radius: 10px;
+}
+
+.text {
+    font-size: 11px;
+    font-weight: bold;
+    margin-top: -51px;
+    margin-left: 15px;
+}
+
+.range {
+    margin-top: -5px;
+    font-size: 12px;
+}
+
+.Disclaimer {
+    margin-top: -10px;
+    background-color: rgb(230, 161, 129);
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+
+h5 {
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+span{
+    font-size: 14px;
+}
+
+
