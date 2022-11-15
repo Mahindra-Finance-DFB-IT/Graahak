@@ -41,9 +41,6 @@ p {
 
 }
 .headtext{
-    left: 430px;
-    top: 292px;
-    font-style: normal;
     font-weight: 400;
     font-size: 12px;
     line-height: 16px;
@@ -143,6 +140,7 @@ color: #616162;
 .float-end{
     float: right !important;
     cursor: pointer;
+    /* background: white; */
 }
 .search{
     border-style: none;
@@ -245,37 +243,26 @@ border-radius: 38px;
  .dialog{
     vertical-align: middle;
  }
-
- .checkbox input{
-    display: none;
-    width: 68px;
+.tenure_container {
+    display: inline;
+}
+ .tenure_section {
+    width: fit-content;
     height: 32px;
-    left: 555px;
-    top: 409px;
-    
     border: 1px solid #E5E5E5;
     border-radius: 38px;
     padding: 0px 15px;
+    cursor: pointer;
+    display: inline-block;
+    margin: 10px 10px 0px 0px;
 }
-.checkbox input:checked + label{
-    /* color: #16B67F; */
+.tenure_section.btnSelected{
     color: #FFFFFF;
     background: #EB1935;
-border-radius: 38px;
-cursor: pointer;
-padding: 9px;
 }
-
-.checkbox label i{
-    cursor: pointer;
-    width: 15px;
-    height: 15px;
-    display: inline-block;
-    /* background: red url('http://kuzroman.com/images/jswiddler/circle.svg') no-repeat 50%; */
-    background-size: 12px;
+.tenure_section div {
     position: relative;
-    top: 1px;
-    left: -2px;
+    top: 4px;
 }
 .span {
     display:flex;   
@@ -294,6 +281,9 @@ button.btn.btn-outline-dark {
     margin-top: 76px;
   
 }
+.modal_content {
+    padding: 20px;
+}
 .modal-header .close{
     border: white;
     background-color: unset;
@@ -309,13 +299,13 @@ button.btn.btn-outline-dark {
 
 .fitlerbttn{
     border: none;
- 
-    font-family: 'Akkurat-Bold';
+    /* font-family: 'Akkurat-Bold'; */
     font-style: normal;
-    font-weight: 400;
+    font-weight: 600;
     font-size: 16px;
     line-height: 24px;
-    color: #000000;
+    /* color: #000000; */
+    background: white;
 }
 .canclebttn{
     border: none;
@@ -324,9 +314,9 @@ button.btn.btn-outline-dark {
     background-color: #E31B36;
 }
 label{
-    font-family: 'Akkurat';
+    /* font-family: 'Akkurat'; */
     font-style: normal;
-    font-weight: 400;
+    font-weight: 600;
     font-size: 14px;
     line-height: 16px;
 }
@@ -359,14 +349,20 @@ label{
     color: #FFFFFF;
     border: none;
 }
-
+.checkbox {
+    padding-left: 15px;
+}
 .dropdown-padding{
  width: 178px;
 left: 808px;
 top: 267px;
 }
-
-
+.row-style{
+    margin: 0px;
+}
+.row-pad{
+padding-top: 12px;
+}
 @media only screen and (max-width: 768px) {
 
 

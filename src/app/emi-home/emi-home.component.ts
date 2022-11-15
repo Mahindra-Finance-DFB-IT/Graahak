@@ -20,7 +20,7 @@ export class EmiHomeComponent implements OnInit {
 
   [x: string]: any;
   isBttonShow = false;
-  selval = "0";
+  selectedTenure = "0";
   closeResult = '';
   curDate = Date.now();
   reportData: any = [];
@@ -35,7 +35,7 @@ export class EmiHomeComponent implements OnInit {
   isselect = false
   data: any;
   searchText: '';
-  btnvalue: any;
+  advanceEmi: any;
   schemeData: any
   pcgdata: any;
   constructor(
@@ -48,117 +48,22 @@ export class EmiHomeComponent implements OnInit {
 
 
   ngOnInit(): void {
-  
     this.dcgMaster();
-
   }
-  btncl(btnval: any) {
+  
+  setAdvEmi(value: string) {
     this.isselect = true
-    this.btnvalue = btnval;
-    console.log('btnvalue: ', this.btnvalue);
-    var ele = document.getElementById("btn01")
-    ele?.classList.add("btnSelected");
-
-
+    this.advanceEmi = value;
+    // console.log('advanceEmi: ', this.advanceEmi);
+    // // var ele = document.getElementById("btn01")
+    // ele?.classList.add("btnSelected");
   }
-  apply(tenval: any) {
-    var val = tenval.value;
-    //  var val1 = val[0];
-    //  var val2 = val[1];
-    //  console.log("====>>",val1,val2);
-    var str = "Apples are round, and apples are juicy.";
-    var splitted = str.split(" ", 3);
-    console.log(val)
-  }
-  add_filter() {
-    /*
-        var arr: any[]=[];
-        this.http.get('http://localhost:8000/schemeMasterRoutes/scheme-master/').subscribe((data: any) => {
-    
-        for(let i=0;i<data.length;i++){
-          if(data[i].ADVANCE_EMI== this. btnvalue){
-            arr.push(data[i]);
-            this.data = arr;
-            console.log('arr: ', arr);
-          }
-         
-        }
-        if(arr.length<=0)
-        {
-          this.data =undefined;
-        }
   
-  
-          //console.log('data: ', data);
-          // console.log(this.data);
-          // console.log('data: ', data);
-        }, (error: any) => console.error(error));
-        */
-    //new code
-    var sel_val = document.getElementById("dog-names");
-    var value = this.selval;
-    console.log("the selected value is " + value);
-    var newarr: any[] = [];
-    if (value == "0" || value == "12") {
-      newarr.push(value);
-    }
-    else {
-      newarr = value.split("-");
-    }
-    //var tenure= (this.data.TENURE - this.data.ADVANCE_EMI)
-
-    console.log('newarr: ', newarr);
-    var arr: any[] = [];
-    const loaderRef = this.modalService.open(LoaderComponent,{
-      centered: true,
-      animation:true,
-      backdrop:'static',
-      keyboard: false,
-      windowClass:"remove-bg-modal",
-     size:"sm",
-    // modalDialogClass: " modal-dialog-centered d-flex justify-content-center"
-    });
-    this.apiService.dcg().subscribe((data: any) => {
-      loaderRef.close();
-      //this.schemeData = data;
-      for (let i = 0; i < data.length; i++) {
-        var ADVANCE_EMI = Number(data[i].advance_emi);
-        var Tenure = Number(data[i].tenure);
-        var grossTenure = Number(Tenure - ADVANCE_EMI);
-
-        if (newarr[0] == "0" && newarr.length == 1 && data[i].advance_emi == this.btnvalue) {
-          arr.push(data[i]);
-          this.data = arr;
-          //var ten = data[i].TENURE - data[i].ADVANCE_EMI
-
-          console.log('arr: ', arr);
-        }
-        else if (grossTenure > Number(newarr[0]) && grossTenure <= Number(newarr[1]) && data[i].advance_emi == this.btnvalue) {
-          arr.push(data[i]);
-          this.data = arr;
-          console.log('arr: ', arr);
-        }
-        else if (newarr[0] == "12" && newarr.length == 1) {
-          if (grossTenure > 12 && data[i].advance_emi == this.btnvalue) {
-            arr.push(data[i]);
-            this.data = arr;
-            console.log('arr: ', arr);
-          }
-        }
-      }
-
-      this.data = arr;
-
-
-      if (arr.length <= 0) {
-        this.data = undefined;
-      }
-      console.log('data: ', data);
-      // console.log(this.data);
-      // console.log('data: ', data);
-    }, (error: any) => console.error(error));
-
+  addFilter() {
+    var newarr = this.selectedTenure.split('-');
+    this.mapSchemeData(newarr, this.schemeData, 'advanceEmi');
   }
+
   open(content: any) {
     this.modalService.open(content,
       { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
@@ -190,150 +95,75 @@ export class EmiHomeComponent implements OnInit {
     this.apiService.dcg().subscribe((data: any) => {
       loaderRef.close();
       this.data = data;
+      this.schemeData = data;
       this.cashback()
-      // this.pcgMaster()
       console.log('dcgdata: ', data);
-      // console.log(this.data);
-      // console.log('data: ', data);
     }, (error: any) => console.error(error));
   }
-  // pcgMaster() {
-  //   const productCode = ["1512"]
-  //   this.apiService.pcg(productCode).subscribe((data: any) => {
-  //     this.pcgdata = data;
-  //     this.getSchemeData()
-  //     console.log('pcgdata: ', data);
-  //     // console.log(this.data);
-  //     // console.log('data: ', data);
-  //   }, (error: any) => console.error(error));
-  // }
-  // getSchemeData() {
-  //   const dealerCode = ["686"]
-  //   this.apiService.master(dealerCode).subscribe((data: any) => {   
-  //     this.schemeData = data;   
-  //     console.log('master: ', data);
-  //     // console.log(this.data);
-  //     // console.log('data: ', data);
-  //   }, (error: any) => console.error(error));
-  // }
 
-
-  onOptionsSelected(value: string) {
-    console.log("the selected value is " + value);
-    this.selval = value;
+  onTenureSelected(value: string) {
+    this.selectedTenure = value;
     var newarr = value.split("-");
-    //var tenure= (this.data.TENURE - this.data.ADVANCE_EMI)
+    this.mapSchemeData(newarr, this.schemeData, '');
+    this.resetFilter();
+  }
 
-    console.log('newarr: ', newarr);
-    var arr: any[] = [];
-    const loaderRef = this.modalService.open(LoaderComponent,{
-      centered: true,
-      animation:true,
-      backdrop:'static',
-      keyboard: false,
-      windowClass:"remove-bg-modal",
-     size:"sm",
-    // modalDialogClass: " modal-dialog-centered d-flex justify-content-center"
-    });
-    this.apiService.dcg().subscribe((data: any) => {
-      loaderRef.close();
-      this.data = data;
-      for (let i = 0; i < data.length; i++) {
-        var ADVANCE_EMI = Number(data[i].advance_emi);
-        console.log('ADVANCE_EMI: ', ADVANCE_EMI);
-        var Tenure = Number(data[i].tenure);
-        console.log('Tenure: ', Tenure);
-        var grossTenure = Number(Tenure - ADVANCE_EMI);
-        if (newarr[0] == "0" && newarr.length == 1) {
-          arr.push(data[i]);
-          this.data = arr;
-          //var ten = data[i].TENURE - data[i].ADVANCE_EMI
-
-          console.log('arr: ', arr);
-        }
-        else if (grossTenure > Number(newarr[0]) && grossTenure <= Number(newarr[1])) {
-          arr.push(data[i]);
-          this.data = arr;
-          console.log('arr: ', arr);
-        }
-        else if (newarr[0] == "12" && newarr.length == 1) {
-          if (grossTenure > 12) {
-            arr.push(data[i]);
-            this.data = arr;
-            console.log('arr: ', arr);
-          }
-        }
-
+  mapSchemeData(newarr:any, data: any, type: string) {
+    var arr: any = [];
+    var arrAdvFilter: any = [];
+    for (let i = 0; i < data.length; i++) {
+      // var advanceEmi = Number(data[i].advance_emi);
+      var grossTenure = Number(data[i].tenure);
+      console.log('Tenure: ', grossTenure);
+      // var grossTenure = grossTenure; //Number(tenure - advanceEmi);
+      if (newarr[0] == "0" && newarr.length == 1) {
+        arr.push(data[i]);
       }
+      else if (grossTenure >= Number(newarr[0]) && grossTenure <= Number(newarr[1])) {
+        arr.push(data[i]);
+      }
+      else if (newarr[0] == "12" && newarr.length == 1) {
+        if (grossTenure > 12) {
+          arr.push(data[i]);
+        }
+      }
+    }
+    if (type == 'advanceEmi') {
+      // arrAdvFilter = arr;
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i].advance_emi == this.advanceEmi) {
+          arrAdvFilter.push(data[i]);
+        }
+      }
+      if (arrAdvFilter.length > 0) {
+        this.data = arrAdvFilter;
+      } else {
+        this.data = [];
+      }
+    }
+    
+    if (type != 'advanceEmi') {
       if (arr.length > 0) {
         this.data = arr;
+      } else {
+        this.data = [];
       }
-      if (arr.length <= 0) {
-        this.data = undefined;
-      }
-      console.log('data: ', data);
-
-    }, (error: any) => console.error(error));
-
+    }
+    console.log('data: ', data);
   }
 
 
   cashback(){
-  var data=  this.data
+    var data=  this.data
     for (let i = 0; i < data.length; i++) {
       var cashback = (data[i].oem);
-      console.log('cashback: ', cashback);
     }
-    
-    }
-  refresh() {
-    var sel_val = document.getElementById("dog-names");
-    var value = this.selval;
-    console.log("the selected value is " + value);
-    var newarr: any[] = [];
-    if (value == "0" || value == "12") {
-      newarr.push(value);
-    }
-    else {
-      newarr = value.split("-");
-    }
-    console.log('newarr: ', newarr);
-    var arr: any[] = [];
-    // const dealerCode = ["686"]
-    this.apiService.dcg().subscribe((data: any) => {
-      this.data = data;
-      for (let i = 0; i < data.length; i++) {
-        var ADVANCE_EMI = Number(data[i].advance_emi);
-        var Tenure = Number(data[i].tenure);
-        var grossTenure = Number(Tenure - ADVANCE_EMI);
-        if (newarr[0] == "0" && newarr.length == 1) {
-          arr.push(data[i]);
-          this.data = arr;
-          //var ten = data[i].TENURE - data[i].ADVANCE_EMI
-
-          console.log('arr: ', arr);
-        }
-        else if (grossTenure > Number(newarr[0]) && grossTenure <= Number(newarr[1])) {
-          arr.push(data[i]);
-          this.data = arr;
-          console.log('arr: ', arr);
-        }
-        else if (newarr[0] == "12" && newarr.length == 1) {
-          if (grossTenure > 12) {
-            arr.push(data[i]);
-            this.data = arr;
-            console.log('arr: ', arr);
-          }
-        }
-      }
-      if (arr.length <= 0) {
-        this.data = undefined;
-      }
-      console.log('data: ', data);
-      // console.log(this.data);
-      // console.log('data: ', data);
-    }, (error: any) => console.error(error));
-
+  }
+  
+  resetFilter() {
+    this.advanceEmi = '';
+    var newarr = this.selectedTenure.split('-');
+    this.mapSchemeData(newarr, this.schemeData, '');
   }
 
 }
