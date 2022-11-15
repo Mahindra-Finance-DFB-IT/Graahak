@@ -11,13 +11,16 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../service/auth.service';
 import { LoaderComponent } from '../loader/loader.component';
+import { Store } from '@ngrx/store';
+import { LogoutComponent } from '../logout.component';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'emi-home',
   templateUrl: './emi-home.component.html',
   styleUrls: ['./emi-home.component.css']
 })
 export class EmiHomeComponent implements OnInit {
-
   [x: string]: any;
   isBttonShow = false;
   selectedTenure = "0";
@@ -30,26 +33,36 @@ export class EmiHomeComponent implements OnInit {
   @ViewChild(DataTableDirective, { static: true })
   datatableElement: DataTableDirective;
   dtTrigger: Subject<ADTSettings> = new Subject();
+  private _error = new Subject<string>();
   showOtpScreen = false;
   otherDetails = false;
   isselect = false
   data: any;
+  errMsg: string;
   searchText: '';
   advanceEmi: any;
   schemeData: any
   pcgdata: any;
   constructor(
-
     public apiService: ApiService,
     public http: HttpClient,
     private modalService: NgbModal,
     private authService: AuthService,
-  ) { }
+    public route:Router,
+    private store:Store<{appItem: AppData }>
+  ) {
+    this.appData$ = store.select('appItem');
+    this.appData$.subscribe((obj:AppData)=>{
+      this.appData = obj;
+    })
+  }
 
 
   ngOnInit(): void {
     this.dcgMaster();
   }
+
+  public changeErrorMessage(msg:String) { this._error.next(msg.toString()); }
   
   setAdvEmi(value: string) {
     this.isselect = true
@@ -92,13 +105,51 @@ export class EmiHomeComponent implements OnInit {
      size:"sm",
     // modalDialogClass: " modal-dialog-centered d-flex justify-content-center"
     });
-    this.apiService.dcg().subscribe((data: any) => {
+    let token:String = ''; 
+    if(this.appData.token){
+      token = this.appData.token;
+    }
+    var obj = {
+      'posid': '12722', //this.authService.userPosId
+    };
+    this.apiService.dcg(obj, token).subscribe((data: any) => {
       loaderRef.close();
-      this.data = data;
-      this.schemeData = data;
-      this.cashback()
+      if(data.length>0){
+        this.data = data;
+        this.schemeData = data;
+        this.cashback();
+      }else{
+        this.changeErrorMessage("No data found");    
+      }
       console.log('dcgdata: ', data);
-    }, (error: any) => console.error(error));
+    }, async (err: any) => {
+      loaderRef.close();
+      if(err.status == 401){
+        const logoutModalRef =  await this.modalService.open(LogoutComponent,{
+          centered: true,
+          animation:true,
+          backdrop:'static',
+          keyboard: false,
+          size:"sm",
+        })
+        logoutModalRef.closed.subscribe(_d=>{
+          console.log(err);
+          this.authService.logout();
+          this.route.navigate(['/login']);
+          return false;
+        })
+      } else{
+        if(err.error.error || err.error.errors){
+          //this.errorObj = err.error;
+          this.errMsg = err.error.error;
+          this.changeErrorMessage(err.error.error);
+        }else{
+          this.errMsg = err.message;
+          //this.errorObj = {error: err.message};
+          this.changeErrorMessage(err.message);
+        }
+      }
+    });
   }
 
   onTenureSelected(value: string) {

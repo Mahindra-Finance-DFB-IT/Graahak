@@ -55,7 +55,6 @@ export class HomeComponent implements OnInit {
       })
     }
     getScheme(){
-      this.authService.userPosId = '5001';
       this.router.navigateByUrl("/scheme-cal")
 }
     getReport(){

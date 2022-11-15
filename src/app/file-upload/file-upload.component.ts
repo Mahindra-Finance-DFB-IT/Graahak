@@ -28,9 +28,6 @@ export class FileUploadComponent implements OnInit {
 
   ngOnInit(): void {
     this.selectedFileType = 'master';      
-    console.log(this.selectedFileType);
-    // this.fileInfos = this.uploadService.getFiles();
-    
   }
 
   selectFile(event: any): void {
@@ -48,32 +45,28 @@ export class FileUploadComponent implements OnInit {
     });
     if (this.selectedFiles) {
       const file: File | null = this.selectedFiles.item(0);
-
       if (file) {
         this.currentFile = file;
-       
         this.uploadService.uploadMasterFile(this.currentFile).subscribe((data:any) => {
-          console.log(data);  
-          loaderRef.close();    
-            },
-            (err: any) => {
-            console.log(err);
-     
-
-            if (err.error && err.error.message) {
-              this.message = err.error.message;
-            } else {
-              this.message = 'Could not upload the file!';
-            }
-
-            this.currentFile = undefined;
-          });
-
+          if (data && data?.body && data?.body?.res == 'success') {
+            loaderRef.close();
+            alert('File uploaded successfully');
+            console.log(data && data?.body && data?.body?.res); 
+          }
+        }, (err: any) => {
+          console.log(err);
+          if (err.error && err.error.message) {
+            this.message = err.error.message;
+          } else {
+            this.message = 'Could not upload the file!';
+          }
+          this.currentFile = undefined;
+        });
       }
-
       this.selectedFiles = undefined;
     }
   }
+  
   uploadDcg(): void {
    
     const loaderRef = this.modalService.open(LoaderComponent,{

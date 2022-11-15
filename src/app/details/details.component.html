@@ -19,7 +19,7 @@
             <!-- <input placeholder="₹" [(ngModel)]="firstName" id="amtamount" name="firstName" #amtamount> -->
 
             <button type="submit" id="amtamount" name="amtamount" class="btn btn-danger"
-                *ngFor="let mydata of data" (click)="amt(amtamount.value)" [disabled]="firstName ==''">Get
+                *ngFor="let mydata of data" (click)="validateDetails(amtamount.value)" [disabled]="firstName ==''">Get
                 Details</button>
             </div>
         </div>

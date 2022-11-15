@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -37,6 +37,7 @@ import { MatButtonModule } from
     '@angular/material/button';
 import { MatButtonToggleModule } from 
     '@angular/material/button-toggle';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,7 +61,8 @@ import { MatButtonToggleModule } from
   ],
   imports: [  
     MatButtonModule,
-     MatButtonToggleModule,
+    BrowserAnimationsModule,
+    MatButtonToggleModule,
     Ng2SearchPipeModule,
     BrowserModule,
     DataTablesModule,
@@ -70,6 +72,7 @@ import { MatButtonToggleModule } from
     NgbModule,
     HttpClientModule,
     FormsModule,
+    MatSnackBarModule,
     StoreModule.forRoot({
       appItem: AppReducer
     })

@@ -363,6 +363,10 @@ top: 267px;
 .row-pad{
 padding-top: 12px;
 }
+.no_data_found {
+    padding-top: 50px;
+    text-align: center;
+}
 @media only screen and (max-width: 768px) {
 
 

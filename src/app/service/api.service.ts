@@ -102,36 +102,14 @@ export class ApiService{
         let newHeaders = {...this.headers,"Authorization":"Bearer "+token} 
         return this.http.get(url,{headers:newHeaders})
     }
-    dcg() {
-        const url = environment.apiHostName+"dcg/query";
-    //    const posid=this.authservice.userPosId
-    const posid="1015523    "
-    return this.http.post(url,{posid:posid});
-
-	
-}
-dcgById(id:any) {
-
-    const url = environment.apiHostName+"dcg/"+id;
-//    const posid=this.authservice.userPosId
-const posid="1005925"
-return this.http.post(url,{posid:posid});
-
-
-}
-pcg(productCode:any) {
-    const url = environment.apiHostName+"pcg/query";
-//    const posid=this.authservice.userPosId
-
-    return this.http.post(url,{productCode});
-
-
-}
-master(dealerCode:any) {
-    const url = environment.apiHostName+"schemeMasterRoutes/scheme-master";
-//    const posid=this.authservice.userPosId
-    return this.http.post(url,{dealerCode});
-
-
-}
+    dcg(data: any, token:String) {
+        const url = environment.apiHostName+"customer_details/getSchemes";
+        let newHeaders = {...this.headers,"Authorization":"Bearer "+token} 
+        return this.http.post(url,data,{headers:newHeaders});
+    }
+    dcgById(data:any, token:String) {
+        const url = environment.apiHostName+"customer_details/getSchemeDetail";
+        let newHeaders = {...this.headers,"Authorization":"Bearer "+token} 
+        return this.http.post(url,data,{headers:newHeaders});
+    }
 }
