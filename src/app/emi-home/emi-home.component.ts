@@ -110,7 +110,7 @@ export class EmiHomeComponent implements OnInit {
       token = this.appData.token;
     }
     var obj = {
-      'posid': '12722', //this.authService.userPosId
+      'posid': this.authService.userPosId
     };
     this.apiService.dcg(obj, token).subscribe((data: any) => {
       loaderRef.close();

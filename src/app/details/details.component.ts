@@ -9,7 +9,7 @@ import { NgModule } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoaderComponent } from '../loader/loader.component';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-
+import { AuthService } from '../service/auth.service';
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
@@ -30,6 +30,7 @@ export class DetailsComponent implements OnInit {
     public router: ActivatedRoute,
     private modalService: NgbModal,
     public route: Router,
+    private authService: AuthService,
     private store:Store<{appItem: AppData }>
   ) {
     this.appData$ = store.select('appItem');
@@ -57,7 +58,7 @@ export class DetailsComponent implements OnInit {
       token = this.appData.token;
     }
     var obj = {
-      'posid': '12722', //this.authService.userPosId
+      'posid': this.authService.userPosId,
       'id': id
     };
     this.apiService.dcgById(obj, token).subscribe((data: any) => {

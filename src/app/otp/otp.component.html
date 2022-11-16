@@ -15,7 +15,7 @@
             </div>
             <ng-otp-input #ngOtpInput (onInputChange)="onOtpChange($any($event))"  [config]="config"></ng-otp-input>
             <p *ngIf="counter > 0 && showTimer">Wait to resend OTP <span class="ms-2">{{counter | formatTime}}</span></p>
-            <p *ngIf="counter <= 0 && showTimer">Didn't recieve OTP? <span class="ms-2"><a class="noclass" (click)="resendOTP()">Resend OTP</a></span></p>
+            <p *ngIf="counter <= 0 && showTimer">Didn't recieve OTP? <span class="ms-2"><a class="noclass" (click)="resendOTP()"  href="javascript:void(0);">Resend OTP</a></span></p>
             <ngb-alert class="mt-2" #selfClosingAlert *ngIf="successOtpMessage" type="success" (closed)="successOtpMessage = ''">{{ successOtpMessage }}
             </ngb-alert>
             <ngb-alert class="mt-2" #selfClosingErrorAlert *ngIf="invalidOtpMessage" type="danger" (closed)="invalidOtpMessage = ''">{{ invalidOtpMessage }}
