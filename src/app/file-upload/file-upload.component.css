@@ -1,175 +1,83 @@
 .card {
     width: 578px;
-    /* height: 495px; */
-    background: rgba(255, 255, 255, 1);
-    opacity: 1;
-    top: 13px;
-    /* left: 431px; */
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-    box-shadow: 0px 5px 18px rgba(0, 0, 0, 0.14000000059604645);
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 5px 18px rgba(0, 0, 0, 0.14);
     overflow: hidden;
     padding: 2.5%;
     display: flex;
-    /* align-items: center;
-    flex-wrap: wrap-reverse;
-    flex-flow: column wrap; */
-    align-self: auto;
-    /* align-content: center; */
- 
-
+}
+.heading {
+    font-family: 'Akkurat-Bold';
+    font-size: 16px;
+    color: #000000;
 }
 .welcome{
     font-family: 'Akkurat-Bold', Arial, Helvetica, sans-serif;
     font-size: 24px;
     line-height: 24px;
     text-align: center;
+    margin: 2% 0% 3% 0%;
 }
-
-.drag {
-
-    width: 100%;
-    /* height: 770px; */
-    background: rgba(255, 255, 255, 1);
-    opacity: 1;
-    /* position: absolute; */
-    top: 0px;
-    left: 0px;
-    /* overflow: hidden; */
-    align-self: auto;
-}
-
 .button {
     width: 180px;
     height: 48px;
-    left: 630px;
-    top: 585px;
     font-family: 'Akkurat-Bold';
     font-style: normal;
-    align-self: auto;
-    font-style: normal;
-    font-weight: 400;
     font-size: 16px;
-    line-height: 20px;
-    /* identical to box height */
     border: aliceblue;
     color: #FFFFFF;
     background: #EB1935;
     border-radius: 3px;
+    margin: 5% 0% 0% 0%;
 }
-
+.checkbox {
+    margin: 15px 0px 30px 0px;
+}
+.checkbox input{
+    display: none;
+}
+.checkbox input:checked + label{
+    color: #FFFFFF;
+    background: #EB1935;
+}
+.checkbox label {
+    border-radius: 38px;
+    padding: 5px 15px;
+    margin-right: 10px;
+    cursor: pointer;
+    font-size: 13px;
+    display: initial;
+    border: 1px solid #E5E5E5;
+}
 .file {
-    min-height: 171px ;
-    /* width: 514px; */
     height: 171px;
-    left: 463px;
-    top: 304px;
     background: #F6F6F6;
-    border-radius: 10px;
-    align-self: auto;
     width: 514px;
     border: 1px dashed #DDDDDD;
-border-radius: 10px;
+    border-radius: 10px;
 }
-
-.heading {
-    width: 160px;
-    height: 24px;
-    left: 463px;
-    top: 203px;
-
-    font-family: 'Akkurat-Bold';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-
-
-    align-self: auto;
-    color: #000000;
-
-    opacity: 0.7;
+.file_image {
+    text-align: center;
+    margin-top: 5%;
 }
-
-.example-button-row {
-    /* width: 90px; */
-    height: 32px;
-    left: 591px;
-    top: 242px;
-    background: #FFFFFF;
-    border: 1px solid #E5E5E5;
-    margin: 7px;
-    border-radius: 38px;
-    align-self: auto;
-}
-
-.text-file {
-
-    width: 209px;
-    height: 16px;
-    left: 615px;
-    top: 405px;
-
-    font-family: 'Akkurat';
-    font-style: normal;
-    font-weight: 400;
+.file_content {
     font-size: 14px;
-    line-height: 16px;
-    /* identical to box height, or 114% */
-    align-self: auto;
-
     color: #000000;
-
+    text-align: center;
+    padding: 15px 10px 0px 10px;
 }
-
-.icon {
-    position: absolute;
-    margin: 164px 244px;
-    /* left: -11px; */
-    right: 8px;
-    top: 0px;
-    bottom: 85px; 
-    
+.file_content span {
+    color: #EB1935;
 }
-
-ngx-dropzone-preview {
-    height: 40px !important;
-    min-height: 40px !important;
-    min-width: 100px !important;
-    /* max-width: 40px !important; */
-    max-width: 100% !important;
-    padding: 0px !important;
-    align-self: auto;
-}
-
-.switch-toggle {
-    float: left;
-    background: white;
-    align-self: auto;
-
-}
-
-.switch-toggle input {
-    position: absolute;
-    opacity: 0;
-    align-self: auto;
-
-}
-
-.switch-toggle input+label {
-    padding: 7px;
-    float: left;
+.file_support {
+    font-size: 12px;
     color: #000000;
-    cursor: pointer;
-    align-self: auto;
+    text-align: center;
+    padding: 5px 0px 20px 0px;
+    opacity: 0.6;
 }
 
-.switch-toggle input:checked+label {
-    background: #EB1935;
-    align-self: auto;
-}
 input#file {
     display: inline-block;
     width: 100%;
@@ -179,74 +87,10 @@ input#file {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    /* background: url('https://cdn1.iconfinder.com/data/icons/hawcons/32/698394-icon-130-cloud-upload-512.png') center center no-repeat #e4e4e4; */
     border-radius: 20px;
     background-size: 60px 60px;
-  }
-  mat-button-toggle-group {
-    margin-left: 12px;
   }
   ::-webkit-file-upload-button {
     display: none;
  }  
 
-.lable{
-width: 209px;
-height: 16px;
-left: 615px;
-top: 405px;
-
-font-family: 'Akkurat';
-font-style: normal;
-font-weight: 400;
-font-size: 14px;
-line-height: 16px;
-/* identical to box height, or 114% */
-
-
-color: #000000;
-}
-.box{
-    box-sizing: border-box;
-
-
-width: 514px;
-height: 171px;
-left: 463px;
-top: 304px;
-
-background: #F6F6F6;
-border: 1px dashed #DDDDDD;
-border-radius: 10px;
-}
-
-.checkbox input{
-    display: none;
-}
-.checkbox input:checked + label{
-    /* color: #16B67F; */
-    color: #FFFFFF;
-    background: #EB1935;
-border-radius: 38px;
-cursor: pointer;
-padding: 5px;
-}
-
-.checkbox label i{
-    cursor: pointer;
-    width: 15px;
-    height: 15px;
-    display: inline-block;
-    /* background: red url('http://kuzroman.com/images/jswiddler/circle.svg') no-repeat 50%; */
-    background-size: 12px;
-    position: relative;
-    top: 1px;
-    left: -2px;
-}
-span {
-    margin-right: 16px;
-    cursor: pointer;
-}
-.checkbox {
-    margin: 15px 0px 30px 0px;
-}

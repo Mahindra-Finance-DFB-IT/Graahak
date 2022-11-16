@@ -1,84 +1,32 @@
 <div class="row justify-content-md-center">
-    <div class="welcome">Admin Dashboard</div>
-    <div class="drag"></div>
-    <div class="card">
-      <div class="heading"> Select Type of Master
-  
+  <div class="welcome">Admin Dashboard</div>
+  <div class="card">
+    <div class="heading"> Select Type of Master</div>
+    <div class="checkbox">
+      <input type="radio" name="sort" id="sort1" checked="checked" (click)="selectedFileType = 'master'" >
+      <label for="sort1">
+        <span>Scheme Master</span>
+      </label>
+      <input type="radio" name="sort" id="sort2" (click)="selectedFileType = 'pcg'"> 
+      <label for="sort2">
+        <span>PCG master</span>
+      </label>
+      <input type="radio" name="sort" id="sort3" (click)="selectedFileType = 'dcg'"> 
+      <label for="sort3">
+        <span>DCG master</span>
+      </label>
+    </div>   
+    <div class="file_container file">
+      <input class="file1" type="file" (change)="selectFile($event)"/>
+      <div class="file_image">
+        <img class="icon" src="../../assets/img/file_upload.png" />
       </div>
-      <section>
-        <!-- <div>
-          <button class="example-button-row" mat-raised-button color="primary"
-            onclick="this.style.background = '#EB1935'" (click)="setter('a')">Scheme Master</button>
-          <button class="example-button-row" mat-raised-button color="accent"
-            onclick="this.style.background = '#EB1935'" (click)="setter('b')">PGC master</button>
-          <button class="example-button-row" mat-raised-button color="warn"
-            onclick="this.style.background = '#EB1935'" (click)="setter('c')">DGC master</button>
-        </div> -->
-        <!-- <mat-button-toggle-group class="custom-control custom-switch" name="fontStyle" aria-label="Font Style">
-          <mat-button-toggle type="radio" id="option1"
-            onclick="this.style.background = '#EB1935'" (click)="setter('a')">Scheme Master</mat-button-toggle>
-          <mat-button-toggle type="radio"  id="option2"
-            onclick="this.style.background = '#EB1935'" (click)="setter('b')">PGC master</mat-button-toggle>
-          <mat-button-toggle type="radio" id="option3"
-            onclick="this.style.background = '#EB1935'" (click)="setter('c')">DGC master</mat-button-toggle>
-          </mat-button-toggle-group> -->
-      </section>
-<!-- 
-      <input type='radio' name="gender"/>
-      <input type='radio' name="gender"/> -->
-
-
-      <!-- <div  data-toggle="buttons">
-        <label class="btn btn-primary">
-          <input type="radio" name="options" id="option1"  (click)="setter('a')" > Scheme Master
-        </label>
-        <label class="btn btn-primary">
-          <input type="radio" name="options" id="option2" (click)="setter('b')"> PGC master
-        </label>
-        <label class="btn btn-primary">
-          <input type="radio" name="options" id="option3" (click)="setter('c')"> DGC master
-        </label>
-      </div> -->
-      <div class="checkbox">
-        <input type="radio" name="sort" id="sort1" checked="checked" (click)="selectedFileType = 'master'" >
-        <label for="sort1" >
-              <i></i>
-              <span>Scheme Master</span>
-          </label>
-      
-        <input type="radio" name="sort" id="sort2" (click)="selectedFileType = 'pcg'"> 
-        <label for="sort2">
-              <i></i>
-              <span>PCG master</span>
-          </label>
-          <input type="radio" name="sort" id="sort3" (click)="selectedFileType = 'dcg'"> 
-          <label for="sort3">
-                <i></i>
-                <span>DCG master</span>
-            </label>
-      </div>   
-      
-      <!-- <ngx-dropzone class="file">
-        <img class="icon" src="../../assets/img/freepik--Documents--inject-40.png" />
-        <ngx-dropzone-label class="text-file">Drop your file here or browse file</ngx-dropzone-label> -->
-      <div>
-        <input class="file"  type="file" (change)="selectFile($event)"   />
-      <img class="icon" src="../../assets/img/freepik--Documents--inject-40.png" />
-      <p style="  text-align: center; margin-top: -35px;">Drop your file here or browse file</p> 
-
+      <div class="file_content">Drop your file here or <span>browse</span> file</div> 
+      <div class="file_support">Support XLXS file</div> 
     </div>
-         
-  
-      <div *ngIf="message" class="alert alert-secondary" role="alert">{{ message }}</div>
-  
-  
-      <div class="text-center">
-        
-        <button class="button"  (click)="sumbitFile()">Confirm & Submit</button>
-        
-        <!-- <button class="button" [disabled]="!selectedFiles" (click)="uploadDcg()">Confirm & Submit</button>
-        <button class="button" [disabled]="!selectedFiles" (click)="uploadPcg()">Confirm & Submit</button> -->
-      </div>
+    <div *ngIf="message" class="alert alert-secondary" role="alert">{{ message }}</div>
+    <div class="text-center">
+      <button class="button" (click)="sumbitFile()">Confirm & Submit</button>
     </div>
-    <!-- End of Card -->
   </div>
+</div>
