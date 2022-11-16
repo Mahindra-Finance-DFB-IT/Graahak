@@ -9,6 +9,9 @@ import { UploadFilesService } from './../_services/upload-files.service';
 import {MDCRipple} from '@material/ripple';
 import { NgbAlert, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoaderComponent } from '../loader/loader.component';
+import { ApiService } from '../service/api.service';
+import { Store } from '@ngrx/store';
+import { AppData } from 'src/app/models/app';
 @Component({
   selector: 'app-file-upload',
   templateUrl: './file-upload.component.html',
@@ -18,13 +21,23 @@ export class FileUploadComponent implements OnInit {
   [x: string]: any;
   selectedFiles?: FileList;
   currentFile?: File;
+  appData$: Observable<AppData>;
+  appData: AppData = {}
   message = '';
   selectedFileType: string;
   fileInfos?: Observable<any>;
   data:any
   constructor(private uploadService: UploadFilesService,
     public router: Router,
-    private modalService: NgbModal,) { }
+    public apiService: ApiService,
+    private modalService: NgbModal,
+    public route:Router,
+    private store:Store<{appItem: AppData }>) {
+      this.appData$ = store.select('appItem');
+      this.appData$.subscribe((obj:AppData)=>{
+        this.appData = obj;
+      })
+     }
 
   ngOnInit(): void {
     this.selectedFileType = 'master';      
@@ -43,11 +56,17 @@ export class FileUploadComponent implements OnInit {
       windowClass:"remove-bg-modal",
       size:"sm",
     });
-    if (this.selectedFiles) {
+    let token:String = '';
+    if(this.appData.token){
+      token = this.appData.token;
+    }
+   
+    if (this.selectedFiles ) {
       const file: File | null = this.selectedFiles.item(0);
       if (file) {
         this.currentFile = file;
-        this.uploadService.uploadMasterFile(this.currentFile).subscribe((data:any) => {
+        console.log('currentFile:===== ', this.currentFile);
+        this.uploadService.uploadMasterFile(this.currentFile,token).subscribe((data:any) => {
           if (data && data?.body && data?.body?.res == 'success') {
             loaderRef.close();
             alert('File uploaded successfully');
@@ -77,13 +96,17 @@ export class FileUploadComponent implements OnInit {
       windowClass:"remove-bg-modal",
       size:"sm",
     });
+    let token:String = '';
+    if(this.appData.token){
+      token = this.appData.token;
+    }
     if (this.selectedFiles) {
       const file: File | null = this.selectedFiles.item(0);
 
       if (file) {
         this.currentFile = file;
 
-        this.uploadService.uploadDcgFile(this.currentFile).subscribe((data:any)=> {
+        this.uploadService.uploadDcgFile(this.currentFile,token).subscribe((data:any)=> {
           console.log('data: ', data); 
           loaderRef.close();  
            
@@ -115,14 +138,17 @@ export class FileUploadComponent implements OnInit {
       windowClass:"remove-bg-modal",
       size:"sm",
     });
-
+    let token:String = '';
+    if(this.appData.token){
+      token = this.appData.token;
+    }
     if (this.selectedFiles) {
       const file: File | null = this.selectedFiles.item(0);
 
       if (file) {
         this.currentFile = file;
         
-        this.uploadService.uploadPcgFile(this.currentFile).subscribe((data:any) => {
+        this.uploadService.uploadPcgFile(this.currentFile,token).subscribe((data:any) => {
           console.log('data: ', data);
             loaderRef.close();  
           

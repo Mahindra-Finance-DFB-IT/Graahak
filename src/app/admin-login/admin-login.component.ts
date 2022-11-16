@@ -58,7 +58,9 @@ export class AdminLoginComponent implements OnInit {
 		private authenticationService: ApiService,
 		private alertService: AlertService,
 		private modalService: NgbModal,
-		private appComponent:AppComponent
+		private appComponent:AppComponent,
+                private authService: AuthService,
+                private store: Store<{ appItem: AppData }>
 	) {
 		// redirect to home if already logged in
 		// if (this.authenticationService.currentUserValue) {
@@ -113,8 +115,15 @@ export class AdminLoginComponent implements OnInit {
 		this.authenticationService.login(this.loginForm.value.sapId, entityUserPassword.toString()).subscribe((data: any)=>{
 
 			console.log('data: ', data);
+			let appData:AppData = {};
+            appData.transactionID ="";
+            appData.isAuth= true;
+            appData.token = data.token;
+            appData.loginType= this.login.loginType;
+            appData.userId= this.loginForm.value.sapId;
 			loaderRef.close();
 			this.appComponent.isAdmin = true	;
+			this.store.dispatch(updateAppData(appData));
 			this.router.navigateByUrl("/file-upload");
 		}, (err)=>{
 			loaderRef.close();

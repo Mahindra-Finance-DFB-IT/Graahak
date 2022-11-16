@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { User } from '../_models';
+import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -21,7 +22,8 @@ export class AuthenticationService {
 	}
 
 	login(sapId: string, password: string) {
-		return this.http.post<any>(`http://localhost:8000/admin/login`, { sapId, password })
+		var baseUrl=environment.apiHostName + "admin/login";
+		return this.http.post<any>(baseUrl, { sapId, password })
 			.pipe(map(user => {
 
 				// login successful if there's a jwt token in the response
