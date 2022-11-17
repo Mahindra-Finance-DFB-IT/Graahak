@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from 'src/environments/environment';
 import { ApiService } from '../service/api.service';
 // import { DetailsComponent } from '../details/details.component';
 @Component({
@@ -22,7 +23,8 @@ export class CalMasterComponent implements OnInit {
     var loan_amount=amtamount;
     console.log('loan_amount: ', loan_amount);
     var id= this.router.snapshot.params['id'];
-    this.http.get('http://localhost:8000/api/excel/scheme-master/'+id).subscribe((data: any) => {
+    var url = environment.apiHostName +"api/excel/scheme-master/"
+    this.http.get(url+id).subscribe((data: any) => {
       var tenure=data.TENURE
     var rate=data.ROI
     let result = rate.substring(0, 5);
