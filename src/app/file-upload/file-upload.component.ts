@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormControl } from "@angular/forms";
 // import { FileValidators } from "ngx-file-drag-drop";
 import { Router } from '@angular/router';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject, debounceTime } from 'rxjs';
 import { UploadFilesService } from './../_services/upload-files.service';
 import {MDCRipple} from '@material/ripple';
 import { NgbAlert, NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -26,7 +26,12 @@ export class FileUploadComponent implements OnInit {
   message = '';
   selectedFileType: string;
   fileInfos?: Observable<any>;
-  data:any
+  data:any;
+  @ViewChild('selfClosingErrorAlert', {static: false})
+  selfClosingErrorAlert: NgbAlert;
+  invalidMessage: string = "";
+  private _error = new Subject<string>();
+  messageTimeOutInSeconds = 10000;
   constructor(private uploadService: UploadFilesService,
     public router: Router,
     public apiService: ApiService,
@@ -40,8 +45,16 @@ export class FileUploadComponent implements OnInit {
      }
 
   ngOnInit(): void {
-    this.selectedFileType = 'master';      
+    this._error.subscribe(message => this.invalidMessage = message);
+    this.selectedFileType = 'master'; 
+    this._error.pipe(debounceTime(this.messageTimeOutInSeconds)).subscribe(()=>{
+      if(this.selfClosingErrorAlert){
+        this.selfClosingErrorAlert.close();
+      }
+    })     
   }
+
+  public changeErrorMessage(msg:String) { this._error.next(msg.toString()); }
 
   selectFile(event: any): void {
     this.selectedFiles = event.target.files;
@@ -57,7 +70,7 @@ export class FileUploadComponent implements OnInit {
       size:"sm",
     });
     let token:String = '';
-    if(this.appData.token){
+    if (this.appData.token) {
       token = this.appData.token;
     }
    
@@ -65,29 +78,30 @@ export class FileUploadComponent implements OnInit {
       const file: File | null = this.selectedFiles.item(0);
       if (file) {
         this.currentFile = file;
-        console.log('currentFile:===== ', this.currentFile);
         this.uploadService.uploadMasterFile(this.currentFile,token).subscribe((data:any) => {
           if (data && data?.body && data?.body?.res == 'success') {
             loaderRef.close();
-            alert('File uploaded successfully');
-            console.log(data && data?.body && data?.body?.res); 
+            this.changeErrorMessage('File uploaded successfully');
           }
         }, (err: any) => {
-          console.log(err);
+          loaderRef.close();
           if (err.error && err.error.message) {
-            this.message = err.error.message;
+            this.changeErrorMessage(err.error.message);
+            // this.message = err.error.message;
           } else {
-            this.message = 'Could not upload the file!';
+            this.changeErrorMessage('Error while uploading file');
+            // this.message = 'Could not upload the file!';
           }
           this.currentFile = undefined;
         });
       }
       this.selectedFiles = undefined;
+    } else {
+      loaderRef.close();
     }
   }
   
   uploadDcg(): void {
-   
     const loaderRef = this.modalService.open(LoaderComponent,{
       centered: true,
       animation:true,
@@ -102,33 +116,29 @@ export class FileUploadComponent implements OnInit {
     }
     if (this.selectedFiles) {
       const file: File | null = this.selectedFiles.item(0);
-
       if (file) {
         this.currentFile = file;
-
         this.uploadService.uploadDcgFile(this.currentFile,token).subscribe((data:any)=> {
-          console.log('data: ', data); 
-          loaderRef.close();  
-           
-          },
-          (err: any) => {
-            console.log(err);
-          
-
-            if (err.error && err.error.message) {
-              this.message = err.error.message;
-            } else {
-              this.message = 'Could not upload the file!';
-            }
-
-            this.currentFile = undefined;
-          });
-
+          if (data && data?.body && data?.body?.res == 'success') {
+            loaderRef.close();
+            this.changeErrorMessage('File uploaded successfully');
+          }
+        }, (err: any) => {
+          loaderRef.close();
+          if (err.error && err.error.message) {
+            this.changeErrorMessage(err.error.message);
+          } else {
+            this.changeErrorMessage('Error while uploading file');
+          }
+          this.currentFile = undefined;
+        });
       }
-
       this.selectedFiles = undefined;
+    } else {
+      loaderRef.close();
     }
   }
+
   uploadPcg(): void {
     const loaderRef = this.modalService.open(LoaderComponent,{
       centered: true,
@@ -144,38 +154,31 @@ export class FileUploadComponent implements OnInit {
     }
     if (this.selectedFiles) {
       const file: File | null = this.selectedFiles.item(0);
-
       if (file) {
         this.currentFile = file;
-        
         this.uploadService.uploadPcgFile(this.currentFile,token).subscribe((data:any) => {
-          console.log('data: ', data);
-            loaderRef.close();  
-          
-          
-          },
-          (err: any) => {
-            console.log(err);
-           
-            
-            if (err.error && err.error.message) {
-              this.message = err.error.message;
-            } else {
-              this.message = 'Could not upload the file!';
-            }
-          });
-
-            this.currentFile = undefined;
-
+          if (data && data?.body && data?.body?.res == 'success') {
+            loaderRef.close();
+            this.changeErrorMessage('File uploaded successfully');
+          }
+        }, (err: any) => {
+          loaderRef.close();
+          if (err.error && err.error.message) {
+            this.changeErrorMessage(err.error.message);
+          } else {
+            this.changeErrorMessage('Error while uploading file');
+          }
+        });
+        this.currentFile = undefined;
       }
-
       this.selectedFiles = undefined;
+    } else {
+      loaderRef.close();
     }
   }
+
   sumbitFile() {
-    console.log(this.selectedFileType);
     if (this.selectedFileType == "master") {
-      console.log("asdfgh");
       this.uploadMaster()
     }
     else if (this.selectedFileType == "pcg") {
@@ -184,8 +187,6 @@ export class FileUploadComponent implements OnInit {
     else if (this.selectedFileType == "dcg") {
       this.uploadDcg()
     }
-
   }
-
 
 }

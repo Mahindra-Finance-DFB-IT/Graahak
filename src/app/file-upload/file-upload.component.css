@@ -19,6 +19,10 @@
     text-align: center;
     margin: 2% 0% 3% 0%;
 }
+ngb-alert.alert.show.mt-1.alert-success.fade.alert-dismissible {
+    width: 50%;
+    background-color: #00D43B;
+}
 .button {
     width: 180px;
     height: 48px;
