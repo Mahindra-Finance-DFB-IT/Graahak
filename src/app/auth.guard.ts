@@ -20,23 +20,23 @@ export class AuthGuard implements CanActivate {
     return new Promise(res =>{
       const authData = this.authService.getData();
       if (authData?.token) {
-        this.apiService.validateToken(authData.token.toString()).subscribe((data)=>{
-          return res(true);
-        },async (err)=>{
-          const modalRef =  await this.modalService.open(LogoutComponent,{
-            centered: true,
-            animation:true,
-            backdrop:'static',
-            keyboard: false,
-            size:"sm",
-          })
-          modalRef.closed.subscribe(_d=>{
-            console.log(err);
-            this.authService.logout();
-            this.router.navigate(['/login']);
-            return res(false);
-          })
-        });
+          this.apiService.validateToken(authData.token.toString()).subscribe((data)=>{
+            return res(true);
+          },async (err)=>{
+            const modalRef =  await this.modalService.open(LogoutComponent,{
+              centered: true,
+              animation:true,
+              backdrop:'static',
+              keyboard: false,
+              size:"sm",
+            })
+            modalRef.closed.subscribe(_d=>{
+              console.log(err);
+              this.authService.logout();
+              this.router.navigate(['/login']);
+              return res(false);
+            })
+          });
       } else {
         this.authService.logout();
         this.router.navigate(['/login']);

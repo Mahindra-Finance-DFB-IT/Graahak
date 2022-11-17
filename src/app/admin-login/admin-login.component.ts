@@ -113,8 +113,6 @@ export class AdminLoginComponent implements OnInit {
 
 		this.loading = true;
 		this.authenticationService.login(this.loginForm.value.sapId, entityUserPassword.toString()).subscribe((data: any)=>{
-
-			console.log('data: ', data);
 			let appData:AppData = {};
             appData.transactionID ="";
             appData.isAuth= true;
@@ -122,7 +120,7 @@ export class AdminLoginComponent implements OnInit {
             appData.loginType= this.login.loginType;
             appData.userId= this.loginForm.value.sapId;
 			loaderRef.close();
-			this.appComponent.isAdmin = true	;
+			this.appComponent.isAdmin = true;
 			this.store.dispatch(updateAppData(appData));
 			this.router.navigateByUrl("/file-upload");
 		}, (err)=>{
