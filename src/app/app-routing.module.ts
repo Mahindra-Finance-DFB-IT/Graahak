@@ -14,20 +14,17 @@ import { ReportComponent } from './report/report.component';
 import { UploadFilesService } from './_services/upload-files.service';
 
 const routes: Routes = [
-
   { path: 'login', component: LoginComponent },
   { path: 'admin-login', component: AdminLoginComponent },
-  { path: 'home', component: HomeComponent,canActivate:[AuthGuard]},
-  { path: 'report', component: ReportComponent ,canActivate:[AuthGuard]},
-  { path: 'customer_search', component: CustomersearchComponent,canActivate:[AuthGuard] },
-  { path: 'customer_details', component: CustomerdetailsComponent,canActivate:[AuthGuard]},
-  { path: 'file-upload', component: FileUploadComponent,canActivate:[AuthGuard]},
-  { path: 'scheme-cal', component: EmiHomeComponent,canActivate:[AuthGuard]},
-  { path: 'detail/:OEM/:id', component: DetailsComponent,canActivate:[AuthGuard]},
-  { path: 'master/:OEM/:id', component: CalMasterComponent,canActivate:[AuthGuard]},
-  { path:'',    redirectTo: '/home', pathMatch: 'full'}
-
-  
+  { path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
+  { path: 'report', component: ReportComponent, canActivate:[AuthGuard]},
+  { path: 'customer_search', component: CustomersearchComponent, canActivate:[AuthGuard] },
+  { path: 'customer_details', component: CustomerdetailsComponent, canActivate:[AuthGuard]},
+  { path: 'file-upload', component: FileUploadComponent, canActivate:[AuthGuard]},
+  { path: 'scheme-cal', component: EmiHomeComponent, canActivate:[AuthGuard]},
+  { path: 'detail/:OEM/:id', component: DetailsComponent, canActivate:[AuthGuard]},
+  { path: 'master/:OEM/:id', component: CalMasterComponent, canActivate:[AuthGuard]},
+  { path:'', redirectTo: '/home', pathMatch: 'full'}
 ];
 
 @NgModule({
