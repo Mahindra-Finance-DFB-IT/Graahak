@@ -58,7 +58,8 @@ export class CalMasterComponent implements OnInit {
     // // loan_amount * (rate / 12)/1-((1+(rate/12))^(-tenure)) 
     // console.log('emi: ', emi);
     var id= this.router.snapshot.params['id'];
-    this.http.get('http://localhost:8000/api/excel/scheme-master/'+id).subscribe((data: any) => {
+    var url= environment.apiHostName +"api/excel/scheme-master/"
+    this.http.get(url+id).subscribe((data: any) => {
       var datan=[{data}]
       console.log('datan: ', datan);
       var result = Object.keys(data).map((key) => [String(key), data[key]]);
