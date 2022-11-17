@@ -17,7 +17,6 @@ const routes: Routes = [
 
   { path: 'login', component: LoginComponent },
   { path: 'admin-login', component: AdminLoginComponent },
-  {path:'admin-login',component:AdminLoginComponent,canActivate:[AuthGuard]},
   { path: 'home', component: HomeComponent,canActivate:[AuthGuard]},
   { path: 'report', component: ReportComponent ,canActivate:[AuthGuard]},
   { path: 'customer_search', component: CustomersearchComponent,canActivate:[AuthGuard] },
