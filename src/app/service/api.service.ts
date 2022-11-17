@@ -26,7 +26,8 @@ export class ApiService{
         return this.http.post(url,executive,this.headers)
     }
     login(sapId: string, password: string) {
-		return this.http.post<any>(`http://localhost:8000/admin/login`, { sapId, password })
+        const url = environment.apiHostName+"admin/login";
+		return this.http.post<any>(url, { sapId, password })
 
 // 			.pipe(map((user: { token: any; }) => {
 // console.log("========",user,);
