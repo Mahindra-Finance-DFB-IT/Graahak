@@ -1,3 +1,9 @@
+.page_heading {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
 .box-sizing {
     background: #FFFFFF;
     /* border: 1px solid #E5E5E5; */
@@ -48,13 +54,7 @@ p {
     opacity: 0.5;    
 }
 
-h5 {
-    margin-top: -10px;
-    font-size: 1.3rem;
-    font-weight: bold;
-    margin-bottom: 15px;
 
-}
 
 .box {
     width: 100%;

@@ -1,9 +1,12 @@
 <div class="col-md-12 back-history">
-    <a routerLink="/home"><i class="bi bi-chevron-left arrow-red"></i> Back to Home</a>
+    <a routerLink="/home">
+        <i class="bi bi-chevron-left arrow-red"></i>
+        Back to Home
+    </a>
 </div>
 <div class="fluid-container mt-4 mb-3">
     <div class="row text-center">
-        <h5 class="fw-bold">Scheme Guide</h5>
+        <h5 class="page_heading">Scheme Guide</h5>
     </div>
     <div class="row">
         <div class="col-sm-2"></div>
@@ -12,12 +15,12 @@
                 <div class="container searchBox">
                     <div class="row">
                         <nav class="navbar">
-                            <img class="icon" src="../../assets/img/serach.png" />
+                            <img class="icon" src="assets/img/serach.png"/>
                             <input class="search" type="search" [(ngModel)]="searchText"
                                 placeholder="Search by OEM and Product Name" aria-label="Search">
                             <div class="col">
                                 <div class="dropdown float-end">
-                                    <img class="line" src="../../assets/img/Line 41.png" />
+                                    <img class="line" src="assets/img/Line 41.png" />
                                     Tenure:
                                     <select class="dropdown-for " name="dog-names" #mySelect
                                         (change)='onTenureSelected(mySelect.value)' id="dog-names">
@@ -107,14 +110,15 @@
                     <div class="col ">
                         <a class=" float-end toprightbtn" (click)="open(content)">
                             <a class="filter">Filter</a>
-                            <img class="icon" src="../../assets/img/filter.png" /></a>
+                            <img class="icon" src="assets/img/filter.png"/>
+                        </a>
                     </div>
                 </div>
                 <div class="box-sizing" *ngFor="let mydata of data | filter: searchText"
                     routerLink="{{'/detail/'+mydata.oem + '/'+ mydata.id}}">
 
-                    <div class="fluid-container mainbox mt-2 scheme-card-container">
-                        <a *ngIf="mydata.oem.toLowerCase() != 'mmfsl'" class="cashbtn">CASHBACK</a>
+                    <div *ngIf="mydata && mydata.scheme_id" class="fluid-container mainbox mt-2 scheme-card-container">
+                        <a *ngIf="mydata?.oem?.toLowerCase() != 'mmfsl'" class="cashbtn">CASHBACK</a>
                         <div class="fluid-container row1">
                             <div class="row mt-3 scheme-card-header">
                                 <div class="col ">
@@ -162,3 +166,4 @@
             </div>
         </div>
     </div>
+</div>
