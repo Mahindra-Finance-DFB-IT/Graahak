@@ -37,81 +37,78 @@ export class HomeComponent implements OnInit {
     public router:Router,
     private modalService: NgbModal,
     private apiService: ApiService,
-    private store:Store<{appItem: AppData }>) { 
-        this.appData$ = store.select('appItem');
-        this.appData$.subscribe((obj:AppData)=>{
-          this.appData = obj;
-        })
-    }
+    private store:Store<{appItem: AppData }>) 
+  { 
+    this.appData$ = store.select('appItem');
+    this.appData$.subscribe((obj:AppData)=>{
+      this.appData = obj;
+    })
+  }
 
-    public changeErrorMessage(msg:String) { this._error.next(msg.toString()); }
+  public changeErrorMessage(msg:String) { this._error.next(msg.toString()); }
 
-    ngOnInit(): void {
-      this._error.subscribe(message => this.invalidMessage = message);
-      this._error.pipe(debounceTime(this.messageTimeOutInSeconds)).subscribe(()=>{
-        if(this.selfClosingErrorAlert){
-          this.selfClosingErrorAlert.close();
+  ngOnInit(): void {
+    this._error.subscribe(message => this.invalidMessage = message);
+    this._error.pipe(debounceTime(this.messageTimeOutInSeconds)).subscribe(()=>{
+      if(this.selfClosingErrorAlert){
+        this.selfClosingErrorAlert.close();
+      }
+    })
+  }
+
+  getReport(){
+    if(this.appData.loginType == LoginType.SALESEXECUTIVE){
+      const loaderRef = this.modalService.open(LoaderComponent,{
+        centered: true,
+        animation:true,
+        backdrop:'static',
+        keyboard: false,
+        windowClass:"remove-bg-modal",
+        size:"sm",
+      });
+      let login: Login ={};
+      login.loginType = this.appData.loginType;
+      login.salesExecutive = Object.assign({},this.appData.salesExecutive);
+      login.fromPage = PageName.Home;
+      this.apiService.merchantValidate(login).subscribe((data: any)=>{
+        loaderRef.close();
+        let appData:AppData={
+            transactionID : data?.transactionID.toString(),
+            isAuth: false,
+            token:'',
+            loginType: login.loginType,
+            userId: login.salesExecutive?.mobileNumber
+        }
+        login.displayOverlay = true;
+        login.appData = appData;
+        login.dispatchAppData = false;
+        
+        const modalRef = this.modalService.open(OtpComponent,{
+          centered: true
+        });
+        modalRef.componentInstance.login = login;
+      },(err)=>{
+        loaderRef.close();
+        this.disabled = true;
+        this.error = true;
+        if(err.error.error || err.error.errors){
+          if(err.error?.error){
+            this.changeErrorMessage(err.error.error);
+          }
+          if(err.error?.errors){
+            err.error?.errors.forEach((_m: String) => {
+              this.changeErrorMessage(_m);
+            });
+          }
+        } else {
+          this.changeErrorMessage(err.message);
         }
       })
+    } else {
+      this.router.navigateByUrl("report",{state:{
+        loginSuccess: true 
+      }});
+      return;
     }
-    getScheme(){
-      this.router.navigateByUrl("/scheme-cal")
-}
-    getReport(){
-      if(this.appData.loginType == LoginType.SALESEXECUTIVE){
-        const loaderRef = this.modalService.open(LoaderComponent,{
-          centered: true,
-          animation:true,
-          backdrop:'static',
-          keyboard: false,
-          windowClass:"remove-bg-modal",
-          size:"sm",
-        });
-        let login: Login ={};
-        login.loginType = this.appData.loginType;
-        login.salesExecutive = Object.assign({},this.appData.salesExecutive);
-        login.fromPage = PageName.Home;
-        this.apiService.merchantValidate(login).subscribe((data: any)=>{
-              loaderRef.close();
-              let appData:AppData={
-                  transactionID : data?.transactionID.toString(),
-                  isAuth: false,
-                  token:'',
-                  loginType: login.loginType,
-                  userId: login.salesExecutive?.mobileNumber
-              }
-              login.displayOverlay = true;
-              login.appData = appData;
-              login.dispatchAppData = false;
-             
-              const modalRef = this.modalService.open(OtpComponent,{
-                centered: true
-              });
-              modalRef.componentInstance.login = login;
-          },(err)=>{
-              loaderRef.close();
-              this.disabled = true;
-              this.error = true;
-              if(err.error.error || err.error.errors){
-                if(err.error?.error){
-                  this.changeErrorMessage(err.error.error);
-                }
-                if(err.error?.errors){
-                  err.error?.errors.forEach((_m: String) => {
-                    this.changeErrorMessage(_m);
-                  });
-                }
-              }else{
-                this.changeErrorMessage(err.message);
-              }
-              //}
-              //console.log(err);
-          })
-      }else{
-        this.router.navigateByUrl("report",{state:{
-          loginSuccess: true 
-        }});
-        return;
-      }
-    }
+  }
 }
