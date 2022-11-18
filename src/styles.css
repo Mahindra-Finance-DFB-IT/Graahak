@@ -114,7 +114,12 @@ input:focus-visible {
 .back-history a {
   color: #000;
   font-size: 14px;
+  text-decoration: none !important;
   /* margin-left: 90px; */
+}
+
+.back-history a:hover {
+  color: #000 !important;
 }
 /*
 @media (min-width: 768px){

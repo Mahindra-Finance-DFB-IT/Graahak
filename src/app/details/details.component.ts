@@ -97,7 +97,7 @@ export class DetailsComponent implements OnInit {
         token = this.appData.token;
       }
       var obj = {
-        'posid': '12722', //this.authService.userPosId
+        'posid':  this.authService.userPosId,
         'id': id
       };
       // this.apiService.dcgById(obj, token).subscribe((data: any) => {

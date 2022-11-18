@@ -102,17 +102,18 @@
                         <h5 class="mb-3">Cost to Customer</h5>
                         <div>
                             <div class="row_container">
-                                <div class="row_label">Total Intrest during loan tenure</div>
+                                <div class="row_label">Total Interest during loan tenure</div>
                                 <div class="row_value float-end"><b>₹{{formula.TotalIntrestduringloantenure}}</b></div>
 
                             </div>
                             <div class="row_container">
-                                <div class="row_label">Total of intrest & processing fees</div>
+                                <div class="row_label">Total of Interest & processing fees</div>
                                 <div class="row_value float-end"><b>₹{{formula.Totalofintrest}}</b></div>
                             </div>
                             <div class="row_container">
                                 <div class="row_label">Cashback expected</div>
-                                <div class="row_value float-end"><b>₹{{formula.TotalIntrestduringloantenure}}</b></div>
+                                <div *ngIf="mydata?.oem?.toLowerCase() != 'mmfsl'" class="row_value float-end"><b>₹{{formula.TotalIntrestduringloantenure}}</b></div>
+                                <div *ngIf="mydata?.oem?.toLowerCase() == 'mmfsl'" class="row_value float-end"><b>₹0.00</b></div>
                             </div>
                             <div class="row_container">
                                 <div class="row_label">Additional Cashback expected</div>
