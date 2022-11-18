@@ -33,10 +33,8 @@ import { DetailsComponent } from './details/details.component';
 import { CalMasterComponent } from './cal-master/cal-master.component'
 import { FormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { MatButtonModule } from 
-    '@angular/material/button';
-import { MatButtonToggleModule } from 
-    '@angular/material/button-toggle';
+import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 @NgModule({
   declarations: [

@@ -36,9 +36,9 @@
                         </nav>
                     </div>                  
                 </div>
-                <div class="row-pad row">
+                <div class="display_flex margin_3">
                     <div class="col">
-                        <p class="headtext">Select scheme to calculate loan</p>
+                        <div class="scheme_text">Select scheme to calculate loan</div>
                         <ng-template #content let-modal>
                             <form class="modal_content">
                                 <div class="box-filter">
@@ -107,57 +107,58 @@
                             </div>
                         </ng-template>
                     </div>
-                    <div class="col ">
-                        <a class=" float-end toprightbtn" (click)="open(content)">
-                            <a class="filter">Filter</a>
+                    <div class="col">
+                        <div class="float-end filter_button" (click)="open(content)">
+                            <div class="filter">Filter</div>
                             <img class="icon" src="assets/filter.png"/>
-                        </a>
+                        </div>
                     </div>
                 </div>
                 <div class="box-sizing" *ngFor="let mydata of data | filter: searchText"
                     routerLink="{{'/detail/'+mydata.oem + '/'+ mydata.id}}">
 
-                    <div *ngIf="mydata && mydata.scheme_id" class="fluid-container mainbox mt-2 scheme-card-container">
-                        <a *ngIf="mydata?.oem?.toLowerCase() != 'mmfsl'" class="cashbtn">CASHBACK</a>
-                        <div class="fluid-container row1">
-                            <div class="row mt-3 scheme-card-header">
-                                <div class="col ">
-                                    <h5 class="scheme-header">Scheme ID:{{mydata.scheme_id}}</h5>
+                    <div *ngIf="mydata && mydata.scheme_id" class="scheme-card-container">
+                        <div *ngIf="mydata?.oem?.toLowerCase() != 'mmfsl'" class="cashback">CASHBACK</div>
+                        <div class="scheme_card">
+                            <div class="row scheme-card-header">
+                                <div class="col display_flex">
+                                    <h5 class="scheme-header">Scheme ID: {{mydata.scheme_id}}</h5>
+                                    <!-- <img class="arrow_right" src="assets/arrow_right.png"> -->
+                                    <i class="bi bi-chevron-right"></i>
                                 </div>
                                 <div class="col">
-                                    <div class="float-end rightbtn">{{mydata.oem}}</div>
-                                    <div *ngFor="let mydata of data | filter: searchText"></div>
+                                    <div class="float-end oem_name">{{mydata.oem}}</div>
                                 </div>
                             </div>
                             <div class="row-style row">
                                 <div class="col-6 col-md-3 gx-0">
                                     <div class="card-body schema-body">
-                                        <p class="card-text ">Scheme Min-Max</p>
+                                        <div class="card-text">Scheme Min-Max</div>
                                         <b>₹{{mydata.min_amount}} - ₹{{mydata.max_amount}}</b>
                                     </div>
                                 </div>
                                 <div class="col-6 col-md-3 gx-0">
                                     <div class="card-body schema-body">
-                                        <p class="card-text">Scheme Type</p>
+                                        <div class="card-text">Scheme Type</div>
                                         <b>{{mydata.tenure}} X {{mydata.advance_emi}}</b>
                                     </div>
                                 </div>
                                 <div class="col-6 col-md-3 gx-0">
                                     <div class="card-body schema-body">
-                                        <p class="card-text">DBD</p>
+                                        <div class="card-text">DBD</div>
                                         <b>{{mydata.dbd}}</b>
                                     </div>
                                 </div>
                                 <div class="col-6 col-md-3 gx-0">
                                     <div class="card-body schema-body">
-                                        <p class="card-text">Processing Fee</p>
+                                        <div class="card-text">Processing Fee</div>
                                         <b>₹{{mydata.processing_fee}}</b>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="box scheme-footer">
-                            <p>{{mydata.portal_description}}</p>
+                        <div class="scheme-footer">
+                            <div>{{mydata.portal_description}}</div>
                         </div>
                     </div>
                 </div>
