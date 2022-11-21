@@ -1,5 +1,6 @@
 <div class="row justify-content-md-center">
-  <ngb-alert class="mt-1" #selfClosingErrorAlert *ngIf="invalidMessage" type="success" (closed)="invalidMessage = ''">{{ invalidMessage }}</ngb-alert>
+  <ngb-alert class="mt-1" #selfClosingErrorAlert *ngIf="invalidMessage" type="danger" (closed)="invalidMessage = ''"> <img class="icon" src='assets/invalidfile.png'  /> {{ invalidMessage }}</ngb-alert>
+  <ngb-alert class="mt-1" #selfClosingErrorAlert *ngIf="validMessage" type="success" (closed)="validMessage = ''"> <img class="icon" src='assets/Vector.png'  />  {{ validMessage }}</ngb-alert>
   <div class="welcome">Admin Dashboard</div>
   <div class="card">
     <div class="heading"> Select Type of Master</div>

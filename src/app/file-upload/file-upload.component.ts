@@ -30,6 +30,7 @@ export class FileUploadComponent implements OnInit {
   @ViewChild('selfClosingErrorAlert', {static: false})
   selfClosingErrorAlert: NgbAlert;
   invalidMessage: string = "";
+  validMessage: string;
   private _error = new Subject<string>();
   messageTimeOutInSeconds = 10000;
   constructor(private uploadService: UploadFilesService,
@@ -81,15 +82,15 @@ export class FileUploadComponent implements OnInit {
         this.uploadService.uploadMasterFile(this.currentFile,token).subscribe((data:any) => {
           if (data && data?.body && data?.body?.res == 'success') {
             loaderRef.close();
-            this.changeErrorMessage('File uploaded successfully');
+            this.validMessage='File uploaded successfully';
           }
         }, (err: any) => {
           loaderRef.close();
           if (err.error && err.error.message) {
-            this.changeErrorMessage(err.error.message);
+            this.invalidMessage='Uploading failed! Please try again';
             // this.message = err.error.message;
           } else {
-            this.changeErrorMessage('Error while uploading file');
+            this.invalidMessage='Uploading failed! Please try again';
             // this.message = 'Could not upload the file!';
           }
           this.currentFile = undefined;
@@ -121,14 +122,14 @@ export class FileUploadComponent implements OnInit {
         this.uploadService.uploadDcgFile(this.currentFile,token).subscribe((data:any)=> {
           if (data && data?.body && data?.body?.res == 'success') {
             loaderRef.close();
-            this.changeErrorMessage('File uploaded successfully');
+            this.validMessage ='File uploaded successfully';
           }
         }, (err: any) => {
           loaderRef.close();
           if (err.error && err.error.message) {
-            this.changeErrorMessage(err.error.message);
+            this.invalidMessage='Uploading failed! Please try again';
           } else {
-            this.changeErrorMessage('Error while uploading file');
+            this.invalidMessage='Uploading failed! Please try again';
           }
           this.currentFile = undefined;
         });
@@ -159,14 +160,15 @@ export class FileUploadComponent implements OnInit {
         this.uploadService.uploadPcgFile(this.currentFile,token).subscribe((data:any) => {
           if (data && data?.body && data?.body?.res == 'success') {
             loaderRef.close();
-            this.changeErrorMessage('File uploaded successfully');
+            this.validMessage = 'File uploaded successfully';
+            // this.changeErrorMessage('File uploaded successfully');
           }
         }, (err: any) => {
           loaderRef.close();
           if (err.error && err.error.message) {
-            this.changeErrorMessage(err.error.message);
+            this.invalidMessage='Uploading failed! Please try again';
           } else {
-            this.changeErrorMessage('Error while uploading file');
+            this.invalidMessage='Uploading failed! Please try again';
           }
         });
         this.currentFile = undefined;
