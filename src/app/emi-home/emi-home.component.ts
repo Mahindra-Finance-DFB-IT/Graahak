@@ -12,6 +12,7 @@ import { AppData } from '../models/app';
 import { AuthService } from '../service/auth.service';
 import { LoaderComponent } from '../loader/loader.component';
 import { LogoutComponent } from '../logout.component';
+import { SchemeModel } from '../_models/app';
 
 @Component({
   selector: 'emi-home',
@@ -37,11 +38,12 @@ export class EmiHomeComponent implements OnInit {
   // showOtpScreen = false;
   // otherDetails = false;
   isselect: boolean = false;
-  data: any;
+  isCashBackApplied:boolean=false;
+  data: Array<SchemeModel>;
   errMsg: string;
   searchText: string = '';
   advanceEmi: any;
-  schemeData: any
+  schemeData: Array<SchemeModel>
   // pcgdata: any;
 
   constructor(
@@ -116,7 +118,7 @@ export class EmiHomeComponent implements OnInit {
       if (data.length > 0) {
         this.data = data;
         this.schemeData = data;
-        console.log(this.data);
+        console.log(this.data.length);
         // this.cashback();
       } else {
         this.errMsg = "No data found";
@@ -158,8 +160,8 @@ export class EmiHomeComponent implements OnInit {
   }
 
   mapSchemeData(newarr:any, data: any, type: string) {
-    var arr: any = [];
-    var arrAdvFilter: any = [];
+    var arr: Array<SchemeModel> = [];
+    var arrAdvFilter: Array<SchemeModel> = [];
     for (let i = 0; i < data.length; i++) {
       // var advanceEmi = Number(data[i].advance_emi);
       var grossTenure = Number(data[i].tenure);
@@ -179,15 +181,28 @@ export class EmiHomeComponent implements OnInit {
     }
     if (type == 'advanceEmi') {
       // arrAdvFilter = arr;
-      for (let i = 0; i < arr.length; i++) {
-        if (arr[i].advance_emi == this.advanceEmi) {
-          arrAdvFilter.push(data[i]);
+      // console.log(this.advanceEmi);
+      if (this.advanceEmi) {
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i].advance_emi == this.advanceEmi) {
+            arrAdvFilter.push(data[i]);
+          }
+        }
+      }
+      if (this.isCashBackApplied == true) {
+        // console.log('isCashBackApplied: ', this.isCashBackApplied);
+        if (arrAdvFilter && arrAdvFilter.length > 0) {
+          arrAdvFilter = arrAdvFilter.filter(value => value.oem.toLowerCase() != 'mmfsl');
+        } else {
+          arrAdvFilter = arr.filter(value => value.oem.toLowerCase() != 'mmfsl');
         }
       }
       if (arrAdvFilter.length > 0) {
         this.data = arrAdvFilter;
+      } else if (!this.advanceEmi && !this.isCashBackApplied) {
+        this.data = arr;
       } else {
-        this.data = [];
+        this.data = []; 
       }
     }
     
@@ -198,7 +213,7 @@ export class EmiHomeComponent implements OnInit {
         this.data = [];
       }
     }
-    // console.log('data: ', data);
+    console.log('data: ', this.data.length);
   }
 
 
