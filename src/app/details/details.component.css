@@ -22,10 +22,10 @@ border-radius: 8px;
 .row_container {
     position: relative;
     display: flex;
-    /* border-bottom: 1px solid; */
     border-bottom: 1px dashed #E5E5E5;
     padding-bottom: 10px;
     padding-top: 10px;
+    font-size: 12px;
 }
 .row_label {
     width: 70%;
@@ -63,12 +63,9 @@ input {
     border-radius: 8px;
     font-size: 14px;
 }
-
-
-
 h5 {
     font-weight: bold;
-    font-size: 1.4rem;
+    font-size: 18px;
 }
 span{
     font-size: 14px;
@@ -156,12 +153,18 @@ button#amtamount {
     font-size: 14px;
     line-height: 18px;
 }
-.alret{
+.invalid_amount_alert{
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-
+}
+.invalid_label {
+    background: #000000de;
+    opacity: 0.8;
+    box-shadow: 0px 4px 5px #00000024, 0px 1px 10px #0000001f, 0px 2px 4px #00000033;
+    color: #fff;
+    padding: 12px 10px;
 }
 .dsclaimer{ 
 background: #FFF9E0;

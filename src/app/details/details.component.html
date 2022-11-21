@@ -28,10 +28,8 @@
         </div>
        
     </div>
-    <div class="alret" *ngIf="isrange">
-        <!-- <label for="" class="mt-3 ms-3 lastText">Range invalid</label> -->
-    <ngb-alert   for="" class="rangerror mt-1" #selfClosingErrorAlert  >Please Enter transaction amount in given range</ngb-alert>
-    
+    <div class="invalid_amount_alert" *ngIf="isrange">
+        <div class="invalid_label">Please enter transaction amount in given range</div>
     </div>
 </div>
 
@@ -162,7 +160,4 @@
             <div class="col-sm-2"></div>
         </div>
     </div> <!-- Second -->
-
 </div>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">

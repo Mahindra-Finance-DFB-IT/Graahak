@@ -69,15 +69,15 @@ export class DetailsComponent implements OnInit {
   }
 
   validateDetails (amtamount: any) {
-    console.log('  this.data[0].min_amount: ',   this.data[0].min_amount);
-    console.log('this.data[0].max_amount : ', this.data[0].max_amount );
+    // console.log('  this.data[0].min_amount: ',   this.data[0].min_amount);
+    // console.log('this.data[0].max_amount : ', this.data[0].max_amount );
+    this.isrange = false;
     if( Number(amtamount) < Number(this.data[0].min_amount) ){
-      this.isrange=true
+      this.isrange = true;
     } else if (Number(amtamount) > Number (this.data[0].max_amount)) {
-      this.isrange=true
+      this.isrange = true;
     }
     else{
-      
       this.isrange=false;
       const loaderRef = this.modalService.open(LoaderComponent,{
         centered: true,
