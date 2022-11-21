@@ -86,9 +86,8 @@ span{
     border-radius: 8px;
 }
 .label1{
-    font-family: 'Akkurat-Bold';
     font-style: normal;
-    font-weight: 400;
+    font-weight: 600;
     font-size: 18px;
     line-height: 24px;
     color: #000000;
@@ -97,8 +96,6 @@ span{
     background: #F6F6F6;
     border: 1px solid #EAEAEA;
     border-radius: 180px;
-
-    font-family: 'Akkurat'; 
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -109,8 +106,6 @@ span{
     background: #F6F6F6;
     border: 1px solid #EAEAEA;
     border-radius: 180px;
-
-    font-family: 'Akkurat';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -129,16 +124,13 @@ input{
     border: none;
     background: #EB1935;
     border-radius: 3px;
-
-    font-family: 'Akkurat-Bold';
     font-style: normal;
-    font-weight: 400;
+    font-weight: 600;
     font-size: 14px;
     line-height: 21px;
     color: #FFFFFF;
 }
 .lastText{
-    font-family: 'Akkurat';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
