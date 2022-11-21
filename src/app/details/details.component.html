@@ -11,7 +11,7 @@
         </div>
         <div class="mt-6">
             <div _ngcontent-bnb-c104="" style="width:65%; display: -webkit-box;" class="form-group floating-label"><input _ngcontent-bnb-c104=""
-                [(ngModel)]="firstName" id="amtamount"  type="text" formcontrolname="sapId" placeholder="₹"
+                [(ngModel)]="firstName" id="amtamount"  type="number" formcontrolname="sapId" placeholder="₹"
                     class="form-control ng-pristine ng-invalid ng-touched" ng-reflect-name="sapId" #amtamount><label
                     _ngcontent-bnb-c104="" for="sapId">Transaction Ammount</label><small _ngcontent-bnb-c104=""
                     class="invalid-feedback"> SAP ID is required </small>
@@ -26,21 +26,23 @@
         <div class="range">
             <label for="" class="mt-3 ms-3 lastText">Range: ₹{{mydata.min_amount}} to ₹{{mydata.max_amount}}</label>
         </div>
-        <div *ngIf="isrange">
-            <label for="" class="mt-3 ms-3 lastText">Range invalid</label>
-        </div>
+       
     </div>
-
+    <div class="alret" *ngIf="isrange">
+        <!-- <label for="" class="mt-3 ms-3 lastText">Range invalid</label> -->
+    <ngb-alert   for="" class="rangerror mt-1" #selfClosingErrorAlert  >Please Enter transaction amount in given range</ngb-alert>
+    
+    </div>
 </div>
 
 
 
-<div *ngIf="isShowDivIf">
+<div *ngIf="isShowDivIf" >
     <div class="container" *ngFor="let mydata of data">
         <div class="row">
             <div class="col-sm-2"></div>
             <div class="col-sm-8">
-                <div class="row gx-1">
+                <div class="row gx-1 mobile_row">
                     <div class="col box2 g-5">
                         <h5 class="mb-3">Scheme Details</h5>
                         <div>

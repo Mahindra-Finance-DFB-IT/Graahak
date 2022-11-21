@@ -171,6 +171,7 @@ width: 60%;
     background: #FFFFFF;
     box-shadow: 0px 5px 18px rgb(0 0 0 / 14%);
     border-radius: 244px;
+
 }
 
 .popup .wrapper{
@@ -296,8 +297,40 @@ top: 267px;
     padding-top: 50px;
     text-align: center;
 }
+.serchicon{
+    
+}
+select#dog-names {
+    border: none;
+}
 @media only screen and (max-width: 768px) {
+    .searchBox{
+        width: fit-content;
+    }
+    .navbar{
+        display: flex;
+        padding: 0 15px;
+    }
+    .serach_icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    col .dropdown{
+        display: flex;
+        align-items: center;
 
-
-
+    }
+    .dropdown .dropdown-for{
+        border: none;
+        width: 50px;
+    }
+    span.icon {
+        padding: 11px 0;
+    }
+   
+    /* .serach_icon .icon {
+        width: 16px;
+        height: 16px;
+    } */
 }

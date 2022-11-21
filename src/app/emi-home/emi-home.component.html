@@ -15,9 +15,13 @@
                 <div class="container searchBox">
                     <div class="row">
                         <nav class="navbar">
-                            <img class="icon" src="assets/serach.png"/>
-                            <input class="search" type="search" [(ngModel)]="searchText"
-                                placeholder="Search by OEM and Product Name" aria-label="Search">
+                            <div class="display_flex serach_icon">
+                                <span class="icon">
+                                    <img class="serchicon" src="assets/serach.png"/>
+                                </span>
+                                <input class="search" type="search" [(ngModel)]="searchText"
+                                    placeholder="Search by OEM and Product Name" aria-label="Search">
+                            </div>
                             <div class="col">
                                 <div class="dropdown float-end">
                                     <img class="line" src="assets/Line 41.png" />
