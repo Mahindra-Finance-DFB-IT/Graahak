@@ -13,6 +13,15 @@
     top: 5px;
     position: relative; 
 }
+.search_container {
+    align-items: center;
+    justify-content: center;
+    width: 65%;
+}
+.tenure_container {
+    width: 35%;
+    padding-right: 10px;
+}
 .display_flex {
     display: flex;
 }
@@ -160,10 +169,10 @@ b {
 .search{
     border-style: none;
     display: flex;
-background: #FFFFFF;
-border-width: 0px;
-padding: 11px 25px;
-width: 60%;
+    background: #FFFFFF;
+    border-width: 0px;
+    padding: 10px;
+    width: 100%;
 }
 
 .navbar{
@@ -297,10 +306,7 @@ top: 267px;
     padding-top: 50px;
     text-align: center;
 }
-.serchicon{
-    
-}
-select#dog-names {
+.dropdown .dropdown-for{
     border: none;
 }
 @media only screen and (max-width: 768px) {
@@ -311,19 +317,10 @@ select#dog-names {
         display: flex;
         padding: 0 15px;
     }
-    .serach_icon {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
     col .dropdown{
         display: flex;
         align-items: center;
 
-    }
-    .dropdown .dropdown-for{
-        border: none;
-        width: 50px;
     }
     span.icon {
         padding: 11px 0;
@@ -333,4 +330,38 @@ select#dog-names {
         width: 16px;
         height: 16px;
     } */
+}
+@media only screen and (max-width: 420px) {
+    .searchBox {
+        width: calc(100% - 20px);
+    }
+    .navbar {
+        padding: 0 10px;
+    }
+    .search_container {
+        width: 55%;
+    }
+    .search_container span .icon {
+        padding: 10px 0;
+    }
+    .search_container span .icon .search_icon {
+        width: 14px;
+    }
+    .search_container .search {
+        padding: 0px 0px 0px 5px;
+        font-size: 12px;
+    }
+    .tenure_container {
+        width: 45%;
+        font-size: 12px;
+    }
+    .tenure_container .float-end {
+        float: left !important;
+    }
+    .tenure_container .float-end .line {
+        padding-right: 5px;
+    }
+    .dropdown-for {
+        width: 100px !important;
+    }
 }

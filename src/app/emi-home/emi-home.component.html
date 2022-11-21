@@ -15,18 +15,18 @@
                 <div class="container searchBox">
                     <div class="row">
                         <nav class="navbar">
-                            <div class="display_flex serach_icon">
+                            <div class="display_flex search_container">
                                 <span class="icon">
-                                    <img class="serchicon" src="assets/serach.png"/>
+                                    <img class="search_icon" src="assets/serach.png"/>
                                 </span>
                                 <input class="search" type="search" [(ngModel)]="searchText"
-                                    placeholder="Search by OEM and Product Name" aria-label="Search">
+                                    placeholder="OEM/Product Name" aria-label="Search">
                             </div>
-                            <div class="col">
+                            <div class="col tenure_container">
                                 <div class="dropdown float-end">
                                     <img class="line" src="assets/Line 41.png" />
                                     Tenure:
-                                    <select class="dropdown-for " name="dog-names" #mySelect
+                                    <select class="dropdown-for" name="dog-names" #mySelect
                                         (change)='onTenureSelected(mySelect.value)' id="dog-names">
                                         <option class="dropdown-item" value="0">All</option>
                                         <option class="dropdown-item" value="6-9">6 to 9 months
