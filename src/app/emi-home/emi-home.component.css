@@ -28,6 +28,18 @@
 .margin_3 {
     margin: 3% 0%;
 }
+.scheme_filter {
+    width: 30%;
+}
+.scheme_label {
+    width: 70%;
+}
+.scheme_id {
+    width: 60%;
+}
+.scheme_oem {
+    width: 40%;
+}
 .filter_button {
     background: #F2F2F2;
     border-radius: 2px;
@@ -66,6 +78,7 @@
 }
 .scheme-card-container .scheme-card-header {
     margin-bottom: 10px;
+    display: flex;
 }
 .scheme-card-header .bi{
     color: #EB1935;
@@ -115,7 +128,7 @@
     opacity: 0.7;
     margin-bottom: 0px;
     width: 100%;
-    padding: 10px 15px;
+    padding: 5px 15px 10px 15px;
     background-color:#F7F7F7;
 }
 .scheme_card {
@@ -136,6 +149,9 @@
 .float-end{
     float: right !important;
     cursor: pointer;
+}
+.margin_bottom_5 {
+    margin-bottom: 5px;
 }
 /*  */
 
@@ -348,12 +364,13 @@ top: 267px;
         width: 14px;
     }
     .search_container .search {
-        padding: 0px 0px 0px 5px;
+        padding: 0px 5px 0px 5px;
         font-size: 12px;
     }
     .tenure_container {
         width: 45%;
         font-size: 12px;
+        padding-right: 0px;
     }
     .tenure_container .float-end {
         float: left !important;
@@ -362,6 +379,6 @@ top: 267px;
         padding-right: 5px;
     }
     .dropdown-for {
-        width: 100px !important;
+        width: 97px !important;
     }
 }
