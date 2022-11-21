@@ -163,6 +163,12 @@ button#amtamount {
     justify-content: center;
 
 }
+.dsclaimer{ 
+background: #FFF9E0;
+border: 1px dashed #FEE47D;
+border-radius: 5px;
+padding: 10px;
+}
 @media only screen and (min-width: 768px) {
     .box {
         width: 575px;
