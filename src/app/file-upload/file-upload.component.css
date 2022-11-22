@@ -74,7 +74,7 @@ ngb-alert.alert.show.mt-1.alert-success.fade.alert-dismissible {
     display: initial;
     border: 1px solid #E5E5E5;
 }
-.file {
+.file_container {
     height: 171px;
     background: #F6F6F6;
     width: 514px;
@@ -102,7 +102,36 @@ ngb-alert.alert.show.mt-1.alert-success.fade.alert-dismissible {
     padding: 5px 0px 20px 0px;
     opacity: 0.6;
 }
-
+.file_details {
+    background: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 10px;
+    display: flex;
+    padding: 10px;
+    margin-top: 15px;
+    vertical-align: middle;
+    align-items: center;
+}
+.file_section_1 {
+    width: 90%;
+}
+.file_section_2 {
+    width: 10%;
+    text-align: end;
+    padding-right: 10px;
+    cursor: pointer;
+}
+.file_name {
+    font-size: 14px;
+    color: #000000;
+    opacity: 0.7;
+}
+.file_size {
+    font-size: 12px;
+    line-height: 15px;
+    color: #000000;
+    opacity: 0.5;
+}
 input#file {
     display: inline-block;
     width: 100%;

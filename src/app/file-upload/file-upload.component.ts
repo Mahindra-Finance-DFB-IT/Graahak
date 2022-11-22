@@ -29,6 +29,8 @@ export class FileUploadComponent implements OnInit {
   data:any;
   invalidMessage: string = "";
   validMessage: string;
+  fileName: string;
+  fileSize: string;
   private _error = new Subject<string>();
   messageTimeOutInSeconds = 10000;
   constructor(private uploadService: UploadFilesService,
@@ -55,10 +57,6 @@ export class FileUploadComponent implements OnInit {
   }, 3000);
   }
 
-
-  selectFile(event: any): void {
-  this.selectedFiles = event.target.files;
-  }
 
   uploadMaster(): void {
   const loaderRef = this.modalService.open(LoaderComponent,{
@@ -176,27 +174,32 @@ export class FileUploadComponent implements OnInit {
   }
 
   sumbitFile() {
-  if (this.selectedFileType == "master") {
-    this.uploadMaster()
+    if (this.selectedFileType == "master") {
+      this.uploadMaster()
+    } else if (this.selectedFileType == "pcg") {
+      this.uploadPcg()
+    } else if (this.selectedFileType == "dcg") {
+      this.uploadDcg()
+    }
   }
-  else if (this.selectedFileType == "pcg") {
-    this.uploadPcg()
-  }
-  else if (this.selectedFileType == "dcg") {
-    this.uploadDcg()
-  }
-  }
+
   onFileSelected(event: any) { 
     this.selectedFiles = event.target.files;
     const file: File = event.target.files[0];
-    if (file && file.size > this['globalService'].defautltImageSize) {
-      this['globalService'].showAlert(this['globalService'].errorImageSizeMsg);
-      event.target.value = '';
+    this.fileName = file.name;
+    this.fileSize = (file.size/1024).toFixed(2) + ' KB';
+    if (file && file.size > 100000) {
+      this.setMessage('File size too large', 'error');
+      this.resetFile();
       return;
     }
-    this['uploadForm'].get('XLXS').setValue(file);
     event.target.value = '';
-  
+  }
+
+  resetFile() {
+    this.selectedFiles = undefined;
+    this.fileName = '';
+    this.fileSize = '';
   }
 
 }

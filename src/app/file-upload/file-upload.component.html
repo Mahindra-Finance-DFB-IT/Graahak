@@ -28,22 +28,20 @@
         <span>DCG master</span>
       </label>
     </div>   
-    <!-- <div class="file_container file">
-      <input class="file1" type="file" (change)="selectFile($event)"/>
+    <div class="file_container" (click)="fileInput.click()">
       <div class="file_image">
         <img class="icon" src="assets/file_upload.png" />
       </div>
+      <input hidden (change)="onFileSelected($event)" #fileInput type="file" id="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
       <div class="file_content">Drop your file here or <span>browse</span> file</div> 
       <div class="file_support">Support XLXS file</div> 
-    </div> -->
-    <div class="file_container file width_100 upload_container" (click)="fileInput.click()">
-      <div class="file_image">
-        <img class="icon" src="assets/file_upload.png" />
+    </div>
+    <div class="file_details" *ngIf="fileName">
+      <div class="file_section_1">
+        <div class="file_name">{{fileName}}</div>
+        <div class="file_size">{{fileSize}}</div>
       </div>
-      <!-- <div class="upload_hint">2 MB max</div> -->
-      <input class="file1"  hidden (change)="onFileSelected($event)" #fileInput type="file" id="file" accept="XLXS">
-      <div class="file_content">Drop your file here or <span>browse</span> file</div> 
-      <div class="file_support">Support XLXS file</div> 
+      <div class="file_section_2" (click)="resetFile()">X</div>
     </div>
     <div *ngIf="message" class="alert alert-secondary" role="alert">{{ message }}</div>
     <div class="text-center">
