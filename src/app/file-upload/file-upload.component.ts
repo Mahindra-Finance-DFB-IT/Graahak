@@ -91,7 +91,10 @@ export class FileUploadComponent implements OnInit {
       this.currentFile = undefined;
     });
     }
-    this.selectedFiles = undefined;
+    else{
+      loaderRef.close();
+      this.resetFile()
+    }
   } else {
     loaderRef.close();
   }
@@ -129,7 +132,10 @@ export class FileUploadComponent implements OnInit {
       this.currentFile = undefined;
     });
     }
-    this.selectedFiles = undefined;
+    else{
+      loaderRef.close();
+      this.resetFile()
+    }
   } else {
     loaderRef.close();
   }
@@ -167,7 +173,10 @@ export class FileUploadComponent implements OnInit {
     });
     this.currentFile = undefined;
     }
-    this.selectedFiles = undefined;
+    else{
+      loaderRef.close();
+      this.resetFile()
+    }
   } else {
     loaderRef.close();
   }
