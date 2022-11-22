@@ -7,6 +7,26 @@
     padding: 2.5%;
     display: flex;
 }
+.alert_container {
+    display: flex;
+    justify-content: center;
+}
+.alert_container .alert_content {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    padding: 10px 15px;
+    box-shadow: 0px 4px 5px #00000024, 0px 1px 10px #0000001f, 0px 2px 4px #00000033;
+}
+.alert_container .failure {
+    background: #EB1935;
+}
+.alert_container .success {
+    background: #00D43B;
+}
+.alert_container .icon {
+    margin-right: 10px;
+}
 .heading {
     font-family: 'Akkurat-Bold';
     font-size: 16px;
@@ -60,6 +80,7 @@ ngb-alert.alert.show.mt-1.alert-success.fade.alert-dismissible {
     width: 514px;
     border: 1px dashed #DDDDDD;
     border-radius: 10px;
+    cursor: pointer;
 }
 .file_image {
     text-align: center;
@@ -94,13 +115,6 @@ input#file {
     border-radius: 20px;
     background-size: 60px 60px;
   }
-  .invalid_file_upload{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 500px;
-}
   ::-webkit-file-upload-button {
     display: none;
  }  

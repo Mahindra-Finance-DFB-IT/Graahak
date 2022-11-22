@@ -27,168 +27,176 @@ export class FileUploadComponent implements OnInit {
   selectedFileType: string;
   fileInfos?: Observable<any>;
   data:any;
-  @ViewChild('selfClosingErrorAlert', {static: false})
-  selfClosingErrorAlert: NgbAlert;
   invalidMessage: string = "";
   validMessage: string;
   private _error = new Subject<string>();
   messageTimeOutInSeconds = 10000;
   constructor(private uploadService: UploadFilesService,
-    public router: Router,
-    public apiService: ApiService,
-    private modalService: NgbModal,
-    public route:Router,
-    private store:Store<{appItem: AppData }>) {
-      this.appData$ = store.select('appItem');
-      this.appData$.subscribe((obj:AppData)=>{
-        this.appData = obj;
-      })
-     }
+  public router: Router,
+  public apiService: ApiService,
+  private modalService: NgbModal,
+  public route:Router,
+  private store:Store<{appItem: AppData }>) {
+    this.appData$ = store.select('appItem');
+    this.appData$.subscribe((obj:AppData)=>{
+    this.appData = obj;
+    })
+   }
 
   ngOnInit(): void {
-    this._error.subscribe(message => this.invalidMessage = message);
-    this.selectedFileType = 'master'; 
-    this._error.pipe(debounceTime(this.messageTimeOutInSeconds)).subscribe(()=>{
-      if(this.selfClosingErrorAlert){
-        this.selfClosingErrorAlert.close();
-      }
-    })     
+  this.selectedFileType = 'master';    
   }
 
-  public changeErrorMessage(msg:String) { this._error.next(msg.toString()); }
+  setMessage(msg: string, type: string) {
+  type == 'success' ? this.validMessage = msg : this.invalidMessage = msg;
+  setTimeout(()=>{                  
+    this.invalidMessage = '';
+    this.validMessage = '';
+  }, 3000);
+  }
+
 
   selectFile(event: any): void {
-    this.selectedFiles = event.target.files;
+  this.selectedFiles = event.target.files;
   }
 
   uploadMaster(): void {
-    const loaderRef = this.modalService.open(LoaderComponent,{
-      centered: true,
-      animation:true,
-      backdrop:'static',
-      keyboard: false,
-      windowClass:"remove-bg-modal",
-      size:"sm",
-    });
-    let token:String = '';
-    if (this.appData.token) {
-      token = this.appData.token;
-    }
+  const loaderRef = this.modalService.open(LoaderComponent,{
+    centered: true,
+    animation:true,
+    backdrop:'static',
+    keyboard: false,
+    windowClass:"remove-bg-modal",
+    size:"sm",
+  });
+  let token:String = '';
+  if (this.appData.token) {
+    token = this.appData.token;
+  }
    
-    if (this.selectedFiles ) {
-      const file: File | null = this.selectedFiles.item(0);
-      if (file) {
-        this.currentFile = file;
-        this.uploadService.uploadMasterFile(this.currentFile,token).subscribe((data:any) => {
-          if (data && data?.body && data?.body?.res == 'success') {
-            loaderRef.close();
-            this.validMessage='File uploaded successfully';
-          }
-        }, (err: any) => {
-          loaderRef.close();
-          if (err.error && err.error.message) {
-            this.invalidMessage='Uploading failed! Please try again';
-            // this.message = err.error.message;
-          } else {
-            this.invalidMessage='Uploading failed! Please try again';
-            // this.message = 'Could not upload the file!';
-          }
-          this.currentFile = undefined;
-        });
-      }
-      this.selectedFiles = undefined;
-    } else {
+  if (this.selectedFiles ) {
+    const file: File | null = this.selectedFiles.item(0);
+    if (file) {
+    this.currentFile = file;
+    this.uploadService.uploadMasterFile(this.currentFile,token).subscribe((data:any) => {
+      if (data && data?.body && data?.body?.res == 'success') {
       loaderRef.close();
+      this.setMessage('File uploaded successfully', 'success');
+      }
+    }, (err: any) => {
+      loaderRef.close();
+      if (err.error && err.error.message) {
+      this.setMessage('Uploading failed! Please try again', 'error');
+      } else {
+      this.setMessage('Uploading failed! Please try again', 'error');
+      }
+      this.currentFile = undefined;
+    });
     }
+    this.selectedFiles = undefined;
+  } else {
+    loaderRef.close();
+  }
   }
   
   uploadDcg(): void {
-    const loaderRef = this.modalService.open(LoaderComponent,{
-      centered: true,
-      animation:true,
-      backdrop:'static',
-      keyboard: false,
-      windowClass:"remove-bg-modal",
-      size:"sm",
-    });
-    let token:String = '';
-    if(this.appData.token){
-      token = this.appData.token;
-    }
-    if (this.selectedFiles) {
-      const file: File | null = this.selectedFiles.item(0);
-      if (file) {
-        this.currentFile = file;
-        this.uploadService.uploadDcgFile(this.currentFile,token).subscribe((data:any)=> {
-          if (data && data?.body && data?.body?.res == 'success') {
-            loaderRef.close();
-            this.validMessage ='File uploaded successfully';
-          }
-        }, (err: any) => {
-          loaderRef.close();
-          if (err.error && err.error.message) {
-            this.invalidMessage='Uploading failed! Please try again';
-          } else {
-            this.invalidMessage='Uploading failed! Please try again';
-          }
-          this.currentFile = undefined;
-        });
-      }
-      this.selectedFiles = undefined;
-    } else {
+  const loaderRef = this.modalService.open(LoaderComponent,{
+    centered: true,
+    animation:true,
+    backdrop:'static',
+    keyboard: false,
+    windowClass:"remove-bg-modal",
+    size:"sm",
+  });
+  let token:String = '';
+  if(this.appData.token){
+    token = this.appData.token;
+  }
+  if (this.selectedFiles) {
+    const file: File | null = this.selectedFiles.item(0);
+    if (file) {
+    this.currentFile = file;
+    this.uploadService.uploadDcgFile(this.currentFile,token).subscribe((data:any)=> {
+      if (data && data?.body && data?.body?.res == 'success') {
       loaderRef.close();
+      this.setMessage('File uploaded successfully', 'success');
+      }
+    }, (err: any) => {
+      loaderRef.close();
+      if (err.error && err.error.message) {
+      this.setMessage('Uploading failed! Please try again', 'error');
+      } else {
+      this.setMessage('Uploading failed! Please try again', 'error');
+      }
+      this.currentFile = undefined;
+    });
     }
+    this.selectedFiles = undefined;
+  } else {
+    loaderRef.close();
+  }
   }
 
   uploadPcg(): void {
-    const loaderRef = this.modalService.open(LoaderComponent,{
-      centered: true,
-      animation:true,
-      backdrop:'static',
-      keyboard: false,
-      windowClass:"remove-bg-modal",
-      size:"sm",
-    });
-    let token:String = '';
-    if(this.appData.token){
-      token = this.appData.token;
-    }
-    if (this.selectedFiles) {
-      const file: File | null = this.selectedFiles.item(0);
-      if (file) {
-        this.currentFile = file;
-        this.uploadService.uploadPcgFile(this.currentFile,token).subscribe((data:any) => {
-          if (data && data?.body && data?.body?.res == 'success') {
-            loaderRef.close();
-            this.validMessage = 'File uploaded successfully';
-            // this.changeErrorMessage('File uploaded successfully');
-          }
-        }, (err: any) => {
-          loaderRef.close();
-          if (err.error && err.error.message) {
-            this.invalidMessage='Uploading failed! Please try again';
-          } else {
-            this.invalidMessage='Uploading failed! Please try again';
-          }
-        });
-        this.currentFile = undefined;
-      }
-      this.selectedFiles = undefined;
-    } else {
+  const loaderRef = this.modalService.open(LoaderComponent,{
+    centered: true,
+    animation:true,
+    backdrop:'static',
+    keyboard: false,
+    windowClass:"remove-bg-modal",
+    size:"sm",
+  });
+  let token:String = '';
+  if(this.appData.token){
+    token = this.appData.token;
+  }
+  if (this.selectedFiles) {
+    const file: File | null = this.selectedFiles.item(0);
+    if (file) {
+    this.currentFile = file;
+    this.uploadService.uploadPcgFile(this.currentFile,token).subscribe((data:any) => {
+      if (data && data?.body && data?.body?.res == 'success') {
       loaderRef.close();
+      this.setMessage('File uploaded successfully', 'success');
+      }
+    }, (err: any) => {
+      loaderRef.close();
+      if (err.error && err.error.message) {
+      this.setMessage('Uploading failed! Please try again', 'error');
+      } else {
+      this.setMessage('Uploading failed! Please try again', 'error');
+      }
+    });
+    this.currentFile = undefined;
     }
+    this.selectedFiles = undefined;
+  } else {
+    loaderRef.close();
+  }
   }
 
   sumbitFile() {
-    if (this.selectedFileType == "master") {
-      this.uploadMaster()
+  if (this.selectedFileType == "master") {
+    this.uploadMaster()
+  }
+  else if (this.selectedFileType == "pcg") {
+    this.uploadPcg()
+  }
+  else if (this.selectedFileType == "dcg") {
+    this.uploadDcg()
+  }
+  }
+  onFileSelected(event: any) { 
+    this.selectedFiles = event.target.files;
+    const file: File = event.target.files[0];
+    if (file && file.size > this['globalService'].defautltImageSize) {
+      this['globalService'].showAlert(this['globalService'].errorImageSizeMsg);
+      event.target.value = '';
+      return;
     }
-    else if (this.selectedFileType == "pcg") {
-      this.uploadPcg()
-    }
-    else if (this.selectedFileType == "dcg") {
-      this.uploadDcg()
-    }
+    this['uploadForm'].get('XLXS').setValue(file);
+    event.target.value = '';
+  
   }
 
 }

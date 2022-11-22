@@ -1,6 +1,16 @@
 <div class="row justify-content-md-center">
-  <ngb-alert class=" invalid_file_upload mt-1" #selfClosingErrorAlert *ngIf="invalidMessage" type="danger" (closed)="invalidMessage = ''"> <img class="icon" src='assets/invalidfile.png'  />  {{ invalidMessage }}</ngb-alert>
-  <ngb-alert class="mt-1" #selfClosingErrorAlert *ngIf="validMessage" type="success" (closed)="validMessage = ''"> <img class="icon" src='assets/Vector.png'  />  {{ validMessage }}</ngb-alert>
+  <div class="alert_container" *ngIf="invalidMessage">
+    <div class="failure alert_content">
+      <img class="icon" src='assets/invalidfile.png'/>
+      <div>{{ invalidMessage }}</div>
+    </div>
+  </div>
+  <div class="alert_container" *ngIf="validMessage">
+    <div class="success alert_content">
+      <img class="icon" src='assets/Vector.png'/>
+      <div>{{ validMessage }}</div>
+    </div>
+  </div>
   <div class="welcome">Admin Dashboard</div>
   <div class="card">
     <div class="heading"> Select Type of Master</div>
@@ -18,11 +28,20 @@
         <span>DCG master</span>
       </label>
     </div>   
-    <div class="file_container file">
+    <!-- <div class="file_container file">
       <input class="file1" type="file" (change)="selectFile($event)"/>
       <div class="file_image">
         <img class="icon" src="assets/file_upload.png" />
       </div>
+      <div class="file_content">Drop your file here or <span>browse</span> file</div> 
+      <div class="file_support">Support XLXS file</div> 
+    </div> -->
+    <div class="file_container file width_100 upload_container" (click)="fileInput.click()">
+      <div class="file_image">
+        <img class="icon" src="assets/file_upload.png" />
+      </div>
+      <!-- <div class="upload_hint">2 MB max</div> -->
+      <input class="file1"  hidden (change)="onFileSelected($event)" #fileInput type="file" id="file" accept="XLXS">
       <div class="file_content">Drop your file here or <span>browse</span> file</div> 
       <div class="file_support">Support XLXS file</div> 
     </div>
