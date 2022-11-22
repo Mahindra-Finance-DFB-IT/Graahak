@@ -94,6 +94,13 @@ input#file {
     border-radius: 20px;
     background-size: 60px 60px;
   }
+  .invalid_file_upload{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+}
   ::-webkit-file-upload-button {
     display: none;
  }  
