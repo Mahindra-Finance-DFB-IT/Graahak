@@ -193,7 +193,7 @@ export class FileUploadComponent implements OnInit {
       this.resetFile();
       return;
     }
-    event.target.value = '';
+    // event.target.value = '';
   }
 
   resetFile() {
