@@ -57,9 +57,10 @@ export class SchemeDetailComponent implements OnInit {
     if(this.appData.token){
       token = this.appData.token;
     }
+    var sessionData = this.authService.getData();
     var obj = {
-      'posid': this.authService.userPosId,
-      'id': id
+      'posid': sessionData?.salesExecutive?.posId,
+      'id':id
     };
     this.apiService.dcgById(obj, token).subscribe((data: any) => {
       loaderRef.close();
