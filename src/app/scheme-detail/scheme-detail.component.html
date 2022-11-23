@@ -10,7 +10,7 @@
         <div class="scheme_input floating-label">
             <input [(ngModel)]="schemeAmount" type="number" placeholder="₹"
                 class="form-control ng-pristine ng-invalid ng-touched" #amtamount>
-            <label for="sapId">Transaction Ammount</label>
+            <label for="sapId">Transaction Amount</label>
             <small class="invalid-feedback"> SAP ID is required </small>
             <button type="submit" id="amtamount" name="amtamount" class="btn" (click)="validateDetails(amtamount.value)" [disabled]="schemeAmount ==''">Get Details</button>
         </div>
