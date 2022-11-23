@@ -119,7 +119,7 @@
                     </div>
                 </div>
                 <div class="box-sizing" *ngFor="let mydata of data | filter: searchText"
-                    routerLink="{{'/detail/'+mydata.oem + '/'+ mydata.id}}">
+                    routerLink="{{'/scheme_detail/'+mydata.oem + '/'+ mydata.id}}">
 
                     <div *ngIf="mydata && mydata.scheme_id" class="scheme-card-container">
                         <div *ngIf="mydata?.oem?.toLowerCase() != 'mmfsl'" class="cashback">CASHBACK</div>

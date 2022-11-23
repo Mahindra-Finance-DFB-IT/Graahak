@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CalMasterComponent } from './cal-master.component';
+import { SchemeListComponent } from './scheme-list.component';
 
-describe('CalMasterComponent', () => {
-  let component: CalMasterComponent;
-  let fixture: ComponentFixture<CalMasterComponent>;
+describe('SchemeListComponent', () => {
+  let component: SchemeListComponent;
+  let fixture: ComponentFixture<SchemeListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CalMasterComponent ]
+      declarations: [ SchemeListComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CalMasterComponent);
+    fixture = TestBed.createComponent(SchemeListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

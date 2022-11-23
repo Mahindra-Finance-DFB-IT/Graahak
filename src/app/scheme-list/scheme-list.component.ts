@@ -15,12 +15,12 @@ import { LogoutComponent } from '../logout.component';
 import { SchemeModel } from '../_models/app';
 
 @Component({
-  selector: 'emi-home',
-  templateUrl: './emi-home.component.html',
-  styleUrls: ['./emi-home.component.css']
+  selector: 'scheme-list',
+  templateUrl: './scheme-list.component.html',
+  styleUrls: ['./scheme-list.component.css']
 })
 
-export class EmiHomeComponent implements OnInit {
+export class SchemeListComponent implements OnInit {
   [x: string]: any;
   // isBttonShow = false;
   selectedTenure = "0";

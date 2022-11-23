@@ -11,11 +11,11 @@ import { LoaderComponent } from '../loader/loader.component';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from '../service/auth.service';
 @Component({
-  selector: 'app-details',
-  templateUrl: './details.component.html',
-  styleUrls: ['./details.component.css']
+  selector: 'app-scheme-detail',
+  templateUrl: './scheme-detail.component.html',
+  styleUrls: ['./scheme-detail.component.css']
 })
-export class DetailsComponent implements OnInit {
+export class SchemeDetailComponent implements OnInit {
   firstName="";
   data: any;
   isShowDivIf = false; 

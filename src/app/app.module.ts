@@ -28,9 +28,8 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
 // import {MatNativeDateModule} from '@angular/material/core';
 
-import { EmiHomeComponent } from './emi-home/emi-home.component';
-import { DetailsComponent } from './details/details.component';
-import { CalMasterComponent } from './cal-master/cal-master.component'
+import { SchemeListComponent } from './scheme-list/scheme-list.component';
+import { SchemeDetailComponent } from './scheme-detail/scheme-detail.component';
 import { FormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { MatButtonModule } from '@angular/material/button';
@@ -53,9 +52,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     LogoutComponent,
     AdminLoginComponent,
     FileUploadComponent,
-    EmiHomeComponent,
-    DetailsComponent,
-    CalMasterComponent
+    SchemeListComponent,
+    SchemeDetailComponent
   ],
   imports: [  
     MatButtonModule,
