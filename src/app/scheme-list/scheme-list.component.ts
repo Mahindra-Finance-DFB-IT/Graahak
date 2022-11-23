@@ -110,8 +110,9 @@ export class SchemeListComponent implements OnInit {
     if(this.appData.token){
       token = this.appData.token;
     }
+    var sessionData = this.authService.getData();
     var obj = {
-      'posid': this.authService.userPosId
+      'posid': sessionData?.salesExecutive?.posId,
     };
     this.apiService.dcg(obj, token).subscribe((data: any) => {
       loaderRef.close();
