@@ -12,7 +12,7 @@
                 class="form-control ng-pristine ng-invalid ng-touched" #amtamount>
             <label for="sapId">Transaction Amount</label>
             <small class="invalid-feedback"> SAP ID is required </small>
-            <button type="submit" id="amtamount" name="amtamount" class="btn" (click)="validateDetails(amtamount.value)" [disabled]="schemeAmount ==''">Get Details</button>
+            <button type="submit" id="amtamount" name="amtamount" class="btn" (click)="validateDetails(amtamount.value)" [ngClass]="schemeAmount ? '' : 'disabled'">Get Details</button>
         </div>
         <div class="scheme_range">
             <label class="lastText">Range: ₹{{mydata.min_amount}} to ₹{{mydata.max_amount}}</label>
@@ -66,11 +66,11 @@
                             <p style="font-weight: bold; font-size: 1.1rem;">Transaction Summary for Customer</p>
                             <div class="row_container">
                                 <div class="row_label"> EMI Amount</div>
-                                <div class="row_value float-end"><b>₹{{formula.EMIAmount}} </b></div>
+                                <div class="row_value float-end"><b>₹{{formula.emiAmount}} </b></div>
                             </div>
                             <div class="row_container">
                                 <div class="row_label">Advance EMI Amount</div>
-                                <div class="row_value float-end"><b>₹{{formula.ADVANCE_EMI}} </b></div>
+                                <div class="row_value float-end"><b>₹{{formula.advance_emi}} </b></div>
                             </div>
                             <div class="row_container">
                                 <div class="row_label">Processing Fee</div>
@@ -78,7 +78,7 @@
                             </div>
                             <div class="row_container">
                                 <div class="row_label">Total Payment white transaction</div>
-                                <div class="row_value float-end"><b>₹{{formula.Amounttobepaidby}}</b></div>
+                                <div class="row_value float-end"><b>₹{{formula.amountPaidBy}}</b></div>
                             </div>
                         </div>
                     </div>
@@ -87,15 +87,15 @@
                         <div>
                             <div class="row_container">
                                 <div class="row_label">Total Interest during loan tenure</div>
-                                <div class="row_value float-end"><b>₹{{formula.TotalIntrestduringloantenure}}</b></div>
+                                <div class="row_value float-end"><b>₹{{formula.totalInterest}}</b></div>
                             </div>
                             <div class="row_container">
                                 <div class="row_label">Total of Interest & processing fees</div>
-                                <div class="row_value float-end"><b>₹{{formula.Totalofintrest}}</b></div>
+                                <div class="row_value float-end"><b>₹{{formula.totalOfInterest}}</b></div>
                             </div>
                             <div class="row_container">
                                 <div class="row_label">Cashback expected</div>
-                                <div *ngIf="mydata?.oem?.toLowerCase() != 'mmfsl'" class="row_value float-end"><b>₹{{formula.TotalIntrestduringloantenure}}</b></div>
+                                <div *ngIf="mydata?.oem?.toLowerCase() != 'mmfsl'" class="row_value float-end"><b>₹{{formula.totalInterest}}</b></div>
                                 <div *ngIf="mydata?.oem?.toLowerCase() == 'mmfsl'" class="row_value float-end"><b>₹0.00</b></div>
                             </div>
                             <div class="row_container">
@@ -113,11 +113,11 @@
                             </div>
                             <div class="row_container">
                                 <div class="row_label">Advance EMI</div>
-                                <div class="row_value float-end"><b>₹{{formula.ADVANCE_EMI}}</b></div>
+                                <div class="row_value float-end"><b>₹{{formula.advance_emi}}</b></div>
                             </div>
                             <div class="row_container">
                                 <div class="row_label">Amount to be collected from customer </div>
-                                <div class="row_value float-end"><b>₹{{formula.Amounttobepaidby}}</b></div>
+                                <div class="row_value float-end"><b>₹{{formula.amountPaidBy}}</b></div>
                             </div>
                             <div class="row_container">
                                 <div class="row_label">DBD Amount to be paid by dealer to MMFSL</div>
