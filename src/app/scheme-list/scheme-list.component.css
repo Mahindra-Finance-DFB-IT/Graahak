@@ -373,7 +373,7 @@ top: 267px;
         padding-right: 0px;
     }
     .tenure_container .float-end {
-        float: left !important;
+        float: right !important;
     }
     .tenure_container .float-end .line {
         padding-right: 5px;

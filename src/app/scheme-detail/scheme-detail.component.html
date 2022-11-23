@@ -1,53 +1,39 @@
-<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 <div class="col-md-12 back-history">
-    <a routerLink="/scheme-list"><i class="bi bi-chevron-left arrow-red"></i> Back to Search</a>
+    <a routerLink="/scheme_list"><i class="bi bi-chevron-left arrow-red"></i> Back to Search</a>
 </div>
-<!-- First -->
 <div class="container">
     <div class="box col col-sm mx-auto" *ngFor="let mydata of data">
-        <div class=" ms-3">
-            <label for="" class="label1 mt-3"> {{mydata.oem}}</label>
-            <button class="lable2 float-end mt-3 me-4 id">ID: {{mydata.scheme_id}}</button>
+        <div class="scheme_header">
+            <label class="scheme_name mt-3"> {{mydata.oem}}</label>
+            <button class="scheme_id float-end mt-3">ID: {{mydata.scheme_id}}</button>
         </div>
-        <div class="mt-6">
-            <div _ngcontent-bnb-c104="" style="width:65%; display: -webkit-box;" class="form-group floating-label"><input _ngcontent-bnb-c104=""
-                [(ngModel)]="firstName" id="amtamount"  type="number" formcontrolname="sapId" placeholder="₹"
-                    class="form-control ng-pristine ng-invalid ng-touched" ng-reflect-name="sapId" #amtamount><label
-                    _ngcontent-bnb-c104="" for="sapId">Transaction Ammount</label><small _ngcontent-bnb-c104=""
-                    class="invalid-feedback"> SAP ID is required </small>
-            <!-- <input name="firstName"  [(ngModel)]="firstName" id="amtamount" ngModel minlength="2" maxlength="5" #amtamount> -->
-            <!-- <input placeholder="₹" [(ngModel)]="firstName" id="amtamount" name="firstName" #amtamount> -->
-
-            <button type="submit" id="amtamount" name="amtamount" class="btn btn-danger"
-                *ngFor="let mydata of data" (click)="validateDetails(amtamount.value)" [disabled]="firstName ==''">Get
-                Details</button>
-            </div>
+        <div class="scheme_input floating-label">
+            <input [(ngModel)]="schemeAmount" type="number" placeholder="₹"
+                class="form-control ng-pristine ng-invalid ng-touched" #amtamount>
+            <label for="sapId">Transaction Ammount</label>
+            <small class="invalid-feedback"> SAP ID is required </small>
+            <button type="submit" id="amtamount" name="amtamount" class="btn" (click)="validateDetails(amtamount.value)" [disabled]="schemeAmount ==''">Get Details</button>
         </div>
-        <div class="range">
-            <label for="" class="mt-3 ms-3 lastText">Range: ₹{{mydata.min_amount}} to ₹{{mydata.max_amount}}</label>
+        <div class="scheme_range">
+            <label class="lastText">Range: ₹{{mydata.min_amount}} to ₹{{mydata.max_amount}}</label>
         </div>
-       
     </div>
     <div class="invalid_amount_alert" *ngIf="isrange">
         <div class="invalid_label">Please enter transaction amount in given range</div>
     </div>
 </div>
-
-
-
 <div *ngIf="isShowDivIf" >
     <div class="container" *ngFor="let mydata of data">
         <div class="row">
-            <div class="col-sm-2"></div>
-            <div class="col-sm-8">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
                 <div class="row gx-1 mobile_row">
                     <div class="col box2 g-5">
                         <h5 class="mb-3">Scheme Details</h5>
                         <div>
                             <div class="row_container">
                                 <div class="row_label">Description</div>
-                                <div class="row_value float-end"><b> {{mydata.tenure}} X
-                                        {{mydata.advance_emi}}</b></div>
+                                <div class="row_value float-end"><b> {{mydata.tenure}} X {{mydata.advance_emi}}</b></div>
                             </div>
                             <div class="row_container">
                                 <div class="row_label">Number of Adv. EMI's</div>
@@ -59,8 +45,7 @@
                             </div>
                             <div class="row_container">
                                 <div class="row_label">Range</div>
-                                <div class="row_value float-end"><b>₹{{mydata.min_amount}} to ₹{{mydata.max_amount}}</b>
-                                </div>
+                                <div class="row_value float-end"><b>₹{{mydata.min_amount}} to ₹{{mydata.max_amount}}</b></div>
                             </div>
                             <div class="row_container">
                                 <div class="row_label">Type</div>
@@ -77,7 +62,6 @@
                             <div class="row_container">
                                 <div class="row_label"> Status</div>
                                 <div class="row_value float-end"><b>{{mydata.status}} </b></div>
-
                             </div> <br>
                             <p style="font-weight: bold; font-size: 1.1rem;">Transaction Summary for Customer</p>
                             <div class="row_container">
@@ -104,7 +88,6 @@
                             <div class="row_container">
                                 <div class="row_label">Total Interest during loan tenure</div>
                                 <div class="row_value float-end"><b>₹{{formula.TotalIntrestduringloantenure}}</b></div>
-
                             </div>
                             <div class="row_container">
                                 <div class="row_label">Total of Interest & processing fees</div>
@@ -139,25 +122,23 @@
                             <div class="row_container">
                                 <div class="row_label">DBD Amount to be paid by dealer to MMFSL</div>
                                 <div class="row_value float-end"><b>₹{{formula.dbd}}</b></div>
-
                             </div>
                             <div class="row_container">
                                 <div class="row_label">Disbursement to dealer by MMFSL</div>
                                 <div class="row_value float-end"><b> ₹{{formula.distributed_delerto_mmfsl}}</b></div>
                             </div>
-                          
                         </div>
                     </div>
                 </div>
                 <div class="row_container">
-                    <div class="dsclaimer"><b>Disclaimer:</b> This calculator is meant for usage only by authorized representative of Mahindra and Mahindra Financial Services Ltd. and is strictly confidential.
+                    <div class="disclaimer"><b>Disclaimer:</b> This calculator is meant for usage only by authorized representative of Mahindra and Mahindra Financial Services Ltd. and is strictly confidential.
                         <br/><br>The values mentioned above are approximate. The final amount(s) may vary slightly from the same.
                         <br/><br>Mahindra and Mahindra Financial Services Ltd. reserves the right to modify or close these schemes without notice and based on its sole discretion.
-                        </div>
+                    </div>
                 </div>
                 <br>
             </div>
-            <div class="col-sm-2"></div>
+            <div class="col-sm-1"></div>
         </div>
-    </div> <!-- Second -->
+    </div>
 </div>

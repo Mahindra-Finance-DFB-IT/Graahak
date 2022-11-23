@@ -3,22 +3,87 @@ padding: 0px 15px 15px;
 background: #FFFFFF;
 box-shadow: 0px 5px 18px rgba(0, 0, 0, 0.14);
 border-radius: 8px;
-
-
 }
-.id {
+.scheme_header {
+    display: inline-table;
+    width: 100%;
+    margin-bottom: 15px;
+}
+.scheme_header .scheme_name{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    color: #000000;
+}
+.scheme_header .scheme_id{
     background: #F6F6F6;
     border: 1px solid #EAEAEA;
     border-radius: 180px;
-
- 
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    padding: 5px 10px;
+    line-height: 16px;
+    color: #000000;
 }
 .mt-6 {
     padding-top: 11px;
 }
-.mobile_row {
-    display: inline
+.scheme_input {
+    display: flex;
+    vertical-align: middle;
 }
+.scheme_input input{
+    padding: 10px 10px;
+    border: 1px solid #EB1935;
+    border-radius: 5px;
+    width: 65%;
+}
+.scheme_input .btn {
+    background: #EB1935;
+    width: 35%;
+    color: #fff;
+    opacity: 1;
+    font-size: 14px;
+}
+.scheme_input label {
+    color: #616162;
+}
+.scheme_range {
+    margin: 10px 0px;
+}
+.scheme_range .lastText{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #616162;
+}
+.invalid_amount_alert{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.invalid_amount_alert .invalid_label {
+    background: #000000de;
+    opacity: 0.8;
+    box-shadow: 0px 4px 5px #00000024, 0px 1px 10px #0000001f, 0px 2px 4px #00000033;
+    color: #fff;
+    padding: 12px 10px;
+}
+.mobile_row {
+    display: inline;
+    width: 100%;
+}
+.disclaimer{ 
+    background: #FFF9E0;
+    border: 1px dashed #FEE47D;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+/*  */
+
 .row_container {
     position: relative;
     display: flex;
@@ -36,42 +101,14 @@ border-radius: 8px;
     text-align: right;
     word-break: break-word;
 }
-.first {
-    margin-top: 20px;
-}
 
 input {
     padding: 8px 60px;
     border-radius: 10px;
 }
-
-.text {
-    font-size: 11px;
-    font-weight: bold;
-    margin-top: -51px;
-    margin-left: 15px;
-}
-
-.range {
-    margin-top: -5px;
-    font-size: 12px;
-}
-
-.Disclaimer {
-    margin-top: -10px;
-    background-color: rgb(230, 161, 129);
-    border-radius: 8px;
-    font-size: 14px;
-}
 h5 {
     font-weight: bold;
     font-size: 18px;
-}
-span{
-    font-size: 14px;
-}
-.flex{
-    display: flex;
 }
 
 .box{
@@ -81,40 +118,6 @@ span{
     background: #FFFFFF;
     box-shadow: 0px 5px 18px rgba(0, 0, 0, 0.14);
     border-radius: 8px;
-}
-.label1{
-    font-style: normal;
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 24px;
-    color: #000000;
-}
-.id{
-    background: #F6F6F6;
-    border: 1px solid #EAEAEA;
-    border-radius: 180px;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 16px;
-    color: #000000;
-}
-.label2{
-    background: #F6F6F6;
-    border: 1px solid #EAEAEA;
-    border-radius: 180px;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 20px;
-    text-align: right;
-    color: #616162;
-}
-
-input{
-    padding: 10px 10px;
-    border: 1px solid #EB1935;
-    border-radius: 5px;
 }
 .detail{
     padding: 6px 30px;
@@ -127,13 +130,7 @@ input{
     line-height: 21px;
     color: #FFFFFF;
 }
-.lastText{
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 14px;
-    color: #616162;
-}
+
 button#amtamount {
     margin-left: 10px;
 
@@ -141,44 +138,21 @@ button#amtamount {
 .container {
     padding: 0;
 }
-.range{
-    margin: -6px -8px -40px -13px;
-}
-.rangerror{
-    width: fit-content;
-    background: #353434;
-    color: #E5E5E5;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 18px;
-}
-.invalid_amount_alert{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.invalid_label {
-    background: #000000de;
-    opacity: 0.8;
-    box-shadow: 0px 4px 5px #00000024, 0px 1px 10px #0000001f, 0px 2px 4px #00000033;
-    color: #fff;
-    padding: 12px 10px;
-}
-.dsclaimer{ 
-background: #FFF9E0;
-border: 1px dashed #FEE47D;
-border-radius: 5px;
-padding: 10px;
-}
+
+
 @media only screen and (min-width: 768px) {
     .box {
         width: 575px;
     }
     .mobile_row {
         display: inline-flex;
-    }    
+    }
+    .scheme_input .btn {
+        width: 20%;
+    } 
+    .scheme_input input {
+        width: 80%;
+    } 
 
 }
 

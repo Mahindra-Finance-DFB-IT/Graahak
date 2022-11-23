@@ -16,7 +16,7 @@ import { AuthService } from '../service/auth.service';
   styleUrls: ['./scheme-detail.component.css']
 })
 export class SchemeDetailComponent implements OnInit {
-  firstName="";
+  schemeAmount="";
   data: any;
   isShowDivIf = false; 
   formula : any
