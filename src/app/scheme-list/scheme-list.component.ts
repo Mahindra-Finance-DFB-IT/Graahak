@@ -73,7 +73,7 @@ export class SchemeListComponent implements OnInit {
   
   addFilter() {
     var newarr = this.selectedTenure.split('-');
-    this.mapSchemeData(newarr, this.schemeData, 'advanceEmi');
+    this.mapSchemeData(newarr, this.schemeData, 'advanceEmi', '');
   }
 
   open(content: any) {
@@ -156,29 +156,43 @@ export class SchemeListComponent implements OnInit {
   onTenureSelected(value: string) {
     this.selectedTenure = value;
     var newarr = value.split("-");
-    this.mapSchemeData(newarr, this.schemeData, '');
+    this.mapSchemeData(newarr, this.schemeData, '', '');
     this.resetFilter();
   }
 
-  mapSchemeData(newarr:any, data: any, type: string) {
+  searchData(data: any) {
+    var searchStr = data.target.value;
+    var newarr = this.selectedTenure.split('-');
+    this.mapSchemeData(newarr, this.schemeData, 'text', searchStr.toLowerCase());
+  }
+
+  mapSchemeData(newarr:any, data: any, type: string, searchStr: string) {
     var arr: Array<SchemeModel> = [];
     var arrAdvFilter: Array<SchemeModel> = [];
-    for (let i = 0; i < data.length; i++) {
-      // var advanceEmi = Number(data[i].advance_emi);
-      var grossTenure = Number(data[i].tenure);
-      // console.log('Tenure: ', grossTenure);
-      // var grossTenure = grossTenure; //Number(tenure - advanceEmi);
-      if (newarr[0] == "0" && newarr.length == 1) {
-        arr.push(data[i]);
-      }
-      else if (grossTenure >= Number(newarr[0]) && grossTenure <= Number(newarr[1])) {
-        arr.push(data[i]);
-      }
-      else if (newarr[0] == "12" && newarr.length == 1) {
-        if (grossTenure > 12) {
+    if (newarr && newarr.length > 0) {
+      for (let i = 0; i < data.length; i++) {
+        // var advanceEmi = Number(data[i].advance_emi);
+        var grossTenure = Number(data[i].tenure);
+        // console.log('Tenure: ', grossTenure);
+        // var grossTenure = grossTenure; //Number(tenure - advanceEmi);
+        if (newarr[0] == "0" && newarr.length == 1) {
           arr.push(data[i]);
         }
+        else if (grossTenure >= Number(newarr[0]) && grossTenure <= Number(newarr[1])) {
+          arr.push(data[i]);
+        }
+        else if (newarr[0] == "12" && newarr.length == 1) {
+          if (grossTenure > 12) {
+            arr.push(data[i]);
+          }
+        }
       }
+    }
+    if (type == 'text') {
+      var arr2 = arr.filter((value) =>{
+        return (value.oem.toLowerCase().includes(searchStr) || value.pname.toLowerCase().includes(searchStr));
+      });
+      arr = arr2;
     }
     if (type == 'advanceEmi') {
       // arrAdvFilter = arr;
@@ -228,6 +242,6 @@ export class SchemeListComponent implements OnInit {
   resetFilter() {
     this.advanceEmi = '';
     var newarr = this.selectedTenure.split('-');
-    this.mapSchemeData(newarr, this.schemeData, '');
+    this.mapSchemeData(newarr, this.schemeData, '', '');
   }
 }

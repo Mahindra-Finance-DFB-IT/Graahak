@@ -310,9 +310,9 @@ label{
     padding-left: 15px;
 }
 .dropdown-padding{
- width: 178px;
-left: 808px;
-top: 267px;
+    width: 178px;
+    left: 808px;
+    top: 267px;
 }
 .row-style{
     margin: 0px;
@@ -321,6 +321,10 @@ top: 267px;
 .no_data_found {
     padding-top: 50px;
     text-align: center;
+}
+.no_data_found img{
+    padding-bottom: 20px;
+    width: 120px;
 }
 .dropdown .dropdown-for{
     border: none;
@@ -379,6 +383,6 @@ top: 267px;
         padding-right: 5px;
     }
     .dropdown-for {
-        width: 97px !important;
+        width: 90px !important;
     }
 }

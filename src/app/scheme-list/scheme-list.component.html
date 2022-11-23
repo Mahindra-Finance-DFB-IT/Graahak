@@ -19,7 +19,7 @@
                                 <span class="icon">
                                     <img class="search_icon" src="assets/serach.png"/>
                                 </span>
-                                <input class="search" type="search" [(ngModel)]="searchText"
+                                <input class="search" type="search" (input)="searchData($event)"
                                     placeholder="OEM/Product Name" aria-label="Search">
                             </div>
                             <div class="col tenure_container">
@@ -118,7 +118,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="box-sizing" *ngFor="let mydata of data | filter: searchText"
+                <div class="box-sizing" *ngFor="let mydata of data"
                     routerLink="{{'/scheme_detail/'+mydata.oem + '/'+ mydata.id}}">
 
                     <div *ngIf="mydata && mydata.scheme_id" class="scheme-card-container">
@@ -165,6 +165,10 @@
                             <div>{{mydata.portal_description}}</div>
                         </div>
                     </div>
+                </div>
+                <div class="no_data_found" *ngIf="data && data.length == 0">
+                    <img src="assets/no_schemes.png">
+                    <div>Sorry! No schemes found</div>
                 </div>
                 <div class="no_data_found" *ngIf="errMsg">{{errMsg}}</div>
                 <div class="col-sm-2"></div>

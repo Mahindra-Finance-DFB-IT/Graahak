@@ -103,6 +103,7 @@ export interface SchemeModel {
     id: Number
     is_pf_scheme: String,
     max_amount: String,
+    min_amount: String,
     mbd_amount: String,
     mbd_percentage: String,
     mdr_amount: String,
@@ -123,6 +124,7 @@ export interface SchemeModel {
     status_sdm_file: String,
     status_spm_file: String,
     tenure: String,
+    pname: String
 }
 
 export const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
