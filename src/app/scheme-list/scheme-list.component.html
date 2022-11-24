@@ -24,15 +24,12 @@
                             </div>
                             <div class="col tenure_container">
                                 <div class="dropdown float-end">
-                                    <img class="line" src="assets/Line 41.png" />
+                                    <img class="line" src="assets/filter_line.png" />
                                     Tenure:
-                                    <select class="dropdown-for" name="dog-names" #mySelect
-                                        (change)='onTenureSelected(mySelect.value)' id="dog-names">
+                                    <select class="dropdown-for" #mySelect (change)='onTenureSelected(mySelect.value)'>
                                         <option class="dropdown-item" value="0">All</option>
-                                        <option class="dropdown-item" value="6-9">6 to 9 months
-                                        </option>
-                                        <option class="dropdown-item" value="10-12">10 to 12 months
-                                        </option>
+                                        <option class="dropdown-item" value="6-9">6 to 9 months</option>
+                                        <option class="dropdown-item" value="10-12">10 to 12 months</option>
                                         <option class="dropdown-item" value="12">more than 12 months</option>
                                     </select>
                                 </div>
@@ -48,21 +45,17 @@
                                 <div class="box-filter">
                                     <div class="">
                                         <button type="button" class="ms-4 mt-4 fitlerbttn">Filter</button>
-                                        <button type="button" class="float-end me-4 mt-4 canclebttn" aria-label="Close"
-                                            (click)="modal.dismiss('Cross click')">
-
-                                            <span aria-hidden="true">
-                                                ×
-                                            </span>
+                                        <button type="button" class="float-end me-4 mt-4 canclebttn" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                                            <span aria-hidden="true">×</span>
                                         </button>
                                     </div>
                                     <div class="form-check mt-4 ms-4">
-                                        <input  class="form-check-input" (change)= 'isCashBackApplied = !isCashBackApplied' [checked]="isCashBackApplied" type="checkbox" value="" id="flexCheckDefault">
+                                        <input class="form-check-input" (change)= 'isCashBackApplied = !isCashBackApplied' [checked]="isCashBackApplied" type="checkbox" value="" id="flexCheckDefault">
                                         <label class="form-check-label label1" for="flexCheckDefault">
                                             Show All Cashback Offers
                                         </label>
                                     </div>
-                                    <div class="">
+                                    <div>
                                         <hr>
                                     </div>
                                     <div class="mt-2 ms-4">
@@ -70,32 +63,25 @@
                                     </div>
                                     <div class="checkbox">
                                         <div class="tenure_container">
-                                            <div (click)="setAdvEmi('0')" class="tenure_section"
-                                                [ngClass]="advanceEmi == '0' ? 'btnSelected' : ''">
+                                            <div (click)="setAdvEmi('0')" class="tenure_section" [ngClass]="advanceEmi == '0' ? 'btnSelected' : ''">
                                                 <div>0 month</div>
                                             </div>
-                                            <div (click)="setAdvEmi('1')" class="tenure_section"
-                                                [ngClass]="advanceEmi == '1' ? 'btnSelected' : ''">
+                                            <div (click)="setAdvEmi('1')" class="tenure_section" [ngClass]="advanceEmi == '1' ? 'btnSelected' : ''">
                                                 <div>1 month</div>
                                             </div>
-                                            <div (click)="setAdvEmi('2')" class="tenure_section"
-                                                [ngClass]="advanceEmi == '2' ? 'btnSelected' : ''">
+                                            <div (click)="setAdvEmi('2')" class="tenure_section" [ngClass]="advanceEmi == '2' ? 'btnSelected' : ''">
                                                 <div>2 month</div>
                                             </div>
-                                            <div (click)="setAdvEmi('3')" class="tenure_section"
-                                                [ngClass]="advanceEmi == '3' ? 'btnSelected' : ''">
+                                            <div (click)="setAdvEmi('3')" class="tenure_section" [ngClass]="advanceEmi == '3' ? 'btnSelected' : ''">
                                                 <div>3 month</div>
                                             </div>
-                                            <div (click)="setAdvEmi('4')" class="tenure_section"
-                                                [ngClass]="advanceEmi == '4' ? 'btnSelected' : ''">
+                                            <div (click)="setAdvEmi('4')" class="tenure_section" [ngClass]="advanceEmi == '4' ? 'btnSelected' : ''">
                                                 <div>4 month</div>
                                             </div>
-                                            <div (click)="setAdvEmi('5')" class="tenure_section"
-                                                [ngClass]="advanceEmi == '5' ? 'btnSelected' : ''">
+                                            <div (click)="setAdvEmi('5')" class="tenure_section" [ngClass]="advanceEmi == '5' ? 'btnSelected' : ''">
                                                 <div>5 month</div>
                                             </div>
-                                            <div (click)="setAdvEmi('6')" class="tenure_section"
-                                                [ngClass]="advanceEmi == '6' ? 'btnSelected' : ''">
+                                            <div (click)="setAdvEmi('6')" class="tenure_section" [ngClass]="advanceEmi == '6' ? 'btnSelected' : ''">
                                                 <div>6 month</div>
                                             </div>
                                         </div>
@@ -103,11 +89,10 @@
                                 </div>
                             </form>
                             <div class="modal_content modal-footer">
-                                <div _ngcontent-rcl-c113="" class="float-end mt-4 lastbtn"><button
-                                        _ngcontent-rcl-c113="" type="button" class="reset me-2"
-                                        (click)="resetFilter();modal.close('Save click')">Reset</button><button
-                                        _ngcontent-rcl-c113="" type="button" class="apply border-outline-danger me-4"
-                                        (click)="addFilter();modal.close('Save click')">Apply</button></div>
+                                <div class="float-end mt-4 lastbtn">
+                                    <button type="button" class="reset me-2" (click)="resetFilter(); modal.close('Save click')">Reset</button>
+                                    <button type="button" class="apply border-outline-danger me-4" (click)="addFilter(); modal.close('Save click')">Apply</button>
+                                </div>
                             </div>
                         </ng-template>
                     </div>
@@ -118,9 +103,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="box-sizing" *ngFor="let mydata of data"
-                    routerLink="{{'/scheme_detail/'+mydata.oem + '/'+ mydata.id}}">
-
+                <div class="box-sizing" *ngFor="let mydata of data" routerLink="{{'/scheme_detail/'+mydata.oem + '/'+ mydata.id}}">
                     <div *ngIf="mydata && mydata.scheme_id" class="scheme-card-container">
                         <div *ngIf="mydata?.oem?.toLowerCase() != 'mmfsl'" class="cashback">CASHBACK</div>
                         <div class="scheme_card">

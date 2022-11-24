@@ -128,7 +128,7 @@
     opacity: 0.7;
     margin-bottom: 0px;
     width: 100%;
-    padding: 5px 15px 10px 15px;
+    padding: 10px 15px 10px 15px;
     background-color:#F7F7F7;
 }
 .scheme_card {
@@ -153,21 +153,6 @@
 .margin_bottom_5 {
     margin-bottom: 5px;
 }
-/*  */
-
-
-
-p {
-    left: 430px;
-    top: 292px;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 16px;
-    color: #000000;
-
-}
-
 b {
     font-family: 'Lato';
     font-style: normal;
@@ -175,13 +160,9 @@ b {
     font-size: 20px;
     line-height: 20px;
 }
-
-
 .icon{
-    /* padding: 13px; */
     padding-left: 22px;
 }
-
 .search{
     border-style: none;
     display: flex;
@@ -190,26 +171,23 @@ b {
     padding: 10px;
     width: 100%;
 }
-
 .navbar{
     padding-left: 15px;
     background: #FFFFFF;
     box-shadow: 0px 5px 18px rgb(0 0 0 / 14%);
     border-radius: 244px;
-
 }
-
 .popup .wrapper{
     position:relative; 
     left:-50%;
-  }  
- .dialog{
+}  
+.dialog{
     vertical-align: middle;
- }
+}
 .tenure_container {
     display: inline;
 }
- .tenure_section {
+.tenure_section {
     width: fit-content;
     height: 32px;
     border: 1px solid #E5E5E5;
@@ -248,11 +226,9 @@ button.btn.btn-outline-dark {
 }
 .modal-header .close span{
     margin: 0px auto;
-    
 }
 .cashb .inputcheckbox{
     margin-right: 12px;
-
 }
 .fitlerbttn{
     border: none;
@@ -317,7 +293,6 @@ label{
 .row-style{
     margin: 0px;
 }
-
 .no_data_found {
     padding-top: 50px;
     text-align: center;

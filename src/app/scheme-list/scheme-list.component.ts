@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ViewChild } from '@angular/core';
 import { DataTableDirective } from 'angular-datatables';
-// import { ADTSettings } from 'angular-datatables/src/models/settings';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import { HttpClient } from '@angular/common/http';
@@ -22,29 +21,19 @@ import { SchemeModel } from '../_models/app';
 
 export class SchemeListComponent implements OnInit {
   [x: string]: any;
-  // isBttonShow = false;
   selectedTenure = "0";
   closeResult = '';
-  // curDate = Date.now();
-  // reportData: any = [];
-  // public innerWidth: any;
   appData$: Observable<AppData>;
-  appData: AppData = {}
+  appData: AppData = {};
   
   @ViewChild(DataTableDirective, { static: true })
-  // datatableElement: DataTableDirective;
-  // dtTrigger: Subject<ADTSettings> = new Subject();
-  // private _error = new Subject<string>();
-  // showOtpScreen = false;
-  // otherDetails = false;
   isselect: boolean = false;
-  isCashBackApplied:boolean=false;
+  isCashBackApplied:boolean = false;
   data: Array<SchemeModel>;
   errMsg: string;
   searchText: string = '';
   advanceEmi: any;
-  schemeData: Array<SchemeModel>
-  // pcgdata: any;
+  schemeData: Array<SchemeModel> = [];
 
   constructor(
     public apiService: ApiService,
@@ -64,8 +53,6 @@ export class SchemeListComponent implements OnInit {
     this.fetchSchemeList();
   }
 
-  // public changeErrorMessage(msg:String) { this._error.next(msg.toString()); }
-  
   setAdvEmi(value: string) {
     this.isselect = true
     this.advanceEmi = value;
@@ -103,8 +90,7 @@ export class SchemeListComponent implements OnInit {
       backdrop:'static',
       keyboard: false,
       windowClass:"remove-bg-modal",
-      size:"sm",
-    // modalDialogClass: " modal-dialog-centered d-flex justify-content-center"
+      size:"sm"
     });
     let token:String = ''; 
     if(this.appData.token){
@@ -120,10 +106,8 @@ export class SchemeListComponent implements OnInit {
         this.data = data;
         this.schemeData = data;
         console.log(this.data.length);
-        // this.cashback();
       } else {
         this.errMsg = "No data found";
-        // this.changeErrorMessage("No data found");    
       }
     }, async (err: any) => {
       loaderRef.close();
@@ -134,20 +118,18 @@ export class SchemeListComponent implements OnInit {
           backdrop:'static',
           keyboard: false,
           size:"sm",
-        })
+        });
         logoutModalRef.closed.subscribe(_d=>{
           console.log(err);
           this.authService.logout();
           this.route.navigate(['/login']);
           return false;
-        })
+        });
       } else {
-        if(err.error.error || err.error.errors){
+        if (err.error.error || err.error.errors) {
           this.errMsg = err.error.error;
-          // this.changeErrorMessage(err.error.error);
-        }else{
+        } else {
           this.errMsg = err.message;
-          // this.changeErrorMessage(err.message);
         }
       }
     });
@@ -171,17 +153,12 @@ export class SchemeListComponent implements OnInit {
     var arrAdvFilter: Array<SchemeModel> = [];
     if (newarr && newarr.length > 0) {
       for (let i = 0; i < data.length; i++) {
-        // var advanceEmi = Number(data[i].advance_emi);
         var grossTenure = Number(data[i].tenure);
-        // console.log('Tenure: ', grossTenure);
-        // var grossTenure = grossTenure; //Number(tenure - advanceEmi);
         if (newarr[0] == "0" && newarr.length == 1) {
           arr.push(data[i]);
-        }
-        else if (grossTenure >= Number(newarr[0]) && grossTenure <= Number(newarr[1])) {
+        } else if (grossTenure >= Number(newarr[0]) && grossTenure <= Number(newarr[1])) {
           arr.push(data[i]);
-        }
-        else if (newarr[0] == "12" && newarr.length == 1) {
+        } else if (newarr[0] == "12" && newarr.length == 1) {
           if (grossTenure > 12) {
             arr.push(data[i]);
           }
@@ -195,8 +172,6 @@ export class SchemeListComponent implements OnInit {
       arr = arr2;
     }
     if (type == 'advanceEmi') {
-      // arrAdvFilter = arr;
-      // console.log(this.advanceEmi);
       if (this.advanceEmi) {
         for (let i = 0; i < arr.length; i++) {
           if (arr[i].advance_emi == this.advanceEmi) {
@@ -205,7 +180,6 @@ export class SchemeListComponent implements OnInit {
         }
       }
       if (this.isCashBackApplied == true) {
-        // console.log('isCashBackApplied: ', this.isCashBackApplied);
         if (arrAdvFilter && arrAdvFilter.length > 0) {
           arrAdvFilter = arrAdvFilter.filter(value => value.oem.toLowerCase() != 'mmfsl');
         } else {
@@ -230,14 +204,6 @@ export class SchemeListComponent implements OnInit {
     }
     console.log('data: ', this.data.length);
   }
-
-
-  // cashback(){
-  //   var data = this.data
-  //   for (let i = 0; i < data.length; i++) {
-  //     var cashback = (data[i].oem);
-  //   }
-  // }
   
   resetFilter() {
     this.advanceEmi = '';
