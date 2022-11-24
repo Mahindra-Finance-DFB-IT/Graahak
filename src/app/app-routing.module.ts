@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'customer_details', component: CustomerdetailsComponent, canActivate:[AuthGuard]},
   { path: 'file-upload', component: FileUploadComponent, canActivate:[AuthGuard]},
   { path: 'scheme_list', component: SchemeListComponent, canActivate:[AuthGuard]},
-  { path: 'scheme_detail/:OEM/:id', component: SchemeDetailComponent, canActivate:[AuthGuard]},
+  { path: 'scheme_detail/:schemeId', component: SchemeDetailComponent, canActivate:[AuthGuard]},
   { path:'', redirectTo: '/home', pathMatch: 'full'}
 ];
 

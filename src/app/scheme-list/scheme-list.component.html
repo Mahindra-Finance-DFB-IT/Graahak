@@ -103,7 +103,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="box-sizing" *ngFor="let mydata of data" routerLink="{{'/scheme_detail/'+mydata.oem + '/'+ mydata.id}}">
+                <div class="box-sizing" *ngFor="let mydata of data" routerLink="{{'/scheme_detail/'+ mydata.scheme_id}}">
                     <div *ngIf="mydata && mydata.scheme_id" class="scheme-card-container">
                         <div *ngIf="mydata?.oem?.toLowerCase() != 'mmfsl'" class="cashback">CASHBACK</div>
                         <div class="scheme_card">

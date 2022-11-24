@@ -50,7 +50,7 @@ export class SchemeDetailComponent implements OnInit {
       windowClass:"remove-bg-modal",
       size:"sm"
     });
-    var id = this.router.snapshot.params['id'];
+    var id = this.router.snapshot.params['schemeId'];
     let token: String = ''; 
     if(this.appData.token){
       token = this.appData.token;
