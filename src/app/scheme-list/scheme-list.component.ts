@@ -150,6 +150,7 @@ export class SchemeListComponent implements OnInit {
   searchData(data: any) {
     var searchStr = data.target.value;
     var newarr = this.selectedTenure.split('-');
+    console.log(searchStr.toLowerCase());
     this.mapSchemeData(newarr, this.schemeData, 'text', searchStr.toLowerCase());
   }
 
@@ -170,6 +171,7 @@ export class SchemeListComponent implements OnInit {
         }
       }
     }
+    console.log(arr);
     if (type == 'text') {
       var arr2 = arr.filter((value) =>{
         return (value.oem.toLowerCase().includes(searchStr) || value.pname.toLowerCase().includes(searchStr));
