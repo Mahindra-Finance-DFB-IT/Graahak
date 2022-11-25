@@ -171,50 +171,59 @@ export class SchemeListComponent implements OnInit {
         }
       }
     }
-    console.log(arr);
+    // console.log(arr);
     if (type == 'text') {
       var arr2 = arr.filter((value) =>{
         return (value.oem.toLowerCase().includes(searchStr) || value.pname.toLowerCase().includes(searchStr));
       });
       arr = arr2;
     }
-    console.log(arr);
-    if (type == 'advanceEmi') {
+    // console.log(arr);
+    // if (type == 'advanceEmi') {
       if (this.advanceEmi) {
-        for (let i = 0; i < arr.length; i++) {
-          if (arr[i].advance_emi == this.advanceEmi) {
-            arrAdvFilter.push(data[i]);
-          }
-        }
+        var arr2 = arr.filter((value) =>{
+          return (value.advance_emi == this.advanceEmi);
+        });
+        arr = arr2;
+        // for (let i = 0; i < arr.length; i++) {
+        //   if (arr[i].advance_emi == this.advanceEmi) {
+        //     arrAdvFilter.push(data[i]);
+        //   }
+        // }
       }
       if (this.isCashBackApplied == true) {
-        if (arrAdvFilter && arrAdvFilter.length > 0) {
-          arrAdvFilter = arrAdvFilter.filter(value => value.oem.toLowerCase() != 'mmfsl');
-        } else {
-          arrAdvFilter = arr.filter(value => value.oem.toLowerCase() != 'mmfsl');
-        }
+        var arr2 = arr.filter((value) =>{
+          return (value.oem.toLowerCase() != 'mmfsl');
+        });
+        arr = arr2;
+        // if (arrAdvFilter && arrAdvFilter.length > 0) {
+        //   arrAdvFilter = arrAdvFilter.filter(value => value.oem.toLowerCase() != 'mmfsl');
+        // } else {
+        //   arrAdvFilter = arr.filter(value => value.oem.toLowerCase() != 'mmfsl');
+        // }
       }
-      if (arrAdvFilter.length > 0) {
-        this.data = arrAdvFilter;
-      } else if (!this.advanceEmi && !this.isCashBackApplied) {
-        this.data = arr;
-      } else {
-        this.data = []; 
-      }
-    }
+      // if (arrAdvFilter.length > 0) {
+      //   this.data = arrAdvFilter;
+      // } else if (!this.advanceEmi && !this.isCashBackApplied) {
+        // this.data = arr;
+      // } else {
+      //   this.data = []; 
+      // }
+    // }
     
-    if (type != 'advanceEmi') {
+    // if (type != 'advanceEmi') {
       if (arr.length > 0) {
         this.data = arr;
       } else {
         this.data = [];
       }
-    }
+    // }
     console.log('data: ', this.data.length);
   }
   
   resetFilter() {
     this.advanceEmi = '';
+    this.isCashBackApplied = false;
     var newarr = this.selectedTenure.split('-');
     this.mapSchemeData(newarr, this.schemeData, '', '');
   }
