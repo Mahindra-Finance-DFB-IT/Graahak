@@ -241,6 +241,9 @@ button.btn.btn-outline-dark {
     border: none;
     background: white;
 }
+.form-check {
+    margin-top: 25px;
+}
 .form-check-input{
     background-color: #fff;
 }
@@ -269,6 +272,7 @@ label{
     font-weight: 400;
     font-size: 14px;
     line-height: 21px;
+    margin-right: 0px;
 }
 .reset{
     padding: 10px 50px; 
@@ -284,9 +288,9 @@ label{
     color: #FFFFFF;
     border: none;
 }
-.checkbox {
+/* .checkbox {
     padding-left: 15px;
-}
+} */
 .dropdown-padding{
     width: 178px;
     left: 808px;

@@ -82,11 +82,20 @@
     display: inline;
     width: 100%;
 }
+.no_margin {
+    margin-top: 0px;
+}
 .disclaimer{ 
     background: #FFF9E0;
     border: 1px dashed #FEE47D;
     border-radius: 5px;
     padding: 10px;
+    position: relative;
+    border-bottom: 1px dashed #E5E5E5;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-size: 12px;
+    margin: 0px 20px;
 }
 .row_container {
     position: relative;
@@ -135,5 +144,11 @@ h5 {
     } 
     .scheme_input input {
         width: 80%;
+    }
+}
+
+@media only screen and (max-width: 420px) {
+    .no_margin {
+        padding: 0px;
     } 
 }

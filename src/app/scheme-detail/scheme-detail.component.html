@@ -25,10 +25,10 @@
 <div *ngIf="isShowDivIf" >
     <div class="container" *ngFor="let mydata of data">
         <div class="row">
-            <!-- <div class="col-sm-1"></div> -->
+            <div class="col-sm-1"></div>
             <div class="col-sm-10">
                 <div class="row gx-1 mobile_row">
-                    <div class="col box2 g-5">
+                    <div class="col box2 g-5 no_margin">
                         <h5 class="mb-3">Scheme Details</h5>
                         <div>
                             <div class="row_container">
@@ -130,11 +130,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="row_container">
-                    <div class="disclaimer"><b>Disclaimer:</b> This calculator is meant for usage only by authorized representative of Mahindra and Mahindra Financial Services Ltd. and is strictly confidential.
-                        <br/><br>The values mentioned above are approximate. The final amount(s) may vary slightly from the same.
-                        <br/><br>Mahindra and Mahindra Financial Services Ltd. reserves the right to modify or close these schemes without notice and based on its sole discretion.
-                    </div>
+                <div class="disclaimer">
+                    <b>Disclaimer:</b> This calculator is meant for usage only by authorized representative of Mahindra and Mahindra Financial Services Ltd. and is strictly confidential.
+                    <br/><br>The values mentioned above are approximate. The final amount(s) may vary slightly from the same.
+                    <br/><br>Mahindra and Mahindra Financial Services Ltd. reserves the right to modify or close these schemes without notice and based on its sole discretion.
                 </div>
                 <br>
             </div>

@@ -43,13 +43,13 @@
                         <ng-template #content let-modal>
                             <form class="modal_content">
                                 <div class="box-filter">
-                                    <div class="">
-                                        <button type="button" class="ms-4 mt-4 fitlerbttn">Filter</button>
-                                        <button type="button" class="float-end me-4 mt-4 canclebttn" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                                    <div>
+                                        <button type="button" class="fitlerbttn">Filter</button>
+                                        <button type="button" class="float-end canclebttn" aria-label="Close" (click)="modal.dismiss('Cross click')">
                                             <span aria-hidden="true">×</span>
                                         </button>
                                     </div>
-                                    <div class="form-check mt-4 ms-4">
+                                    <div class="form-check">
                                         <input class="form-check-input" (change)= 'isCashBackApplied = !isCashBackApplied' [checked]="isCashBackApplied" type="checkbox" value="" id="flexCheckDefault">
                                         <label class="form-check-label label1" for="flexCheckDefault">
                                             Show All Cashback Offers
@@ -58,7 +58,7 @@
                                     <div>
                                         <hr>
                                     </div>
-                                    <div class="mt-2 ms-4">
+                                    <div>
                                         <label for="" class="label2">Advanced EMI</label>
                                     </div>
                                     <div class="checkbox">
@@ -91,7 +91,7 @@
                             <div class="modal_content modal-footer">
                                 <div class="float-end mt-4 lastbtn">
                                     <button type="button" class="reset me-2" (click)="resetFilter(); modal.close('Save click')">Reset</button>
-                                    <button type="button" class="apply border-outline-danger me-4" (click)="addFilter(); modal.close('Save click')">Apply</button>
+                                    <button type="button" class="apply border-outline-danger" (click)="addFilter(); modal.close('Save click')">Apply</button>
                                 </div>
                             </div>
                         </ng-template>
