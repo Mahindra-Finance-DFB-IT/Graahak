@@ -150,9 +150,6 @@
     float: right !important;
     cursor: pointer;
 }
-.margin_bottom_5 {
-    margin-bottom: 5px;
-}
 b {
     font-family: 'Lato';
     font-style: normal;
@@ -245,7 +242,10 @@ button.btn.btn-outline-dark {
     background: white;
 }
 .form-check-input{
-    background-color: #E31B36;
+    background-color: #fff;
+}
+.form-check-input:checked {
+    background-color: #E31B36 !important;
 }
 label{
     /* font-family: 'Akkurat'; */
@@ -275,6 +275,7 @@ label{
     border-radius: 3px;   
     border: 1px solid #EB1935;
     color: #EB1935;
+    background-color: #fff;
 }
 .apply{
     padding: 10px 50px; 
@@ -321,6 +322,9 @@ label{
     span.icon {
         padding: 11px 0;
     }
+    .margin_bottom_5 {
+        margin-bottom: 5px;
+    }
    
     /* .serach_icon .icon {
         width: 16px;
@@ -362,6 +366,10 @@ label{
         width: 90px !important;
     }
     .display_flex.margin_3 {
-        padding-bottom: 15px;
+        /* padding-bottom: 15px; */
+        margin: 20px 0px;
+    }
+    .margin_bottom_5 {
+        margin-bottom: 15px;
     }
 }

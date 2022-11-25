@@ -11,7 +11,7 @@ import { AppData } from '../models/app';
 import { AuthService } from '../service/auth.service';
 import { LoaderComponent } from '../loader/loader.component';
 import { LogoutComponent } from '../logout.component';
-import { SchemeModel } from '../_models/app';
+import { SchemeModel, LoginType } from '../_models/app';
 
 @Component({
   selector: 'scheme-list',
@@ -98,11 +98,16 @@ export class SchemeListComponent implements OnInit {
     }
     var sessionData = this.authService.getData();
     var obj = {
-      'posid': sessionData?.salesExecutive?.posId,
+      'posid': (sessionData?.loginType == LoginType.SALESEXECUTIVE) ? sessionData?.salesExecutive?.posId : '',
     };
     this.apiService.dcg(obj, token).subscribe((data: any) => {
       loaderRef.close();
       if (data.length > 0) {
+        if (sessionData?.loginType == LoginType.SMRSM) {
+          data.forEach((value: any) => {
+            value.pname = '';
+          });
+        }
         this.data = data;
         this.schemeData = data;
         console.log(this.data.length);

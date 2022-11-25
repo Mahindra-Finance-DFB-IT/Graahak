@@ -14,6 +14,7 @@ import { ApiService } from '../service/api.service';
 import { LoaderComponent } from '../loader/loader.component';
 import { debounceTime, Subject } from 'rxjs';
 import * as Forge from 'node-forge';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-login',
@@ -112,6 +113,7 @@ export class LoginComponent implements OnInit  {
                 private apiService:ApiService,
                 private router: Router,
                 private authService: AuthService,
+                private appComponent: AppComponent,
                 private store: Store<{ appItem: AppData }>) {}
 
     get loginFormControl() {
@@ -120,6 +122,7 @@ export class LoginComponent implements OnInit  {
     
     onSubmit() {
       //console.log(this.loginForm)
+      this.appComponent.isAdmin = false;
       this.submitted = true;
       if(this.loginForm.valid){
         this.login = <Login> this.loginForm.value;

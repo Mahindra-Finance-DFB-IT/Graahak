@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import { ApiService } from '../service/api.service';
-import { AppData } from '../models/app';
+import { AppData, LoginType } from '../models/app';
 import { LoaderComponent } from '../loader/loader.component';
 import { AuthService } from '../service/auth.service';
 
@@ -57,7 +57,7 @@ export class SchemeDetailComponent implements OnInit {
     }
     var sessionData = this.authService.getData();
     var obj = {
-      'posid': sessionData?.salesExecutive?.posId,
+      'posid': (sessionData?.loginType == LoginType.SALESEXECUTIVE) ? sessionData?.salesExecutive?.posId : '',
       'id': id
     };
     this.apiService.dcgById(obj, token).subscribe((data: any) => {
