@@ -178,6 +178,7 @@ export class SchemeListComponent implements OnInit {
       });
       arr = arr2;
     }
+    console.log(arr);
     if (type == 'advanceEmi') {
       if (this.advanceEmi) {
         for (let i = 0; i < arr.length; i++) {
