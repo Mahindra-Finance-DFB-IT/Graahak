@@ -120,15 +120,15 @@ export class SchemeDetailComponent implements OnInit {
       var dbd = dbdrate * amtamount;
       var distributed_delerto_mmfsl = amtamount-(dbd + processing_fee + advanceEmi);
       this.formula = {
-        emiAmount: emiAmount,
-        remaningemi: remaningemi,
-        advance_emi: advanceEmi,
-        totalOfInterest: totalOfInterest,
-        amountPaidBy: transactionPayment,
-        totalInterest: totalInterest,
+        emiAmount: emiAmount.toFixed(2),
+        remaningemi: remaningemi.toFixed(2),
+        advance_emi: advanceEmi.toFixed(2),
+        totalOfInterest: totalOfInterest.toFixed(2),
+        amountPaidBy: transactionPayment.toFixed(2),
+        totalInterest: totalInterest.toFixed(2),
         net_Cost_Custmer: net_Cost_Custmer,
-        dbd: dbd,
-        distributed_delerto_mmfsl: distributed_delerto_mmfsl
+        dbd: dbd.toFixed(2),
+        distributed_delerto_mmfsl: distributed_delerto_mmfsl.toFixed(2)
       };
     }
   }
