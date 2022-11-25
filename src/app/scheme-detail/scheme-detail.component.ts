@@ -121,7 +121,7 @@ export class SchemeDetailComponent implements OnInit {
       var distributed_delerto_mmfsl = amtamount-(dbd + processing_fee + advanceEmi);
       this.formula = {
         emiAmount: emiAmount.toFixed(2),
-        remaningemi: remaningemi.toFixed(2),
+        remaningemi: remaningemi,
         advance_emi: advanceEmi,
         totalOfInterest: totalOfInterest.toFixed(2),
         amountPaidBy: transactionPayment.toFixed(2),
