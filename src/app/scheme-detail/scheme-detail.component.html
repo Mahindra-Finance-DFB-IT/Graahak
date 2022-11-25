@@ -61,7 +61,7 @@
                             </div>
                             <div class="row_container">
                                 <div class="row_label"> Status</div>
-                                <div class="row-value-status float-end"><b>{{mydata.status}} </b></div>
+                                <div class="row-value-status float-end" [ngStyle]="{'color':mydata.status==0? 'red':'#00D43B'}" ><b>{{mydata.status == 0 ? 'INACTIVE':'ACTIVE'}} </b></div>
                             </div> <br>
                             <p style="font-weight: bold; font-size: 1.1rem;">Transaction Summary for Customer</p>
                             <div class="row_container">
