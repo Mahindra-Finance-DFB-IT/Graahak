@@ -122,7 +122,7 @@ export class SchemeDetailComponent implements OnInit {
       this.formula = {
         emiAmount: emiAmount.toFixed(2),
         remaningemi: remaningemi.toFixed(2),
-        advance_emi: advanceEmi.toFixed(2),
+        advance_emi: advanceEmi,
         totalOfInterest: totalOfInterest.toFixed(2),
         amountPaidBy: transactionPayment.toFixed(2),
         totalInterest: totalInterest.toFixed(2),
