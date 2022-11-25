@@ -38,7 +38,6 @@
 }
 .scheme_input input{
     padding: 10px 10px;
-    border: 1px solid #EB1935;
     border-radius: 5px;
     width: 65%;
 }
@@ -101,6 +100,13 @@
     width: 70%;
 }
 .row_value.float-end {
+    float: none !important;
+    width: 30%;
+    text-align: right;
+    word-break: break-word;
+}
+.row-value-status.float-end{
+    color: #00D43B;
     float: none !important;
     width: 30%;
     text-align: right;

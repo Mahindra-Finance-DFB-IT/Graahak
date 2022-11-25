@@ -8,7 +8,7 @@
             <button class="scheme_id float-end mt-3">ID: {{mydata.scheme_id}}</button>
         </div>
         <div class="scheme_input floating-label">
-            <input [(ngModel)]="schemeAmount" type="number" placeholder="₹"
+            <input [ngStyle]="{'border-color':isrange==true? 'red':'black'}" [(ngModel)]="schemeAmount" type="number" placeholder="₹"
                 class="form-control ng-pristine ng-invalid ng-touched" #amtamount>
             <label for="sapId">Transaction Amount</label>
             <small class="invalid-feedback"> SAP ID is required </small>
@@ -25,7 +25,7 @@
 <div *ngIf="isShowDivIf" >
     <div class="container" *ngFor="let mydata of data">
         <div class="row">
-            <div class="col-sm-1"></div>
+            <!-- <div class="col-sm-1"></div> -->
             <div class="col-sm-10">
                 <div class="row gx-1 mobile_row">
                     <div class="col box2 g-5">
@@ -61,7 +61,7 @@
                             </div>
                             <div class="row_container">
                                 <div class="row_label"> Status</div>
-                                <div class="row_value float-end"><b>{{mydata.status}} </b></div>
+                                <div class="row-value-status float-end"><b>{{mydata.status}} </b></div>
                             </div> <br>
                             <p style="font-weight: bold; font-size: 1.1rem;">Transaction Summary for Customer</p>
                             <div class="row_container">
@@ -77,7 +77,7 @@
                                 <div class="row_value float-end"><b>₹{{mydata.processing_fee}}</b></div>
                             </div>
                             <div class="row_container">
-                                <div class="row_label">Total Payment white transaction</div>
+                                <div class="row_label">Total Payment while transaction</div>
                                 <div class="row_value float-end"><b>₹{{formula.amountPaidBy}}</b></div>
                             </div>
                         </div>

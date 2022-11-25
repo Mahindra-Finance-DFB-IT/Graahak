@@ -242,6 +242,7 @@ button.btn.btn-outline-dark {
 }
 .canclebttn{
     border: none;
+    background: white;
 }
 .form-check-input{
     background-color: #E31B36;
@@ -359,5 +360,8 @@ label{
     }
     .dropdown-for {
         width: 90px !important;
+    }
+    .display_flex.margin_3 {
+        padding-bottom: 15px;
     }
 }
