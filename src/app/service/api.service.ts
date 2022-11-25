@@ -92,12 +92,14 @@ export class ApiService{
         let newHeaders = {...this.headers,"Authorization":"Bearer "+token} 
         return this.http.get(url,{headers:newHeaders})
     }
-    dcg(data: any, token:String) {
+
+    getSchemes(data: any, token:String) {
         const url = environment.apiHostName+"customer_details/getSchemes";
         let newHeaders = {...this.headers,"Authorization":"Bearer "+token} 
         return this.http.post(url,data,{headers:newHeaders});
     }
-    dcgById(data:any, token:String) {
+    
+    getSchemeDetail(data:any, token:String) {
         const url = environment.apiHostName+"customer_details/getSchemeDetail";
         let newHeaders = {...this.headers,"Authorization":"Bearer "+token} 
         return this.http.post(url,data,{headers:newHeaders});

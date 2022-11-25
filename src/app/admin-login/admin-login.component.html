@@ -2,69 +2,31 @@
     <div class="login-area">
         <h3 class="mb-4">Login</h3>
         <div class="login-box">
-               <!-- <div *ngIf="this.error" class="alert alert-danger d-flex align-items-center mb-2" role="alert">
-                <div *ngIf="errorObj.error">{{errorObj.error}}</div>
-                <div *ngFor="let err of errorObj.errors">{{err}}</div>
-            </div> -->
-            <ngb-alert class="mt-1" #selfClosingErrorAlert *ngIf="invalidMessage" type="danger" (closed)="invalidMessage = ''">{{ invalidMessage }}
-            </ngb-alert>
+            <ngb-alert class="mt-1" #selfClosingErrorAlert *ngIf="invalidMessage" type="danger" (closed)="invalidMessage = ''">{{ invalidMessage }}</ngb-alert>
             <form [formGroup]="loginForm" novalidate>
-                    <div class="form-group floating-label">
-                        <input placeholder="SAP Id" class="form-control"
-                        
-                            id="sapId" type="text" formControlName="sapId" />
-                        <label for="sapId">SAP Id</label>
-                        <small class="invalid-feedback"
-                            >
-                            SAP ID is required
-                        </small>
-                    </div>
-                    <!-- <div class="form-group ">
-                        <div class="input-group">
-                            <div class="floating-label">
-                                <input placeholder="Password" class="form-control border-r-none"
-                                  
-                                    id="passWord" 
-                                    formControlName="password" />
-                                <label for="passWord">Password</label>
-                            </div>
-                            <span class="input-group-text password-eye"
-                                
-                                id="basic-addon1">
-                                <i class="bi" 
-                                  ></i>
-                            </span>
+                <div class="form-group floating-label">
+                    <input placeholder="SAP Id" class="form-control" id="sapId" type="text" formControlName="sapId" />
+                    <label for="sapId">SAP Id</label>
+                    <small class="invalid-feedback">SAP ID is required</small>
+                </div>
+                <div class="form-group ">
+                    <div class="input-group">
+                        <div class="floating-label">
+                            <input placeholder="Password"  class="form-control border-r-none"   id="passWord" [type]="(showPassword)?'text':'password'" formControlName="password"/>
+                            <label for="passWord">Password</label>
                         </div>
-                        <small class="invalid-feedback"
-                           >
-                            Password is required
-                        </small>
-                    </div> -->
-                
-
-                    <div class="form-group ">
-                        <div class="input-group">
-                            <div class="floating-label">
-                                <input placeholder="Password"  class="form-control border-r-none"   id="passWord" [type]="(showPassword)?'text':'password'" formControlName="password"/>
-                                <label for="passWord">Password</label>
-                            </div>
-                            <span class="input-group-text password-eye"  id="basic-addon1">
-                                <i class="bi" [ngClass]="(showPassword)?'bi-eye-fill':'bi-eye-slash'" (click)="toggleShowPassword()"></i>
-                            </span>
-                        </div>    
-                      <small class="invalid-feedback">
-                          Password is required
-                      </small>
-                  </div>
-
+                        <span class="input-group-text password-eye"  id="basic-addon1">
+                            <i class="bi" [ngClass]="(showPassword)?'bi-eye-fill':'bi-eye-slash'" (click)="toggleShowPassword()"></i>
+                        </span>
+                    </div>    
+                    <small class="invalid-feedback">
+                        Password is required
+                    </small>
+                </div>
                 <div class="d-grid gap-2">
-
-                    <button class="btn btn-primary btn-block login-btn-mf" type="submit" (click)="onSubmit()"
-                        >Login</button>
+                    <button class="btn btn-primary btn-block login-btn-mf" type="submit" (click)="onSubmit()">Login</button>
                 </div>
             </form>
         </div>
-
     </div>
 </div>
-

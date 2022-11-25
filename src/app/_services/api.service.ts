@@ -83,12 +83,6 @@ export class ApiService{
         let newHeaders = {...this.headers,"Authorization":"Bearer "+token} 
         return this.http.get(url,{headers:newHeaders})
     }
-    getSchemeData(token:String){
-        const url = environment.apiHostName+"api/excel/tutorials";
-        let newHeaders = {...this.headers,"Authorization":"Bearer "+token} 
-        return this.http.get(url,{headers:newHeaders})
-    }
- 
     add(login: Login) {
         const url = environment.apiHostName+"schemeMasterRoutes/scheme-master";
         let executive: any = login.salesExecutive;

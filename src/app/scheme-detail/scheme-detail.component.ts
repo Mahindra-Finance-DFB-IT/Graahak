@@ -60,7 +60,7 @@ export class SchemeDetailComponent implements OnInit {
       'posid': (sessionData?.loginType == LoginType.SALESEXECUTIVE) ? sessionData?.salesExecutive?.posId : '',
       'id': id
     };
-    this.apiService.dcgById(obj, token).subscribe((data: any) => {
+    this.apiService.getSchemeDetail(obj, token).subscribe((data: any) => {
       loaderRef.close();
       this.data = data;
     }, (error: any) => console.error(error));

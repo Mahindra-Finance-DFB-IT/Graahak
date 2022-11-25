@@ -100,7 +100,7 @@ export class SchemeListComponent implements OnInit {
     var obj = {
       'posid': (sessionData?.loginType == LoginType.SALESEXECUTIVE) ? sessionData?.salesExecutive?.posId : '',
     };
-    this.apiService.dcg(obj, token).subscribe((data: any) => {
+    this.apiService.getSchemes(obj, token).subscribe((data: any) => {
       loaderRef.close();
       if (data.length > 0) {
         if (sessionData?.loginType == LoginType.SMRSM) {
