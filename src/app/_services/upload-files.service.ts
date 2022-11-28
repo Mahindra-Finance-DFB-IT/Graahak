@@ -15,7 +15,7 @@ export class UploadFilesService {
     formData.append('file', file);
     const req = new HttpRequest('POST', `${this.baseUrl}dcg/uploaddcg`, formData, {
       headers: new HttpHeaders({
-        "Authorization": "Bearer" + token
+        "Authorization": "Bearer "+token
       }),
       reportProgress: true,
       responseType: 'json'
@@ -29,7 +29,7 @@ export class UploadFilesService {
     formData.append('file', file,);
     const req = new HttpRequest('POST', `${this.baseUrl}pcg/uploadpcg`, formData, {
       headers: new HttpHeaders({
-        "Authorization": "Bearer" + token
+        "Authorization": "Bearer "+token
       }),
       reportProgress: true,
       responseType: 'json'
@@ -42,7 +42,7 @@ export class UploadFilesService {
     formData.append('file', file,);
     const req = new HttpRequest('POST', `${this.baseUrl}schemeMasterRoutes/uploadms`, formData, {
       headers: new HttpHeaders({
-        "Authorization": "Bearer" + token
+        "Authorization": "Bearer "+token
       }),
       reportProgress: true,
       responseType: 'json'
