@@ -12,6 +12,8 @@ import { LoaderComponent } from '../loader/loader.component';
 import { ApiService } from '../service/api.service';
 import { Store } from '@ngrx/store';
 import { AppData } from 'src/app/models/app';
+import { AuthService } from '../service/auth.service';
+import { LogoutComponent } from '../logout.component';
 @Component({
   selector: 'app-file-upload',
   templateUrl: './file-upload.component.html',
@@ -34,6 +36,7 @@ export class FileUploadComponent implements OnInit {
   private _error = new Subject<string>();
   messageTimeOutInSeconds = 10000;
   constructor(private uploadService: UploadFilesService,
+  private authService: AuthService,
   public router: Router,
   public apiService: ApiService,
   private modalService: NgbModal,
@@ -46,140 +49,168 @@ export class FileUploadComponent implements OnInit {
    }
 
   ngOnInit(): void {
-  this.selectedFileType = 'master';    
+    this.selectedFileType = 'master';    
   }
 
   setMessage(msg: string, type: string) {
-  type == 'success' ? this.validMessage = msg : this.invalidMessage = msg;
-  setTimeout(()=>{                  
-    this.invalidMessage = '';
-    this.validMessage = '';
-  }, 3000);
+    type == 'success' ? this.validMessage = msg : this.invalidMessage = msg;
+    setTimeout(()=>{                  
+      this.invalidMessage = '';
+      this.validMessage = '';
+    }, 3000);
   }
 
 
   uploadMaster(): void {
-  const loaderRef = this.modalService.open(LoaderComponent,{
-    centered: true,
-    animation:true,
-    backdrop:'static',
-    keyboard: false,
-    windowClass:"remove-bg-modal",
-    size:"sm",
-  });
-  let token:String = '';
-  if (this.appData.token) {
-    token = this.appData.token;
-  }
-   
-  if (this.selectedFiles ) {
-    const file: File | null = this.selectedFiles.item(0);
-    if (file) {
-    this.currentFile = file;
-    this.uploadService.uploadMasterFile(this.currentFile,token).subscribe((data:any) => {
-      if (data && data?.body && data?.body?.res == 'success') {
-      loaderRef.close();
-      this.setMessage('File uploaded successfully', 'success');
-      }
-    }, (err: any) => {
-      loaderRef.close();
-      if (err.error && err.error.message) {
-      this.setMessage('Uploading failed! Please try again', 'error');
-      } else {
-      this.setMessage('Uploading failed! Please try again', 'error');
-      }
-      this.currentFile = undefined;
+    const loaderRef = this.modalService.open(LoaderComponent,{
+      centered: true,
+      animation:true,
+      backdrop:'static',
+      keyboard: false,
+      windowClass:"remove-bg-modal",
+      size:"sm",
     });
+    let token:String = '';
+    if (this.appData.token) {
+      token = this.appData.token;
     }
-    else{
+    
+    if (this.selectedFiles ) {
+      const file: File | null = this.selectedFiles.item(0);
+      if (file) {
+        this.currentFile = file;
+        this.uploadService.uploadMasterFile(this.currentFile,token).subscribe((data:any) => {
+          if (data && data?.body && data?.body?.res == 'success') {
+          loaderRef.close();
+          this.setMessage('File uploaded successfully', 'success');
+          }
+        }, (err: any) => {
+          loaderRef.close();
+          this.currentFile = undefined;
+          if (err.status == 401) {
+            this.doLogOut();
+          } else {
+            if (err.error && err.error.message) {
+              this.setMessage('Uploading failed! Please try again', 'error');
+            } else {
+              this.setMessage('Uploading failed! Please try again', 'error');
+            }
+          }
+        });
+      }
+      else{
+        loaderRef.close();
+        this.resetFile()
+      }
+    } else {
       loaderRef.close();
-      this.resetFile()
     }
-  } else {
-    loaderRef.close();
   }
+
+  doLogOut() {
+    const modalRef =  this.modalService.open(LogoutComponent,{
+      centered: true,
+      animation:true,
+      backdrop:'static',
+      keyboard: false,
+      size:"sm",
+    })
+    modalRef.closed.subscribe(_d=>{
+      // console.log(err);
+      this.authService.logout();
+      this.router.navigate(['/admin-login']);
+      // return res(false);
+    });
   }
   
   uploadDcg(): void {
-  const loaderRef = this.modalService.open(LoaderComponent,{
-    centered: true,
-    animation:true,
-    backdrop:'static',
-    keyboard: false,
-    windowClass:"remove-bg-modal",
-    size:"sm",
-  });
-  let token:String = '';
-  if(this.appData.token){
-    token = this.appData.token;
-  }
-  if (this.selectedFiles) {
-    const file: File | null = this.selectedFiles.item(0);
-    if (file) {
-    this.currentFile = file;
-    this.uploadService.uploadDcgFile(this.currentFile,token).subscribe((data:any)=> {
-      if (data && data?.body && data?.body?.res == 'success') {
-      loaderRef.close();
-      this.setMessage('File uploaded successfully', 'success');
-      }
-    }, (err: any) => {
-      loaderRef.close();
-      if (err.error && err.error.message) {
-      this.setMessage('Uploading failed! Please try again', 'error');
-      } else {
-      this.setMessage('Uploading failed! Please try again', 'error');
-      }
-      this.currentFile = undefined;
+    const loaderRef = this.modalService.open(LoaderComponent,{
+      centered: true,
+      animation:true,
+      backdrop:'static',
+      keyboard: false,
+      windowClass:"remove-bg-modal",
+      size:"sm",
     });
+    let token:String = '';
+    if(this.appData.token){
+      token = this.appData.token;
     }
-    else{
+    if (this.selectedFiles) {
+      const file: File | null = this.selectedFiles.item(0);
+      if (file) {
+        this.currentFile = file;
+        this.uploadService.uploadDcgFile(this.currentFile,token).subscribe((data:any)=> {
+          if (data && data?.body && data?.body?.res == 'success') {
+          loaderRef.close();
+          this.setMessage('File uploaded successfully', 'success');
+          }
+        }, (err: any) => {
+          loaderRef.close();
+          this.currentFile = undefined;
+          if (err.status == 401) {
+            this.doLogOut();
+          } else {
+            if (err.error && err.error.message) {
+              this.setMessage('Uploading failed! Please try again', 'error');
+            } else {
+              this.setMessage('Uploading failed! Please try again', 'error');
+            }
+          }
+        });
+      }
+      else{
+        loaderRef.close();
+        this.resetFile()
+      }
+    } else {
       loaderRef.close();
-      this.resetFile()
     }
-  } else {
-    loaderRef.close();
-  }
   }
 
   uploadPcg(): void {
-  const loaderRef = this.modalService.open(LoaderComponent,{
-    centered: true,
-    animation:true,
-    backdrop:'static',
-    keyboard: false,
-    windowClass:"remove-bg-modal",
-    size:"sm",
-  });
-  let token:String = '';
-  if(this.appData.token){
-    token = this.appData.token;
-  }
-  if (this.selectedFiles) {
-    const file: File | null = this.selectedFiles.item(0);
-    if (file) {
-    this.currentFile = file;
-    this.uploadService.uploadPcgFile(this.currentFile,token).subscribe((data:any) => {
-      if (data && data?.body && data?.body?.res == 'success') {
-      loaderRef.close();
-      this.setMessage('File uploaded successfully', 'success');
-      }
-    }, (err: any) => {
-      loaderRef.close();
-      if (err.error && err.error.message) {
-      this.setMessage('Uploading failed! Please try again', 'error');
-      } else {
-      this.setMessage('Uploading failed! Please try again', 'error');
-      }
+    const loaderRef = this.modalService.open(LoaderComponent,{
+      centered: true,
+      animation:true,
+      backdrop:'static',
+      keyboard: false,
+      windowClass:"remove-bg-modal",
+      size:"sm",
     });
-    this.currentFile = undefined;
+    let token:String = '';
+    if(this.appData.token){
+      token = this.appData.token;
     }
-    else{
+    if (this.selectedFiles) {
+      const file: File | null = this.selectedFiles.item(0);
+      if (file) {
+        this.currentFile = file;
+        this.uploadService.uploadPcgFile(this.currentFile,token).subscribe((data:any) => {
+          if (data && data?.body && data?.body?.res == 'success') {
+          loaderRef.close();
+          this.setMessage('File uploaded successfully', 'success');
+          }
+        }, (err: any) => {
+          loaderRef.close();
+          this.currentFile = undefined;
+          if (err.status == 401) {
+            this.doLogOut();
+          } else {
+            if (err.error && err.error.message) {
+              this.setMessage('Uploading failed! Please try again', 'error');
+            } else {
+              this.setMessage('Uploading failed! Please try again', 'error');
+            }
+          }
+        });
+      }
+      else{
+        loaderRef.close();
+        this.resetFile()
+      }
+    } else {
       loaderRef.close();
-      this.resetFile()
     }
-  } else {
-    loaderRef.close();
-  }
   }
 
   sumbitFile() {
