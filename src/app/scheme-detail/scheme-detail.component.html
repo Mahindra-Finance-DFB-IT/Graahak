@@ -2,10 +2,11 @@
     <a routerLink="/scheme_list"><i class="bi bi-chevron-left arrow-red"></i> Back to Search</a>
 </div>
 <div class="container">
+    <h3>Estimated Transaction Summary</h3>
     <div class="box col col-sm mx-auto" *ngFor="let mydata of data">
         <div class="scheme_header">
             <label class="scheme_name mt-3"> {{mydata.oem}}</label>
-            <button class="scheme_id float-end mt-3">ID: {{mydata.scheme_id}}</button>
+            <button class="scheme_id float-end mt-3">Scheme ID: {{mydata.scheme_id}}</button>
         </div>
         <div class="scheme_input floating-label">
             <input [ngStyle]="{'border-color':isrange==true? 'red':'black'}" [(ngModel)]="schemeAmount" type="number" placeholder="₹"
@@ -15,7 +16,7 @@
             <button type="submit" id="amtamount" name="amtamount" class="btn" (click)="validateDetails(amtamount.value)" [ngClass]="schemeAmount ? '' : 'disabled'">Get Details</button>
         </div>
         <div class="scheme_range">
-            <label class="lastText">Range: ₹{{mydata.min_amount}} to ₹{{mydata.max_amount}}</label>
+            <label class="lastText">Scheme Min-Max: ₹{{mydata.min_amount}} to ₹{{mydata.max_amount}}</label>
         </div>
     </div>
     <div class="invalid_amount_alert" *ngIf="isrange">
@@ -44,11 +45,11 @@
                                 <div class="row_value float-end"><b>{{formula.remaningemi}}</b></div>
                             </div>
                             <div class="row_container">
-                                <div class="row_label">Range</div>
+                                <div class="row_label">Scheme Min-Max</div>
                                 <div class="row_value float-end"><b>₹{{mydata.min_amount}} to ₹{{mydata.max_amount}}</b></div>
                             </div>
                             <div class="row_container">
-                                <div class="row_label">Type</div>
+                                <div class="row_label">OEM Name</div>
                                 <div class="row_value float-end"><b>{{mydata.oem}}</b></div>
                             </div>
                             <div class="row_container">
@@ -63,7 +64,12 @@
                                 <div class="row_label"> Status</div>
                                 <div class="row-value-status float-end" [ngStyle]="{'color':mydata.status==0? 'red':'#00D43B'}" ><b>{{mydata.status == 0 ? 'INACTIVE':'ACTIVE'}} </b></div>
                             </div> <br>
-                            <p style="font-weight: bold; font-size: 1.1rem;">Transaction Summary for Customer</p>
+                            <h5 class="mb-3">Transaction Summary for Customer</h5>
+                            <!-- <p style="font-weight: bold; font-size: 1.1rem;">Transaction Summary for Customer</p> -->
+                            <div class="row_container">
+                                <div class="row_label"> Transaction Amount</div>
+                                <div class="row_value float-end"><b>₹{{schemeAmount}} </b></div>
+                            </div>
                             <div class="row_container">
                                 <div class="row_label"> EMI Amount</div>
                                 <div class="row_value float-end"><b>₹{{formula.emiAmount}} </b></div>
@@ -106,7 +112,8 @@
                                 <div class="row_label">Net Cost to Customer</div>
                                 <div class="row_value float-end"><b>₹{{formula.net_Cost_Custmer}}</b></div>
                             </div> <br>
-                            <p style="font-weight: bold; font-size: 1.3rem;">Transaction Summary to Dealer</p>
+                            <h5 class="mb-3">Transaction Summary to Dealer</h5>
+                            <!-- <p style="font-weight: bold; font-size: 1.3rem;">Transaction Summary to Dealer</p> -->
                             <div class="row_container">
                                 <div class="row_label">Processing fee</div>
                                 <div class="row_value float-end"><b>₹{{mydata.processing_fee}}</b></div>
@@ -132,7 +139,7 @@
                 </div>
                 <div class="disclaimer">
                     <b>Disclaimer:</b> This calculator is meant for usage only by authorized representative of Mahindra and Mahindra Financial Services Ltd. and is strictly confidential.
-                    <br/><br>The values mentioned above are approximate. The final amount(s) may vary slightly from the same.
+                    <br/><br>The values mentioned above are approximate. The final amount(s) may vary from the same.
                     <br/><br>Mahindra and Mahindra Financial Services Ltd. reserves the right to modify or close these schemes without notice and based on its sole discretion.
                 </div>
                 <br>

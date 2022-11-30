@@ -24,7 +24,7 @@
     border-radius: 180px;
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 14px;
     padding: 5px 10px;
     line-height: 16px;
     color: #000000;
@@ -152,6 +152,6 @@ h5 {
 
 @media only screen and (max-width: 420px) {
     .no_margin {
-        padding: 0px;
+        padding: 0px !important;
     } 
 }

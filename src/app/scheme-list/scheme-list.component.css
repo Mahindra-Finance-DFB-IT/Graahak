@@ -335,7 +335,7 @@ label{
         height: 16px;
     } */
 }
-@media only screen and (max-width: 420px) {
+@media only screen and (max-width: 767px) {
     .searchBox {
         width: calc(100% - 20px);
     }
@@ -353,11 +353,11 @@ label{
     }
     .search_container .search {
         padding: 0px 5px 0px 5px;
-        font-size: 12px;
+        font-size: 14px;
     }
     .tenure_container {
         width: 45%;
-        font-size: 12px;
+        font-size: 14px;
         padding-right: 0px;
     }
     .tenure_container .float-end {
@@ -375,5 +375,13 @@ label{
     }
     .margin_bottom_5 {
         margin-bottom: 15px;
+    }
+}
+@media only screen and (max-width: 420px) {
+    .search_container .search {
+        font-size: 12px;
+    }
+    .tenure_container {
+        font-size: 12px;
     }
 }
