@@ -1,16 +1,15 @@
 .box {
-    padding: 0px 15px 15px;
+    padding: 0px 15px 1px 15px;
     box-shadow: 0px 5px 18px rgba(0, 0, 0, 0.14);
     border-radius: 8px;
     width: 100%;
-    height: 154px;
+    /* height: 154px; */
     margin: 15px;
     background: #FFFFFF;
 }
 .scheme_header {
     display: inline-table;
     width: 100%;
-    margin-bottom: 15px;
 }
 .scheme_header .scheme_name{
     font-style: normal;
@@ -29,12 +28,19 @@
     line-height: 16px;
     color: #000000;
 }
+.search_text {
+    font-size: 11px;
+    color: #000;
+    opacity: 0.5;
+    margin-top: 5px;
+}
 .mt-6 {
     padding-top: 11px;
 }
 .scheme_input {
     display: flex;
     vertical-align: middle;
+    margin-top: 15px;
 }
 .scheme_input input{
     padding: 10px 10px;
@@ -153,5 +159,8 @@ h5 {
 @media only screen and (max-width: 420px) {
     .no_margin {
         padding: 0px !important;
-    } 
+    }
+    .container h3 {
+        font-size: 20px;
+    }
 }

@@ -8,6 +8,7 @@
             <label class="scheme_name mt-3"> {{mydata.oem}}</label>
             <button class="scheme_id float-end mt-3">Scheme ID: {{mydata.scheme_id}}</button>
         </div>
+        <div *ngIf="authService.searchText" class="search_text">Search for: {{authService.searchText}}</div>
         <div class="scheme_input floating-label">
             <input [ngStyle]="{'border-color':isrange==true? 'red':'black'}" [(ngModel)]="schemeAmount" type="number" placeholder="₹"
                 class="form-control ng-pristine ng-invalid ng-touched" #amtamount>

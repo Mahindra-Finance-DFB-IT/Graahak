@@ -10,6 +10,7 @@ export class AuthService {
 
   isLoggedIn = false;
   userPosId: any;
+  searchText: string;
   key:string = "___mahifin_storage";
 
   constructor(private localStorageService:LocalStorageService) { }

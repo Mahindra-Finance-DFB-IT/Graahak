@@ -29,7 +29,7 @@ export class SchemeDetailComponent implements OnInit {
     public router: ActivatedRoute,
     private modalService: NgbModal,
     public route: Router,
-    private authService: AuthService,
+    public authService: AuthService,
     private store:Store<{appItem: AppData }>
   ) {
     this.appData$ = store.select('appItem');

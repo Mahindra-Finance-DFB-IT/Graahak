@@ -31,7 +31,7 @@ export class SchemeListComponent implements OnInit {
   isCashBackApplied:boolean = false;
   data: Array<SchemeModel>;
   errMsg: string;
-  searchText: string = '';
+  // searchText: string = '';
   advanceEmi: any;
   schemeData: Array<SchemeModel> = [];
 
@@ -50,6 +50,7 @@ export class SchemeListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.authService.searchText = '';
     this.fetchSchemeList();
   }
 
@@ -103,11 +104,11 @@ export class SchemeListComponent implements OnInit {
     this.apiService.getSchemes(obj, token).subscribe((data: any) => {
       loaderRef.close();
       if (data.length > 0) {
-        if (sessionData?.loginType == LoginType.SMRSM) {
-          data.forEach((value: any) => {
-            value.pname = '';
-          });
-        }
+        // if (sessionData?.loginType == LoginType.SMRSM) {
+        //   data.forEach((value: any) => {
+        //     value.pname = '';
+        //   });
+        // }
         this.data = data;
         this.schemeData = data;
         console.log(this.data.length);
@@ -148,10 +149,10 @@ export class SchemeListComponent implements OnInit {
   }
 
   searchData(data: any) {
-    var searchStr = data.target.value;
+    this.authService.searchText = data.target.value;
     var newarr = this.selectedTenure.split('-');
-    console.log(searchStr.toLowerCase());
-    this.mapSchemeData(newarr, this.schemeData, 'text', searchStr.toLowerCase());
+    // console.log(this.authService.searchText.toLowerCase());
+    this.mapSchemeData(newarr, this.schemeData, 'text', this.authService.searchText.toLowerCase());
   }
 
   mapSchemeData(newarr:any, data: any, type: string, searchStr: string) {
