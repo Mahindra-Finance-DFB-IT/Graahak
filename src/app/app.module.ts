@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule ,CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -27,7 +27,6 @@ import { RupeeSignPipe } from './customer/customerdetails/rupee_sign.pipe';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
 // import {MatNativeDateModule} from '@angular/material/core';
-
 import { SchemeListComponent } from './scheme-list/scheme-list.component';
 import { SchemeDetailComponent } from './scheme-detail/scheme-detail.component';
 import { FormsModule } from '@angular/forms';
@@ -35,6 +34,17 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { UploadDataComponent } from './upload-data/upload-data.component';
+import { CommonModule } from '@angular/common';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { ViewRecordComponent } from './view-record/view-record.component';
+const materialModules = [
+  MatTableModule,
+  MatPaginatorModule,
+  MatSortModule
+];
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,9 +63,16 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     AdminLoginComponent,
     FileUploadComponent,
     SchemeListComponent,
-    SchemeDetailComponent
+    SchemeDetailComponent,
+    UploadDataComponent,
+    ViewRecordComponent
   ],
-  imports: [  
+  exports: [
+    ...materialModules
+  ],
+  imports: [ 
+    CommonModule,
+    ...materialModules, 
     MatButtonModule,
     BrowserAnimationsModule,
     MatButtonToggleModule,
@@ -78,7 +95,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     AuthService,
     AuthGuard
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-
 export class AppModule { }
