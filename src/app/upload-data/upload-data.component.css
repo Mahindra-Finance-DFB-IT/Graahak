@@ -1,0 +1,23 @@
+.checkbox input{
+    display: none;
+}
+.checkbox input:checked + label{
+    color: #FFFFFF;
+    background: #EB1935;
+}
+.checkbox label {
+    border-radius: 38px;
+    padding: 5px 15px;
+    margin-right: 10px;
+    cursor: pointer;
+    font-size: 13px;
+    display: initial;
+    border: 1px solid #E5E5E5;
+}
+.checkbox{
+ 
+    padding-bottom: 18px;
+}
+table {
+    width: 100%;
+  }
