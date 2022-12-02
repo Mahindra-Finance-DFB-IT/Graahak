@@ -23,7 +23,7 @@ export class ViewRecordComponent implements OnInit {
   // searchText: string = '';
   // curDate=Date.now();
   reportData:any = [];
-  selectedFileType: string;
+  // selectedFileType: string;
   public innerWidth: any;
   appData$ :Observable<AppData>;
   appData:AppData = {}
@@ -67,7 +67,7 @@ export class ViewRecordComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.selectedFileType = 'master';  
+    // this.selectedFileType = 'master';  
     this.innerWidth = window.innerWidth;
     this.reportSearchForm.valueChanges.subscribe(data=>{
       this.reportSearchData = {
@@ -88,16 +88,6 @@ export class ViewRecordComponent implements OnInit {
   ngOnDestroy(){
     this.dtTrigger.unsubscribe();
   }
-
-  // loadData(type: string) {
-  //   this.selectedFileType = type;
-  //   this.datatableElement.dtInstance.then((dtInstance: DataTables.Api)=>{
-  //     const options = this.getDTOption(this.innerWidth);
-  //     dtInstance.clear();
-  //     dtInstance.destroy();
-  //     this.dtTrigger.next(options);
-  //   })
-  // }
 
   openSection() {
     this.router.navigateByUrl("/file-upload");
@@ -122,15 +112,14 @@ export class ViewRecordComponent implements OnInit {
     let responsiveTag = {};
     let cols = this._getColumns();
     // var selectedReport: any = this.reportSearchForm.value.selectReport;
-    console.log(cols);
     return {
       //paging: true,
       autoWidth:false,
-      columnDefs: [
-        { responsivePriority: 2, targets: 0 },
-        { responsivePriority: 10001, targets: 4 },
-        { responsivePriority: 0, targets: 0 }
-      ],
+      // columnDefs: [
+      //   { responsivePriority: 2, targets: 0 }
+      //   // { responsivePriority: 10001, targets: 4 },
+      //   // { responsivePriority: 0, targets: 0 }
+      // ],
       language: {
         paginate: {
           first: '<i class="bi bi-chevron-double-right"></i>',
@@ -152,7 +141,7 @@ export class ViewRecordComponent implements OnInit {
             that.reportData = resData.data;
             callback(resData)
           },async (err:any)=>{
-            console.log(err);
+            // console.log(err);
             const logoutModalRef = await this.modalService.open(LogoutComponent,{
               centered: true,
               animation:true,
