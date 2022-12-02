@@ -65,8 +65,7 @@
                                 <div class="row_label"> Status</div>
                                 <div class="row-value-status float-end" [ngStyle]="{'color':mydata.status==0? 'red':'#00D43B'}" ><b>{{mydata.status == 0 ? 'INACTIVE':'ACTIVE'}} </b></div>
                             </div> <br>
-                            <h5 class="mb-3">Transaction Summary for Customer</h5>
-                            <!-- <p style="font-weight: bold; font-size: 1.1rem;">Transaction Summary for Customer</p> -->
+                            <!-- <h5 class="mb-3">Transaction Summary</h5>
                             <div class="row_container">
                                 <div class="row_label"> Transaction Amount</div>
                                 <div class="row_value float-end"><b>₹{{schemeAmount}} </b></div>
@@ -76,31 +75,75 @@
                                 <div class="row_value float-end"><b>₹{{formula.emiAmount}} </b></div>
                             </div>
                             <div class="row_container">
-                                <div class="row_label">Advance EMI Amount</div>
+                                <div class="row_label">Advance EMI to be collected from Customer</div>
                                 <div class="row_value float-end"><b>₹{{formula.advance_emi}} </b></div>
                             </div>
                             <div class="row_container">
-                                <div class="row_label">Processing Fee</div>
+                                <div class="row_label">Processing Fee to be collected from Customer</div>
                                 <div class="row_value float-end"><b>₹{{mydata.processing_fee}}</b></div>
                             </div>
                             <div class="row_container">
-                                <div class="row_label">Total Payment while transaction</div>
+                                <div class="row_label">Amount to be collected from Customer on behalf of MMFSL</div>
                                 <div class="row_value float-end"><b>₹{{formula.amountPaidBy}}</b></div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <div class="col box2">
-                        <h5 class="mb-3">Cost to Customer</h5>
-                        <div>
+                        <h5 class="mb-3">Transaction Summary</h5>
+                        <div class="row_container">
+                            <div class="row_label"> Transaction Amount</div>
+                            <div class="row_value float-end"><b>₹{{schemeAmount}} </b></div>
+                        </div>
+                        <div class="row_container">
+                            <div class="row_label"> EMI Amount</div>
+                            <div class="row_value float-end"><b>₹{{formula.emiAmount}} </b></div>
+                        </div>
+                        <div class="row_container">
+                            <div class="row_label">Advance EMI to be collected from Customer</div>
+                            <div class="row_value float-end"><b>₹{{formula.advance_emi}} </b></div>
+                        </div>
+                        <div class="row_container">
+                            <div class="row_label">Processing Fee to be collected from Customer</div>
+                            <div class="row_value float-end"><b>₹{{mydata.processing_fee}}</b></div>
+                        </div>
+                        <div class="row_container">
+                            <div class="row_label">Amount to be collected from Customer on behalf of MMFSL</div>
+                            <div class="row_value float-end"><b>₹{{formula.amountPaidBy}}</b></div>
+                        </div>
+                        <br/>
+                        <div class="row_container">
+                            <div class="row_label">Total Interest during loan tenure</div>
+                            <div class="row_value float-end"><b>₹{{formula.totalInterest}}</b></div>
+                        </div>
+                        <div class="row_container">
+                            <div class="row_label">Cashback expected</div>
+                            <div *ngIf="mydata?.oem?.toLowerCase() != 'mmfsl'" class="row_value float-end"><b>₹{{formula.totalInterest}}</b></div>
+                            <div *ngIf="mydata?.oem?.toLowerCase() == 'mmfsl'" class="row_value float-end"><b>₹0.00</b></div>
+                        </div>
+                        <div class="row_container">
+                            <div class="row_label">Additional Cashback expected</div>
+                            <div class="row_value float-end"><b>₹ 0.00</b></div>
+                        </div>
+                        <br/>
+                        <div class="row_container">
+                            <div class="row_label">DBD Amount to be paid by dealer to MMFSL</div>
+                            <div class="row_value float-end"><b>₹{{formula.dbd}}</b></div>
+                        </div>
+                        <div class="row_container">
+                            <div class="row_label">Disbursement to dealer by MMFSL</div>
+                            <div class="row_value float-end"><b> ₹{{formula.distributed_delerto_mmfsl}}</b></div>
+                        </div>
+                        <!-- <h5 class="mb-3">Cost to Customer</h5> -->
+                        <!-- <div>
                             <div class="row_container">
                                 <div class="row_label">Total Interest during loan tenure</div>
                                 <div class="row_value float-end"><b>₹{{formula.totalInterest}}</b></div>
-                            </div>
-                            <div class="row_container">
+                            </div> -->
+                            <!-- <div class="row_container">
                                 <div class="row_label">Total of Interest & processing fees</div>
                                 <div class="row_value float-end"><b>₹{{formula.totalOfInterest}}</b></div>
-                            </div>
-                            <div class="row_container">
+                            </div> -->
+                            <!-- <div class="row_container">
                                 <div class="row_label">Cashback expected</div>
                                 <div *ngIf="mydata?.oem?.toLowerCase() != 'mmfsl'" class="row_value float-end"><b>₹{{formula.totalInterest}}</b></div>
                                 <div *ngIf="mydata?.oem?.toLowerCase() == 'mmfsl'" class="row_value float-end"><b>₹0.00</b></div>
@@ -108,14 +151,15 @@
                             <div class="row_container">
                                 <div class="row_label">Additional Cashback expected</div>
                                 <div class="row_value float-end"><b>₹ 0.00</b></div>
-                            </div>
-                            <div class="row_container">
+                            </div> -->
+                            <!-- <div class="row_container">
                                 <div class="row_label">Net Cost to Customer</div>
                                 <div class="row_value float-end"><b>₹{{formula.net_Cost_Custmer}}</b></div>
-                            </div> <br>
-                            <h5 class="mb-3">Transaction Summary to Dealer</h5>
+                            </div>  -->
+                            <!-- <br>
+                            <h5 class="mb-3">Transaction Summary to Dealer</h5> -->
                             <!-- <p style="font-weight: bold; font-size: 1.3rem;">Transaction Summary to Dealer</p> -->
-                            <div class="row_container">
+                            <!-- <div class="row_container">
                                 <div class="row_label">Processing fee</div>
                                 <div class="row_value float-end"><b>₹{{mydata.processing_fee}}</b></div>
                             </div>
@@ -126,16 +170,16 @@
                             <div class="row_container">
                                 <div class="row_label">Amount to be collected from customer </div>
                                 <div class="row_value float-end"><b>₹{{formula.amountPaidBy}}</b></div>
-                            </div>
-                            <div class="row_container">
+                            </div> -->
+                            <!-- <div class="row_container">
                                 <div class="row_label">DBD Amount to be paid by dealer to MMFSL</div>
                                 <div class="row_value float-end"><b>₹{{formula.dbd}}</b></div>
                             </div>
                             <div class="row_container">
                                 <div class="row_label">Disbursement to dealer by MMFSL</div>
                                 <div class="row_value float-end"><b> ₹{{formula.distributed_delerto_mmfsl}}</b></div>
-                            </div>
-                        </div>
+                            </div> -->
+                        <!-- </div> -->
                     </div>
                 </div>
                 <div class="disclaimer">
