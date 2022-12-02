@@ -1,0 +1,57 @@
+.checkbox input{
+    display: none;
+}
+.checkbox input:checked + label{
+    color: #FFFFFF;
+    background: #EB1935;
+}
+.checkbox label {
+    border-radius: 38px;
+    padding: 5px 15px;
+    margin-right: 10px;
+    cursor: pointer;
+    font-size: 13px;
+    display: initial;
+    border: 1px solid #E5E5E5;
+}
+.checkbox{
+ 
+    padding-bottom: 18px;
+}
+table {
+    width: 100%;
+}
+.navigation_section {
+    display: inline-flex;
+    align-items: center;
+    align-items: center;
+    margin-bottom: 10px;
+    position: relative;
+    left: 39%;
+}
+.navigation_section .navigation_button.active {
+    background: #EB1935;
+    color: #fff;
+}
+.navigation_section .navigation_button {
+    cursor: pointer;
+    display: flex;
+    background: #fff;
+    margin-bottom: 10px;
+    border: 1px solid #E5E5E5;
+    height: 34px;
+    font-size: 14px;
+    color: #000;
+    align-items: center;
+    padding: 0px 10px;
+}
+.welcome{
+    font-family: 'Akkurat-Bold', Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    line-height: 24px;
+    text-align: center;
+    margin: 2% 0% 2% 0%;
+}
+.record_table {
+    padding: 0px;
+}

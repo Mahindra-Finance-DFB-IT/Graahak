@@ -1,1 +1,29 @@
-<p>view-record works!</p>
+<div class="container row justify-content-md-center">
+    <div class="welcome">Admin Dashboard</div>
+    <div class="navigation_section">
+      <div (click)="openSection()" class="navigation_button">Upload Master</div>
+      <div class="navigation_button active">View Records</div>
+    </div>
+    <form [formGroup]="reportSearchForm" class="form">
+      <div class="checkbox">
+        <input type="radio" formControlName="selectReport" value="master" id="sort1" checked="checked">
+        <label for="sort1">
+          <span>Scheme Master</span>
+        </label>
+        <input type="radio" formControlName="selectReport" value="pcg" id="sort2"> 
+        <label for="sort2">
+          <span>PCG master</span>
+        </label>
+        <!-- <input type="radio" name="sort" id="sort3" (click)="selectedFileType = 'dcg'"> 
+        <label for="sort3">
+          <span>DCG master</span>
+        </label> -->
+      </div> 
+    </form>
+    <div class="row record_table">
+        <div class="col-md-12 mb-3">
+            <table  datatable  [dtTrigger]="dtTrigger" class="table table-striped display nowrap mb-3">
+            </table>
+        </div>
+    </div>
+</div>

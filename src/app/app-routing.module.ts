@@ -11,12 +11,12 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ReportComponent } from './report/report.component';
 import { UploadFilesService } from './_services/upload-files.service';
-import { UploadDataComponent } from './upload-data/upload-data.component';
+import { ViewRecordComponent } from './view-record/view-record.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'admin-login', component: AdminLoginComponent},
-  { path: 'upload-data', component: UploadDataComponent,canActivate:[AuthGuard]},
+  { path: 'view-record', component: ViewRecordComponent, canActivate:[AuthGuard]},
   { path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
   { path: 'report', component: ReportComponent, canActivate:[AuthGuard]},
   { path: 'customer_search', component: CustomersearchComponent, canActivate:[AuthGuard]},

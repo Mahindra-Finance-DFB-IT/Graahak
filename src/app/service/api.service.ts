@@ -104,9 +104,9 @@ export class ApiService{
         let newHeaders = {...this.headers,"Authorization":"Bearer "+token} 
         return this.http.post(url,data,{headers:newHeaders});
     }
-    getSchemeData(type:string, searchData:ReportSearchData, token:String) {
+    getSchemeData(searchData:ReportSearchData, token:String) {
         const url = environment.apiHostName+"customer_details/getSchemeData";
         let newHeaders = {...this.headers,"Authorization":"Bearer "+token} 
-        return this.http.post(url,{type, searchData},{headers:newHeaders});
+        return this.http.post(url,{searchData},{headers:newHeaders});
     }
 }

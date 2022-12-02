@@ -34,7 +34,6 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { UploadDataComponent } from './upload-data/upload-data.component';
 import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -64,7 +63,6 @@ const materialModules = [
     FileUploadComponent,
     SchemeListComponent,
     SchemeDetailComponent,
-    UploadDataComponent,
     ViewRecordComponent
   ],
   exports: [

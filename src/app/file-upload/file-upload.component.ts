@@ -49,7 +49,11 @@ export class FileUploadComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.selectedFileType = 'master';    
+    this.selectedFileType = 'master';
+  }
+
+  openSection() {
+    this.router.navigateByUrl("/view-record");
   }
 
   setMessage(msg: string, type: string) {
