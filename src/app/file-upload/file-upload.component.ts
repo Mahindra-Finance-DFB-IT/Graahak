@@ -232,7 +232,7 @@ export class FileUploadComponent implements OnInit {
     const file: File = event.target.files[0];
     this.fileName = file.name;
     this.fileSize = (file.size/1024).toFixed(2) + ' KB';
-    if (file && file.size > 1000000) {
+    if (file && file.size > 2000000) {
       this.setMessage('File size too large', 'error');
       this.resetFile();
       return;

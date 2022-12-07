@@ -311,7 +311,15 @@ export class ViewRecordComponent implements OnInit {
           }
         },
         {
-          title: "MAX AMOUNT  ",
+          title: "SCHEME END DATE",
+          data:"scheme_end_date",
+          //className: "text-wrap",
+          render: (data:any,type:any)=>{
+            return this.sanitizeText(data) || "-"
+          }
+        },
+        {
+          title: "MAX AMOUNT",
           data:"max_amount",
           //className: "text-wrap",
           render: (data:any,type:any)=>{
@@ -319,7 +327,7 @@ export class ViewRecordComponent implements OnInit {
           }
         },
         {
-          title: "Min AMOUNT  ",
+          title: "MIN AMOUNT",
           data:"min_amount",
           //className: "text-wrap",
           render: (data:any,type:any)=>{
@@ -351,7 +359,7 @@ export class ViewRecordComponent implements OnInit {
           }
         },
         {
-          title: " STATUS",
+          title: "STATUS",
           data:"status",
         //  className: "text-wrap",
           render: (data:any,type:any)=>{
@@ -416,7 +424,7 @@ export class ViewRecordComponent implements OnInit {
         },
 
         {
-          title: "PRODUCT GROUP CODE  ",
+          title: "PRODUCT GROUP CODE",
           data:"product_group_code",
           //className: "text-wrap",
           render: (data:any,type:any)=>{
@@ -424,7 +432,7 @@ export class ViewRecordComponent implements OnInit {
           }
         },
         {
-          title: "ACTION SPM FILE ",
+          title: "ACTION SPM FILE",
           data:"action_spm_file",
           //className: "text-wrap",
           render: (data:any,type:any)=>{
@@ -432,7 +440,7 @@ export class ViewRecordComponent implements OnInit {
           }
         },
         {
-          title: " STATUS SPM FILE",
+          title: "STATUS SPM FILE",
           data:"status_spm_file",
           //className: "text-wrap",
           render: (data:any,type:any)=>{
@@ -440,7 +448,7 @@ export class ViewRecordComponent implements OnInit {
           }
         },
         {
-          title: "DEALER GROUP CODE ",
+          title: "DEALER GROUP CODE",
           data:"dealer_group_code",
           //className: "text-wrap",
           render: (data:any,type:any)=>{
@@ -448,7 +456,7 @@ export class ViewRecordComponent implements OnInit {
           }
         },
         {
-          title: "ACTION SDM FILE ",
+          title: "ACTION SDM FILE",
           data:"action_sdm_file",
           //className: "text-wrap",
           render: (data:any,type:any)=>{
@@ -469,35 +477,5 @@ export class ViewRecordComponent implements OnInit {
 
   sanitizeText(text: string){
     return text;
-  }
-
-  statusText(data: string){
-      var str = data.toLowerCase(); // cast numbers
-      let rdata='';
-      switch(str){
-        case 'active':
-          rdata = '<span class="text-success fw-bold">'+data+'</span>';
-        break;
-        case 'rejected':
-          rdata = '<span class="text-danger fw-bold">'+data+'</span>';
-        break;
-        case 'awaiting confirmation':
-          rdata = '<span class="text-warning fw-bold">'+data+'</span>';
-        break;
-      }
-      return rdata;
-    
-  }
-
-  formateDate(data: string){
-    const d = new Date(data);
-    const dformat = [d.getFullYear(),
-      d.getMonth()+1,
-      d.getDate()
-      ].join('-')+' '+
-      [d.getHours(),
-      d.getMinutes(),
-      d.getSeconds()].join(':');
-    return dformat ;
   }
 }

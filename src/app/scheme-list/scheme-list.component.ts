@@ -103,14 +103,21 @@ export class SchemeListComponent implements OnInit {
     };
     this.apiService.getSchemes(obj, token).subscribe((data: any) => {
       loaderRef.close();
-      if (data.length > 0) {
-        // if (sessionData?.loginType == LoginType.SMRSM) {
-        //   data.forEach((value: any) => {
-        //     value.pname = '';
-        //   });
-        // }
-        this.data = data;
-        this.schemeData = data;
+      
+      if (data) {
+        // console.log(data);
+        data.schemeMaster.map((schemeValue: SchemeModel) => {
+          schemeValue.pname = '';
+          data.schemePcg.forEach((pcgValue: any) => {
+            if (pcgValue.product_group_id == schemeValue.product_group_code) {
+              schemeValue.pname += pcgValue.product_name + ' | ';
+            }
+          });
+        });
+          
+        this.data = data.schemeMaster;
+        this.schemeData = data.schemeMaster;
+        // console.log(this.schemeData);
         console.log(this.data.length);
       } else {
         this.errMsg = "No data found";
