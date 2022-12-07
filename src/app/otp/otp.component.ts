@@ -2,6 +2,7 @@ import { AfterViewInit, Component, Input, OnChanges, OnDestroy, OnInit, SimpleCh
 import {  debounceTime, Observable, Subject, Subscription, timer } from 'rxjs';
 import { CustomerSearch, Login, PageName, VerifyOTP } from '../models/app';
 import {NgbActiveModal, NgbAlert} from '@ng-bootstrap/ng-bootstrap';
+import * as Forge from 'node-forge';
 import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
 import { Store } from '@ngrx/store';
@@ -39,6 +40,12 @@ export class OtpComponent implements OnInit,OnDestroy,OnChanges {
   private _success = new Subject<string>();
   private _error = new Subject<string>();
 
+  RSA_PUBLIC_KEY = `LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUlHZk1BMEdDU3FHU0liM0RRRUJBUVVBQTRHTkFE
+    Q0JpUUtCZ1FDcHZmVy9HK1J4ZUlKaHhZS0pFaEZhbkFlbwoydnhEWjFLY3VNa1cyc29Ya1VBWHk0
+    Nm40cThlWko2VEF3VDFyR04zSEphVEMzUG5hLzU1eHNDL1ovWmVTN21UCjZzY0VIL2tBdyt2aWhB
+    bjNnUW5hRUZMZkpYcU9ObGRqV2lwdVUvWEphbkdCVzlybkFiMDIxVnhQbDJoR1oyeC8KbU5tQW1j
+    eWZqZlhzYWZ4MmR3SURBUUFCCi0tLS0tRU5EIFBVQkxJQyBLRVktLS0tLQo=`;
+
   @Input() login: Login;
 
   config = {
@@ -48,23 +55,19 @@ export class OtpComponent implements OnInit,OnDestroy,OnChanges {
     containerClass: "otpwrapper",
     inputClass:"otpinput"
   }
-
   
   sub:any;
   pageName = PageName;
 
   constructor(public activeModal:NgbActiveModal,
-              private authService: AuthService,
-              private apiService:ApiService,
-              private router: Router,
-              private store: Store<{ appItem: AppData }>){
+    private authService: AuthService,
+    private apiService:ApiService,
+    private router: Router,
+    private store: Store<{ appItem: AppData }>){
   }
   ngOnChanges(changes: SimpleChanges): void {
-    
   }
   
-  
-
   ngOnInit(): void {
     if(this.login.fromPage == PageName.CustomerDetails){
       this.config.length = 4;
@@ -139,7 +142,12 @@ export class OtpComponent implements OnInit,OnDestroy,OnChanges {
   }
 
   onOtpChange(event:String){
-   // console.log(event);
+    let otp = event;
+    console.log(event);
+    const publicKey = Forge.pki.publicKeyFromPem(Forge.util.decode64(this.RSA_PUBLIC_KEY));
+    const encryptedPassword = publicKey.encrypt(otp.toString(),'RSAES-PKCS1-V1_5');
+    let encryptOtp = Forge.util.encode64(encryptedPassword);
+
     if(event.length==this.config.length && this.attempt<=3){
         this.otpOverlayOpacity = true;
         this.attempt++;
@@ -150,7 +158,7 @@ export class OtpComponent implements OnInit,OnDestroy,OnChanges {
         if(this.login?.fromPage == PageName.CustomerDetails){
           let verifyOTP: VerifyOTP= {
             mobileNumber: this.login.SmMobileNumber,
-            otp : event,
+            otp : encryptOtp,
             transactionID: this.login.appData?.transactionID?.toString() || Date.now().toString(),
             fromPage: this.login?.fromPage
           };
@@ -160,7 +168,7 @@ export class OtpComponent implements OnInit,OnDestroy,OnChanges {
           
           let verifyOTP: VerifyOTP= {
             mobileNumber,
-            otp : event,
+            otp : encryptOtp,
             transactionID: this.login.appData?.transactionID?.toString() || Date.now().toString(),
             fromPage: this.login?.fromPage
           };
