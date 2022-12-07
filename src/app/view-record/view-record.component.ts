@@ -138,6 +138,11 @@ export class ViewRecordComponent implements OnInit {
           this.reportSearchData.draw = dataTableParameters?.draw;
 
           that.apiService.getSchemeData(this.reportSearchData, this.appData?.token?.toString() ||'').subscribe((resData:any)=>{
+            if (this.reportSearchData.selectReport == 'pcg') {
+              resData.data.map((value:any) => {
+                value.oem_name = value.oem_name.replace(/_/g, ' ');
+              });
+            }
             that.reportData = resData.data;
             callback(resData)
           },async (err:any)=>{
@@ -179,9 +184,9 @@ export class ViewRecordComponent implements OnInit {
         //   }
         // },
         {
-          title: "OEM_NAME",
-          data:"oem_new",
-          //className: "text-wrap",
+          title: "OEM NAME",
+          data:"oem_name",
+          className: "text_transform",
           render: (data:any,type:any)=>{
             return this.sanitizeText(data) || "-"
           }
