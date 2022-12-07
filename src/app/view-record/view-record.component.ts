@@ -180,7 +180,7 @@ export class ViewRecordComponent implements OnInit {
         // },
         {
           title: "OEM_NAME",
-          data:"oem_name",
+          data:"oem_new",
           //className: "text-wrap",
           render: (data:any,type:any)=>{
             return this.sanitizeText(data) || "-"
