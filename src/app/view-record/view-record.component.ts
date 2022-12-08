@@ -372,7 +372,7 @@ export class ViewRecordComponent implements OnInit {
           }
         },
         {
-          title: "SPECAL SCHEME FLAG",
+          title: "SPECIAL SCHEME FLAG",
           data:"special_scheme_flag",
           //className: "text-wrap",
           render: (data:any,type:any)=>{
