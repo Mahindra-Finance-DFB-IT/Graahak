@@ -63,10 +63,15 @@ export class FileUploadComponent implements OnInit {
 
   setMessage(msg: string, type: string) {
     type == 'success' ? this.validMessage = msg : this.invalidMessage = msg;
-    setTimeout(()=>{                  
-      this.invalidMessage = '';
-      this.validMessage = '';
-    }, 3000);
+    // setTimeout(()=>{                  
+      // this.invalidMessage = '';
+      // this.validMessage = '';
+    // }, 7000);
+  }
+
+  closeMsg() {
+    this.invalidMessage = '';
+    this.validMessage = '';
   }
 
 
@@ -202,7 +207,13 @@ export class FileUploadComponent implements OnInit {
           if (data && data?.body && data?.body?.res == 'success') {
           loaderRef.close();
           this.resetFile();
-          this.setMessage('File uploaded successfully', 'success');
+          var successmMsg = "File uploaded successfully <br/> \
+                Total Records: " + data.body.totalCount + " <br/>\
+                Records Added: " + data.body.activeCount + " <br/>\
+                Records Failed: " + data.body.errorRecords + " <br/>\
+                Inactive Records: " + data.body.inActiveCount + " <br/>\
+                ";
+          this.setMessage(successmMsg, 'success');
           }
         }, (err: any) => {
           loaderRef.close();
@@ -212,7 +223,13 @@ export class FileUploadComponent implements OnInit {
             this.doLogOut();
           } else {
             if (err.error && err.error.message) {
-              this.setMessage('Uploading failed! Please try again', 'error');
+              var errMsg = "Uploading failed! <br/> \
+                Total Records: " + err.error.totalCount + " <br/>\
+                Records Added: " + err.error.activeCount + " <br/>\
+                Records Failed: " + err.error.errorRecords + " <br/>\
+                Inactive Records: " + err.error.inActiveCount + " <br/>\
+                ";
+              this.setMessage(errMsg, 'error');
             } else {
               this.setMessage('Uploading failed! Please try again', 'error');
             }

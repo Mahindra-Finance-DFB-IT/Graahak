@@ -47,6 +47,10 @@
 .alert_container .icon {
     margin-right: 10px;
 }
+.alert_container .close_icon {
+    margin-left: 20px;
+    cursor: pointer;
+}
 .heading {
     font-family: 'Akkurat-Bold';
     font-size: 16px;

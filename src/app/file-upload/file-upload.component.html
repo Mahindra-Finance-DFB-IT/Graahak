@@ -2,13 +2,15 @@
   <div class="alert_container" *ngIf="invalidMessage">
     <div class="failure alert_content">
       <img class="icon" src='assets/invalidfile.png'/>
-      <div>{{ invalidMessage }}</div>
+      <div [innerHTML]="invalidMessage"></div>
+      <div class="close_icon" (click)="closeMsg()">X</div>
     </div>
   </div>
   <div class="alert_container" *ngIf="validMessage">
     <div class="success alert_content">
       <img class="icon" src='assets/Vector.png'/>
-      <div>{{ validMessage }}</div>
+      <div [innerHTML]="validMessage"></div>
+      <div class="close_icon" (click)="closeMsg()">X</div>
     </div>
   </div>
   <div class="welcome">Admin Dashboard</div>
