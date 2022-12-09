@@ -52,6 +52,11 @@ export class FileUploadComponent implements OnInit {
     this.selectedFileType = 'master';
   }
 
+  selectTab(tabName: string) {
+    this.selectedFileType = tabName;
+    this.resetFile();
+  }
+
   openSection() {
     this.router.navigateByUrl("/view-record");
   }
@@ -86,10 +91,12 @@ export class FileUploadComponent implements OnInit {
         this.uploadService.uploadMasterFile(this.currentFile,token).subscribe((data:any) => {
           if (data && data?.body && data?.body?.res == 'success') {
           loaderRef.close();
+          this.resetFile();
           this.setMessage('File uploaded successfully', 'success');
           }
         }, (err: any) => {
           loaderRef.close();
+          this.resetFile();
           this.currentFile = undefined;
           if (err.status == 401) {
             this.doLogOut();
@@ -147,10 +154,12 @@ export class FileUploadComponent implements OnInit {
         this.uploadService.uploadDcgFile(this.currentFile,token).subscribe((data:any)=> {
           if (data && data?.body && data?.body?.res == 'success') {
           loaderRef.close();
+          this.resetFile();
           this.setMessage('File uploaded successfully', 'success');
           }
         }, (err: any) => {
           loaderRef.close();
+          this.resetFile();
           this.currentFile = undefined;
           if (err.status == 401) {
             this.doLogOut();
@@ -192,10 +201,12 @@ export class FileUploadComponent implements OnInit {
         this.uploadService.uploadPcgFile(this.currentFile,token).subscribe((data:any) => {
           if (data && data?.body && data?.body?.res == 'success') {
           loaderRef.close();
+          this.resetFile();
           this.setMessage('File uploaded successfully', 'success');
           }
         }, (err: any) => {
           loaderRef.close();
+          this.resetFile();
           this.currentFile = undefined;
           if (err.status == 401) {
             this.doLogOut();

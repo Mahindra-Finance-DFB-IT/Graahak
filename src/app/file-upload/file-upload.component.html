@@ -19,15 +19,15 @@
   <div class="card">
     <div class="heading"> Select Type of Master</div>
     <div class="checkbox">
-      <input type="radio" name="sort" id="sort1" checked="checked" (click)="selectedFileType = 'master'" >
+      <input type="radio" name="sort" id="sort1" checked="checked" (click)="selectTab('master')" >
       <label for="sort1">
         <span>Scheme Master</span>
       </label>
-      <input type="radio" name="sort" id="sort2" (click)="selectedFileType = 'pcg'"> 
+      <input type="radio" name="sort" id="sort2" (click)="selectTab('pcg')"> 
       <label for="sort2">
         <span>PCG master</span>
       </label>
-      <input type="radio" name="sort" id="sort3" (click)="selectedFileType = 'dcg'"> 
+      <input type="radio" name="sort" id="sort3" (click)="selectTab('dcg')"> 
       <label for="sort3">
         <span>DCG master</span>
       </label>
@@ -37,7 +37,9 @@
         <img class="icon" src="assets/file_upload.png" />
       </div>
       <input hidden (change)="onFileSelected($event)" #fileInput type="file" id="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
-      <div class="file_content">Drop your file here or <span>browse</span> file</div> 
+      <div class="file_content">Browse
+        <!-- <span>browse</span>  -->
+        file</div> 
       <div class="file_support">Support XLSX file</div> 
     </div>
     <div class="file_details" *ngIf="fileName">
