@@ -15,7 +15,7 @@ import { AuthService } from '../service/auth.service';
   styleUrls: ['./scheme-detail.component.css']
 })
 export class SchemeDetailComponent implements OnInit {
-  schemeAmount:string = "";
+  schemeAmount:any = "";
   data:any;
   isShowDivIf:boolean = false; 
   formula:any
@@ -128,7 +128,10 @@ export class SchemeDetailComponent implements OnInit {
         totalInterest: totalInterest.toFixed(2),
         net_Cost_Custmer: net_Cost_Custmer,
         dbd: dbd.toFixed(2),
-        distributed_delerto_mmfsl: distributed_delerto_mmfsl.toFixed(2)
+        distributed_delerto_mmfsl: distributed_delerto_mmfsl.toFixed(2),
+        processing_fees:processing_fee.toFixed(2),
+        schemeAmountuser:this.schemeAmount.toFixed(2)
+        
       };
     }
   }
