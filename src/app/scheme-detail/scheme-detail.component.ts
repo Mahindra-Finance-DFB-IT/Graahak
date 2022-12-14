@@ -130,8 +130,9 @@ export class SchemeDetailComponent implements OnInit {
         dbd: dbd.toFixed(2),
         distributed_delerto_mmfsl: distributed_delerto_mmfsl.toFixed(2),
         processing_fees:processing_fee.toFixed(2),
-        schemeAmountuser:this.schemeAmount.toFixed(2)
-        
+        schemeAmountuser:this.schemeAmount.toFixed(2),
+        additional_Cashback: additional_Cashback.toFixed(2),
+        total_Cashback: (additional_Cashback + totalInterest).toFixed(2)
       };
     }
   }
