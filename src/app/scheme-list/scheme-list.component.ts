@@ -152,7 +152,7 @@ export class SchemeListComponent implements OnInit {
     this.selectedTenure = value;
     var newarr = value.split("-");
     this.mapSchemeData(newarr, this.schemeData);
-    this.resetFilter();
+    // this.resetFilter();
   }
 
   searchData(data: any) {
