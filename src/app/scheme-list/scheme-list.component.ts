@@ -61,7 +61,7 @@ export class SchemeListComponent implements OnInit {
   
   addFilter() {
     var newarr = this.selectedTenure.split('-');
-    this.mapSchemeData(newarr, this.schemeData, 'advanceEmi', '');
+    this.mapSchemeData(newarr, this.schemeData, 'advanceEmi');
   }
 
   open(content: any) {
@@ -151,7 +151,7 @@ export class SchemeListComponent implements OnInit {
   onTenureSelected(value: string) {
     this.selectedTenure = value;
     var newarr = value.split("-");
-    this.mapSchemeData(newarr, this.schemeData, '', '');
+    this.mapSchemeData(newarr, this.schemeData, '');
     this.resetFilter();
   }
 
@@ -159,12 +159,13 @@ export class SchemeListComponent implements OnInit {
     this.authService.searchText = data.target.value;
     var newarr = this.selectedTenure.split('-');
     // console.log(this.authService.searchText.toLowerCase());
-    this.mapSchemeData(newarr, this.schemeData, 'text', this.authService.searchText.toLowerCase());
+    this.mapSchemeData(newarr, this.schemeData, 'text');
   }
 
-  mapSchemeData(newarr:any, data: any, type: string, searchStr: string) {
+  mapSchemeData(newarr:any, data: any, type: string) {
     var arr: Array<SchemeModel> = [];
     var arrAdvFilter: Array<SchemeModel> = [];
+    var searchStr = this.authService.searchText.toLowerCase();
     if (newarr && newarr.length > 0) {
       for (let i = 0; i < data.length; i++) {
         var grossTenure = Number(data[i].tenure);
@@ -180,12 +181,14 @@ export class SchemeListComponent implements OnInit {
       }
     }
     // console.log(arr);
-    if (type == 'text') {
+    // if (type == 'text') {
+    if (searchStr && searchStr.length > 0) {
       var arr2 = arr.filter((value) =>{
         return (value.oem.toLowerCase().includes(searchStr) || value.pname.toLowerCase().includes(searchStr));
       });
       arr = arr2;
     }
+    // }
     // console.log(arr);
     // if (type == 'advanceEmi') {
       if (this.advanceEmi) {
@@ -233,6 +236,6 @@ export class SchemeListComponent implements OnInit {
     this.advanceEmi = '';
     this.isCashBackApplied = false;
     var newarr = this.selectedTenure.split('-');
-    this.mapSchemeData(newarr, this.schemeData, '', '');
+    this.mapSchemeData(newarr, this.schemeData, '');
   }
 }
