@@ -182,7 +182,13 @@ export class SchemeListComponent implements OnInit {
     }
     if (searchStr && searchStr.length > 0) {
       var arr2 = arr.filter((value) =>{
-        return (value.oem.toLowerCase().includes(searchStr) || value.pname.toLowerCase().includes(searchStr));
+        // return (value.oem.toLowerCase().includes(searchStr) || value.pname.toLowerCase().includes(searchStr));
+        if (value.oem.toLowerCase() == 'mmfsl') {
+          return value;
+        } else {
+          return (value.oem.toLowerCase().includes(searchStr) || value.pname.toLowerCase().includes(searchStr));
+        }
+
       });
       arr = arr2;
     }
