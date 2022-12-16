@@ -12,10 +12,13 @@ import { LoginComponent } from './login/login.component';
 import { ReportComponent } from './report/report.component';
 import { UploadFilesService } from './_services/upload-files.service';
 import { ViewRecordComponent } from './view-record/view-record.component';
+import { LogsDataComponent } from './logs-data/logs-data.component';
+
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'admin-login', component: AdminLoginComponent},
+  {path:'logs',component:LogsDataComponent},
   { path: 'view-record', component: ViewRecordComponent, canActivate:[AuthGuard]},
   { path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
   { path: 'report', component: ReportComponent, canActivate:[AuthGuard]},

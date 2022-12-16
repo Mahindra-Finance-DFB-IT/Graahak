@@ -1,0 +1,90 @@
+.checkbox input{
+    display: none;
+}
+
+.checkbox label {
+    border-radius: 38px;
+    padding: 5px 15px;
+    margin-right: 10px;
+    cursor: pointer;
+    font-size: 13px;
+    display: initial;
+    /* border: 1px solid #E5E5E5; */
+}
+.checkbox{
+ 
+    padding-bottom: 18px;
+}
+table {
+    width: 100%;
+}
+.navigation_section {
+    display: inline;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.navigation_section .navigation_button.active {
+    background: #EB1935;
+    color: #fff;
+}
+.navigation_section .navigation_button {
+    cursor: pointer;
+    display: inline-block;
+    background: #fff;
+    margin-bottom: 10px;
+    border: 1px solid #E5E5E5;
+    font-size: 14px;
+    color: #000;
+    align-items: center;
+    padding: 5px 10px;
+}
+.welcome{
+    font-family: 'Akkurat-Bold', Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    line-height: 24px;
+    text-align: center;
+    margin: 2% 0% 2% 0%;
+}
+.record_table {
+    padding: 0px;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+  .scheme-card-container{
+    margin: 10px;
+    background: #c7c7c72b;
+    border: 1px solid #E5E5E5;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    width: auto;
+    padding: 10px;
+    width: 200px;
+    word-break: break-word;
+    display: inline-block;
+}
+.api_name{
+    font-size: 16px;
+    padding-bottom: 10px;
+}
+.count{
+    font-size: 20px;
+    font-weight: 700;
+    padding-bottom: 5px;
+}
+.cardparentdiv{
+    display: inline;
+}

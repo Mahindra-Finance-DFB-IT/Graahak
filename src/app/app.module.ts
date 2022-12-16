@@ -39,6 +39,10 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { ViewRecordComponent } from './view-record/view-record.component';
+import { LogsDataComponent } from './logs-data/logs-data.component';
+import { MatTabsModule } from '@angular/material/tabs';
+
+
 const materialModules = [
   MatTableModule,
   MatPaginatorModule,
@@ -63,12 +67,14 @@ const materialModules = [
     FileUploadComponent,
     SchemeListComponent,
     SchemeDetailComponent,
-    ViewRecordComponent
+    ViewRecordComponent,
+    LogsDataComponent,
   ],
   exports: [
     ...materialModules
   ],
   imports: [ 
+    MatTabsModule,
     CommonModule,
     ...materialModules, 
     MatButtonModule,
