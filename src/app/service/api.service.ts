@@ -109,10 +109,10 @@ export class ApiService{
         let newHeaders = {...this.headers,"Authorization":"Bearer "+token} 
         return this.http.post(url,{searchData},{headers:newHeaders});
     }
-    getData(searchData:ReportSearchData, token:String) {
+    getData(token:String) {
         const url = environment.apiHostName+"customer_details/getData";
         let newHeaders = {...this.headers,"Authorization":"Bearer "+token} 
-        return this.http.post(url,{searchData},{headers:newHeaders});
+        return this.http.post(url,{},{headers:newHeaders});
     }
     getLogData(searchData:ReportSearchData, token:String) {
         const url = environment.apiHostName+"customer_details/getLogData";

@@ -1,114 +1,57 @@
 <div class="row justify-content-md-center">
-    <div class="welcome">Admin Dashboard</div>
-    <div class="navigation_section">
-      <div (click)="setOption('user_logs')" [ngClass]="selectRecord == 'user_logs' ? 'active' : ''" class="navigation_button">User Logs</div>
-      <div (click)="setOption('name_match')" [ngClass]="selectRecord == 'name_match' ? 'active' : ''" class="navigation_button">Name Match</div>
-      <div (click)="setOption('server_data')" [ngClass]="selectRecord == 'server_data' ? 'active' : ''" class="navigation_button">Server Logs</div>
-    </div>
-    <!-- <div class="form">
-      <div class="checkbox">
-        <input type="radio" (click)="setOption('user_logs')" value="user_logs" id="sort1" checked="checked">
-        <label for="sort1">
-          <span>User Logs</span>
-        </label>
-        <input type="radio" (click)="setOption('name_match')" value="name_match" id="sort2"> 
-        <label for="sort2">
-          <span>Name Match</span>
-        </label>
-        <input type="radio" (click)="setOption('server_data')" value="server_data" id="sort3"> 
-        <label for="sort3">
-          <span>server Log</span>
-        </label>
-      </div> 
-    </div> -->
-    <!-- <div class="cardparentdiv" *ngIf="selectRecord == 'user_logs'">
-      <mat-card class="scheme-card-container" *ngFor="let logs of userLogs">
-        <mat-card-content (click)="getApiData(logs.api_name)">
-          <div class="api_name">{{logs.name}}</div>
-          <div class="count">{{logs.cnt}}</div>
-        </mat-card-content>
-        <mat-card-actions>
-        </mat-card-actions>
-      </mat-card>
-    </div> -->
-    <div class="cardparentdiv" *ngIf="selectRecord == 'user_logs'">
-    <form [formGroup]="reportSearchForm" class="form">
-      <div class="checkbox scheme-card-container" *ngFor="let logs of userLogs">
-        <input type="radio" formControlName="selectReport" value="master" id="sort1" checked="checked">
-        <label for="sort1">
-          <div class="api_name">{{logs.name}}</div>
-          <div class="count">{{logs.cnt}}</div>
-        </label>
-        <!-- <input type="radio" formControlName="selectReport" value="pcg" id="sort2"> 
-        <label for="sort2">
-          <span>PCG master</span>
-        </label> -->
-        <!-- <input type="radio" name="sort" id="sort3" (click)="selectedFileType = 'dcg'"> 
-        <label for="sort3">
-          <span>DCG master</span>
-        </label> -->
-      </div> 
-    </form>
-  
+  <div class="welcome">Admin Dashboard</div>
+  <div class="navigation_section">
+    <div (click)="setOption('user_logs')" [ngClass]="selectRecord == 'user_logs' ? 'active' : ''" class="navigation_button">User Logs</div>
+    <div (click)="setOption('name_match')" [ngClass]="selectRecord == 'name_match' ? 'active' : ''" class="navigation_button">Name Match</div>
+    <div (click)="setOption('server_data')" [ngClass]="selectRecord == 'server_data' ? 'active' : ''" class="navigation_button">Server Logs</div>
   </div>
-  <div class="row record_table" *ngIf="selectRecord == 'user_logs'">
+  <div class="scheme_card" *ngIf="selectRecord == 'user_logs'">
+    <mat-card [ngClass]="selectedApi == logs.api_name ? 'active' : ''" class="scheme-card-container" *ngFor="let logs of userLogs">
+      <mat-card-content (click)="getApiData(logs.api_name)">
+        <div class="api_name">{{logs.name}}</div>
+        <div class="count">{{logs.cnt}}</div>
+      </mat-card-content>
+      <mat-card-actions>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <div class="row record_table" [ngClass]="(selectedApi != '' && selectedApi != undefined) && selectRecord == 'user_logs' ? '' : 'hide_table'">
     <div class="col-md-12 mb-3">
-        <table  datatable  [dtTrigger]="dtTrigger" class="table table-striped display nowrap mb-3">
-        </table>
+      <table datatable [dtTrigger]="dtTrigger" class="table table-striped display nowrap mb-3"></table>
     </div>
   </div>
-    <!-- <table *ngIf="selectRecord == 'user_logs'">
-      <tr>
-        <th class="sorting_disabled"> ID</th>
-        <th class="sorting_disabled"> Count</th>
-        <th class="sorting_disabled"> Role</th>
-        <th class="sorting_disabled"> Date</th>
-      </tr>
-      <tr *ngFor="let logs of userLogs; index as i">
-        <td>{{i+1}}</td>
-        <td>{{logs.cnt}}</td>
-        <td>{{logs.role}}</td>
-       <td>{{logs.date}}</td>
-  </tr>
-     
-    </table> -->
-    <table *ngIf="selectRecord == 'name_match'">
-      <tr>
-        <th class="sorting_disabled"> ID</th>
-        <th class="sorting_disabled"> Count</th>
-
-        <th class="sorting_disabled">Date</th>
-        
-
-        <!-- <th class="sorting_disabled">Country</th> -->
-      </tr>
-      <tr *ngFor="let logs of nameMatch; index as i">
-        <td>{{i+1}}</td>
-        <td>{{logs.cnt}}</td>
-        <td>{{logs.Count}}</td>
-      </tr>
-     
-    </table>
-    <table *ngIf="selectRecord == 'server_data'">
-      <tr>
-        <th class="sorting_disabled"> ID</th>
-        <th class="sorting_disabled"> Count all_n_abnd cases </th>
-        <th class="sorting_disabled"> Count customer details</th>
-        <th class="sorting_disabled">Count mandate cases</th>
-        <th class="sorting_disabled">count sm/rsm/fos data</th>
-        <th class="sorting_disabled">Count starter non starter data</th>
-        <th class="sorting_disabled">Last schedule</th> 
-      </tr>
-      <tr *ngFor="let logs of scheduleData; index as i">
-        <td>{{i+1}}</td>
-        <td>{{logs.count_all_n_abnd_cases}}</td>
-        <td>{{logs.count_customer_details}}</td>
-        <td>{{logs.count_mandate_cases}}</td>
-        <td>{{logs.count_sm_rsm_fos_data}}</td>
-        <td>{{logs.count_starter_non_starter_data}}</td>
-        <td>{{logs.date}}</td>
-      </tr>
-     
-    </table>
+  <table *ngIf="selectRecord == 'name_match'">
+    <tr>
+      <th class="sorting_disabled"> ID</th>
+      <th class="sorting_disabled"> Count</th>
+      <th class="sorting_disabled">Date</th>
+      <!-- <th class="sorting_disabled">Country</th> -->
+    </tr>
+    <tr *ngFor="let logs of nameMatch; index as i">
+      <td>{{i+1}}</td>
+      <td>{{logs.cnt}}</td>
+      <td>{{logs.Count}}</td>
+    </tr>
+  </table>
+  <table *ngIf="selectRecord == 'server_data'">
+    <tr>
+      <th class="sorting_disabled">ID</th>
+      <th class="sorting_disabled">Total All & ABND Cases </th>
+      <th class="sorting_disabled">Total Starter & Non Starter</th>
+      <th class="sorting_disabled">Total Mandate Cases</th>
+      <th class="sorting_disabled">Total Customer Details</th>
+      <th class="sorting_disabled">Total SM/RSM/SE</th>
+      <th class="sorting_disabled">Scheduler Date</th>
+    </tr>
+    <tr *ngFor="let logs of scheduleData; index as i">
+      <td>{{i+1}}</td>
+      <td>{{logs.count_all_n_abnd_cases}}</td>
+      <td>{{logs.count_starter_non_starter_data}}</td>
+      <td>{{logs.count_mandate_cases}}</td>
+      <td>{{logs.count_customer_details}}</td>
+      <td>{{logs.count_sm_rsm_fos_data}}</td>
+      <td>{{logs.date}}</td>
+    </tr>
+  </table>
 </div>
 
