@@ -217,25 +217,25 @@ export class LogsDataComponent implements OnInit, AfterViewInit {
           value.name = 'Admin Login'; 
         }
         if (value.api_name == "getSchemes") {
-          value.name = "Get Schemes"; 
+          value.name = "Get Scheme List"; 
         }
         if (value.api_name == "uploadPcg") {
           value.name = 'Upload Pcg'; 
         }
         if (value.api_name == "getSchemeDetail") {
-          value.name = "Get SchemeDetail"; 
+          value.name = "Get Scheme Details"; 
         }
         if (value.api_name == "getSchemeData") {
-          value.name = 'Get SchemeData'; 
+          value.name = 'View Schemes-Admin'; 
         }
         if (value.api_name == "smRsmLogin" ) {
-          value.name = 'Sm/Rsm Login'; 
+          value.name = 'Login Sm/Rsm'; 
         }
         if (value.api_name == "uploadMaster" || value.api_name == 'uploadms') {
           value.name = 'Upload Scheme Master'; 
         }
         if (value.api_name == "getReport") {
-          value.name = "Get Report"; 
+          value.name = "Get SE Report"; 
         }
         if (value.api_name == "getCustomerDetails") {
           value.name = "Get Customer Details" 
@@ -247,16 +247,16 @@ export class LogsDataComponent implements OnInit, AfterViewInit {
           value.name = 'Resend Otp Sm/Rsm'; 
         }
         if (value.api_name == "verifyOtpSmRsm" ) {
-          value.name = 'verify Otp Sm/Rsm'; 
+          value.name = 'Verify Otp Sm/Rsm'; 
         }
         if (value.api_name == "seLogin") {
-          value.name = 'Se Login'; 
+          value.name = 'Login SE'; 
         }
         if (value.api_name == "seVerifyOtp") {
-          value.name = "Se Verify Otp"; 
+          value.name = "Verify Otp SE"; 
         }
         if (value.api_name == "seResendOtp") {
-          value.name = "Se Resend Otp"; 
+          value.name = "Resend Otp SE"; 
         }
         if (value.api_name == "Se Verify Otp") {
           value.name = "Get Customer Details" 
