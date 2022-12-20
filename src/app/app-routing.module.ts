@@ -18,7 +18,7 @@ import { LogsDataComponent } from './logs-data/logs-data.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'admin-login', component: AdminLoginComponent},
-  {path:'logs',component:LogsDataComponent},
+  { path: 'mf-dfb-api-logs',component:LogsDataComponent,canActivate:[AuthGuard]},
   { path: 'view-record', component: ViewRecordComponent, canActivate:[AuthGuard]},
   { path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
   { path: 'report', component: ReportComponent, canActivate:[AuthGuard]},
