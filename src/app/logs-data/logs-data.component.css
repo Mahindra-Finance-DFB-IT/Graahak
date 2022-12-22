@@ -78,3 +78,6 @@ tr:nth-child(even) {
 .scheme_card{
     display: inline;
 }
+.no_padding {
+    padding: 0px;
+}

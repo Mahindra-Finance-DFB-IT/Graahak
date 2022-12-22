@@ -22,8 +22,8 @@
   </div>
   <table *ngIf="selectRecord == 'name_match'">
     <tr>
-      <th class="sorting_disabled"> ID</th>
-      <th class="sorting_disabled"> Count</th>
+      <th class="sorting_disabled">ID</th>
+      <th class="sorting_disabled">Count</th>
       <th class="sorting_disabled">Date</th>
       <!-- <th class="sorting_disabled">Country</th> -->
     </tr>
@@ -33,25 +33,28 @@
       <td>{{logs.Count}}</td>
     </tr>
   </table>
-  <table *ngIf="selectRecord == 'server_data'">
-    <tr>
-      <th class="sorting_disabled">ID</th>
-      <th class="sorting_disabled">Total All & ABND Cases </th>
-      <th class="sorting_disabled">Total Starter & Non Starter</th>
-      <th class="sorting_disabled">Total Mandate Cases</th>
-      <th class="sorting_disabled">Total Customer Details</th>
-      <th class="sorting_disabled">Total SM/RSM/SE</th>
-      <th class="sorting_disabled">Scheduler Date</th>
-    </tr>
-    <tr *ngFor="let logs of scheduleData; index as i">
-      <td>{{i+1}}</td>
-      <td>{{logs.count_all_n_abnd_cases}}</td>
-      <td>{{logs.count_starter_non_starter_data}}</td>
-      <td>{{logs.count_mandate_cases}}</td>
-      <td>{{logs.count_customer_details}}</td>
-      <td>{{logs.count_sm_rsm_fos_data}}</td>
-      <td>{{logs.date}}</td>
-    </tr>
-  </table>
+  <div class="no_padding" *ngIf="selectRecord == 'server_data'">
+    <h3>Total Records</h3>
+    <table>
+      <tr>
+        <th class="sorting_disabled">ID</th>
+        <th class="sorting_disabled">All & ABND Cases </th>
+        <th class="sorting_disabled">Starter & Non Starter</th>
+        <th class="sorting_disabled">Mandate Cases</th>
+        <th class="sorting_disabled">Customer Details</th>
+        <th class="sorting_disabled">SM/RSM/SE</th>
+        <th class="sorting_disabled">Scheduler Date</th>
+      </tr>
+      <tr *ngFor="let logs of scheduleData; index as i">
+        <td>{{i+1}}</td>
+        <td>{{logs.count_all_n_abnd_cases}}</td>
+        <td>{{logs.count_starter_non_starter_data}}</td>
+        <td>{{logs.count_mandate_cases}}</td>
+        <td>{{logs.count_customer_details}}</td>
+        <td>{{logs.count_sm_rsm_fos_data}}</td>
+        <td>{{logs.date}}</td>
+      </tr>
+    </table>
+  </div>
 </div>
 
