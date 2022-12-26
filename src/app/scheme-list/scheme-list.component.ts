@@ -34,6 +34,7 @@ export class SchemeListComponent implements OnInit {
   // searchText: string = '';
   advanceEmi: any;
   schemeData: Array<SchemeModel> = [];
+  schemeDate: Date;
 
   constructor(
     public apiService: ApiService,
@@ -117,6 +118,9 @@ export class SchemeListComponent implements OnInit {
           
         this.data = data.schemeMaster;
         this.schemeData = data.schemeMaster;
+        if (data.schemeDate && data.schemeDate.length > 0) {
+          this.schemeDate = new Date(data.schemeDate[0].created_at + ' UTC');
+        }
         // console.log(this.schemeData);
         console.log(this.data.length);
       } else {
