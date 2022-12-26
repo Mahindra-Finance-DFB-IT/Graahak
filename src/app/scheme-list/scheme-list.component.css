@@ -98,8 +98,8 @@
     background-color: #FFF5CB;;
     color: #796101;
     font-weight: bold;
-    font-size: 10px;
-    opacity: 0.6;
+    font-size: 13px;
+    /* opacity: 0.6; */
     border-radius: 3px;
     padding: 4px 5px 3px 5px;
 }

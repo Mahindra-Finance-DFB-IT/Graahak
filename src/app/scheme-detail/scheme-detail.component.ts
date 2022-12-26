@@ -95,7 +95,7 @@ export class SchemeDetailComponent implements OnInit {
       };
       var data = this.data;
       loaderRef.close();
-      var tenure=Number(data[0].tenure);
+      var tenure = Number(data[0].tenure);
       var rate = data[0].roi 
       let result = rate.split('%')[0];
       var newrate = result/100;
@@ -103,20 +103,26 @@ export class SchemeDetailComponent implements OnInit {
       emiAmount = Math.round(emiAmount*100)/100;
       var advanceEmi=  Number(emiAmount * data[0].advance_emi);
       advanceEmi = Math.round(advanceEmi*100)/100;
-      var processing_fee = Number(data[0].processing_fee);
-      var transactionPayment = Number ( advanceEmi + processing_fee);
+      var processing_fee = 0;
+      if (isNaN(data[0].processing_fee)) {
+        var fees = data[0].processing_fee.replace(/\s/g, "");
+        processing_fee = Number(loan_amount/100) * Number(fees.split('%')[0]);
+      } else {
+        processing_fee = Number(data[0].processing_fee);
+      }
+      var transactionPayment = Number (advanceEmi + processing_fee);
       transactionPayment = Math.round(transactionPayment*100)/100;
       var remaningemi = data[0].tenure - data[0].advance_emi;
       var totalInterest = Number((emiAmount * data[0].tenure) - loan_amount);
       totalInterest = Math.round(totalInterest*100)/100;
       var totalOfInterest = Number(totalInterest + processing_fee);
-      totalOfInterest=Math.round(totalOfInterest*100)/100;
+      totalOfInterest = Math.round(totalOfInterest*100)/100;
       var additional_Cashback = 0;
-      var net_Cost_Custmerr= totalOfInterest- totalInterest - additional_Cashback;
+      var net_Cost_Custmerr= totalOfInterest - totalInterest - additional_Cashback;
       var net_Cost_Custmer = net_Cost_Custmerr.toFixed(2);
       var dbd_result = data[0].dbd;
       let dbdresult = dbd_result.split('%')[0];
-      var dbdrate=Number(dbdresult/100);
+      var dbdrate = Number(dbdresult/100);
       var dbd = dbdrate * amtamount;
       var distributed_delerto_mmfsl = amtamount-(dbd + processing_fee + advanceEmi);
       this.formula = {
