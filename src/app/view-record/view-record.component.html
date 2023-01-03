@@ -1,29 +1,55 @@
 <div class="row justify-content-md-center">
-    <div class="welcome">Admin Dashboard</div>
-    <div class="navigation_section">
-      <div (click)="openSection()" class="navigation_button">Upload Master</div>
-      <div class="navigation_button active">View Records</div>
+  <div class="welcome">Admin Dashboard</div>
+  <div class="navigation_section">
+    <div (click)="openSection()" class="navigation_button">Upload Master</div>
+    <div class="navigation_button active">View Records</div>
+
+  </div>
+  <form [formGroup]="reportSearchForm" class="form">
+    <div class="checkbox">
+      <input type="radio" formControlName="selectReport" value="master" id="sort1" checked="checked">
+      <label for="sort1">
+        <span>Scheme Master</span>
+      </label>
+      <input type="radio" formControlName="selectReport" value="pcg" id="sort2">
+      <label for="sort2">
+        <span>PCG master</span>
+      </label>
     </div>
-    <form [formGroup]="reportSearchForm" class="form">
-      <div class="checkbox">
-        <input type="radio" formControlName="selectReport" value="master" id="sort1" checked="checked">
-        <label for="sort1">
-          <span>Scheme Master</span>
-        </label>
-        <input type="radio" formControlName="selectReport" value="pcg" id="sort2"> 
-        <label for="sort2">
-          <span>PCG master</span>
-        </label>
-        <!-- <input type="radio" name="sort" id="sort3" (click)="selectedFileType = 'dcg'"> 
-        <label for="sort3">
-          <span>DCG master</span>
-        </label> -->
-      </div> 
-    </form>
-    <div class="row record_table">
-        <div class="col-md-12 mb-3">
-            <table  datatable  [dtTrigger]="dtTrigger" class="table table-striped display nowrap mb-3">
-            </table>
+
+    <button *ngIf="reportSearchForm.value.selectReport == 'master'"  class="float-end filter_button" (click)="open(content)">Delete Scheme Records</button>
+    <button *ngIf="reportSearchForm.value.selectReport == 'pcg'" class="float-end filter_button" (click)="open(content)">Delete Pcg Records</button>
+
+    <ng-template #content let-modal>
+      <form class="modal_content">
+        <div class="box-filter">
+          <div>
+            <button type="button" class="fitlerbttn">Confirm Delete</button>
+            <button type="button" class="float-end canclebttn" aria-label="Close"
+              (click)="modal.dismiss('Cross click')">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="body-text">
+            Are you sure ypu want to delete?
+          </div>
         </div>
+      </form>
+      <div class="modal_content modal-footer">
+        <div class="float-end mt-4 lastbtn">
+          <button type="button" class="reset me-2" (click)=" modal.close('Save click')">Cancel</button>
+          <button *ngIf="reportSearchForm.value.selectReport == 'master'" type="button" class="apply border-outline-danger" (click)="tableTruncateMaster(); modal.close('Save click')">Yes</button>
+          <button *ngIf="reportSearchForm.value.selectReport == 'pcg'" type="button" class="apply border-outline-danger" (click)="tableTruncatePcg(); modal.close('Save click')">Yes</button>
+        </div>
+      </div>
+    </ng-template>
+
+  </form>
+  <div class="row record_table">
+    <div class="col-md-12 mb-3">
+      <table datatable [dtTrigger]="dtTrigger" class="table table-striped display nowrap mb-3">
+
+      </table>
     </div>
+  </div>
 </div>

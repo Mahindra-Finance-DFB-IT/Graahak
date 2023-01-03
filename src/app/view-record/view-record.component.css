@@ -15,7 +15,7 @@
     border: 1px solid #E5E5E5;
 }
 .checkbox{
- 
+ display: inline-block;
     padding-bottom: 18px;
 }
 table {
@@ -50,4 +50,138 @@ table {
 }
 .record_table {
     padding: 0px;
+}
+
+
+
+
+
+  
+  button {
+    /* width: 50%; */
+    padding: 12px 20px ;
+    margin: 0;  
+    display: inline-block;
+    border: 1px solid #ccc; 
+    border-radius: 4px;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+  .deleteButton{
+width: 150px;
+  }
+  .makeItMiddle{
+    transform: translate(-50%, -50%);
+}
+button {
+  margin-right: 8px;
+}
+
+.display_flex {
+  display: flex;
+}
+
+.filter_button {
+  background: #F2F2F2;
+  border-radius: 2px;
+  padding: 5px;
+  display: flex;
+}
+.filter_button .icon{
+  vertical-align: middle;
+  padding-left: 10px;
+}
+.filter_button .filter{
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #000000;
+}
+
+.float-end{
+  float: right !important;
+  cursor: pointer;
+}
+
+.icon{
+  padding-left: 22px;
+}
+
+.dialog{
+  vertical-align: middle;
+}
+button.btn.btn-outline-dark {
+  width: 120px;
+  margin-right: 17px;
+  float: right;
+  margin-top: 76px;
+
+}
+.fitlerbttn{
+  border: none;
+  /* font-family: 'Akkurat-Bold'; */
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  /* color: #000000; */
+  background: white;
+}
+.canclebttn{
+  border: none;
+  background: white;
+}
+.form-check {
+  margin-top: 25px;
+}
+.form-check-input{
+  background-color: #fff;
+}
+.form-check-input:checked {
+  background-color: #E31B36 !important;
+}
+label{
+  /* font-family: 'Akkurat'; */
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 16px;
+}
+.btn2{
+  border: 1px solid #E5E5E5;;
+  border-radius: 38px;
+}
+.btn2:hover{
+  background: #EB1935;
+  border: 1px solid #E5E5E5;
+  border-radius: 38px;
+}
+.reset{
+  padding: 10px 50px; 
+  border-radius: 3px;   
+  border: 1px solid #EB1935;
+  color: #EB1935;
+  background-color: #fff;
+  display: contents;
+}
+.apply{
+  padding: 10px 50px; 
+  background: #EB1935;
+  border-radius: 3px;   
+  color: #FFFFFF;
+  border: none;
+  margin: 15px;
+}
+.flex{
+  display: flex;
+  padding-top: 15px;
+}
+
+ 
+@media only screen and (max-width: 420px) {
+.body-text{
+width: auto;
+font-size: 18px;
+padding: 20px;
+}
 }

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild ,Inject} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataTableDirective } from 'angular-datatables';
@@ -12,26 +12,21 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LogoutComponent } from '../logout.component';
 import { AuthService } from '../service/auth.service';
 import { String } from 'lodash';
-
+import { LoaderComponent } from '../loader/loader.component';
 @Component({
   selector: 'app-view-record',
   templateUrl: './view-record.component.html',
   styleUrls: ['./view-record.component.css']
 })
-
 export class ViewRecordComponent implements OnInit {
-  // searchText: string = '';
-  // curDate=Date.now();
   reportData:any = [];
-  // selectedFileType: string;
   public innerWidth: any;
+  i: any
   appData$ :Observable<AppData>;
   appData:AppData = {}
   @ViewChild(DataTableDirective,{static: true})
   datatableElement: DataTableDirective;
   dtTrigger:Subject<ADTSettings> = new Subject();
-  // showOtpScreen= false;
-  // otherDetails = false;
   reportSearchData:ReportSearchData = {
     selectReport: 'master',
     searchData: ''
@@ -40,34 +35,24 @@ export class ViewRecordComponent implements OnInit {
     selectReport: new FormControl(this.reportSearchData?.selectReport),
     searchData: new FormControl(this.reportSearchData.searchData)
   });
-  // scheduleData:any = null;
   constructor(
     private modalService: NgbModal,
     private apiService: ApiService,
     public router:Router,
     private authService:AuthService,
-    private store: Store<{ appItem: AppData }>) {
+    private store: Store<{ appItem: AppData }>,
+ ) {
     const state:any = this.router.getCurrentNavigation()?.extras.state;
-    // if(!state?.loginSuccess){
-      //this.router.navigateByUrl("/home");
-     // return;
-    // }
     this.appData$ = store.select('appItem');
     this.appData$.subscribe((obj:AppData)=>{
       this.appData = obj;
-      // this.apiService.getScheduleData(this.appData.token||'').subscribe(data=>{
-      //   this.scheduleData = data;
-      // })
     });
   }
-
   ngAfterViewInit(): void {
     let options =  this.getDTOption(this.innerWidth);
     this.dtTrigger.next(options);
   }
-
   ngOnInit(): void {
-    // this.selectedFileType = 'master';  
     this.innerWidth = window.innerWidth;
     this.reportSearchForm.valueChanges.subscribe(data=>{
       this.reportSearchData = {
@@ -76,37 +61,56 @@ export class ViewRecordComponent implements OnInit {
       }
       this.datatableElement.dtInstance.then((dtInstance: DataTables.Api)=>{
         const options = this.getDTOption(this.innerWidth);
-        //console.log(options);
-        //console.log(dtInstance);
         dtInstance.clear();
         dtInstance.destroy();
         this.dtTrigger.next(options);
       })
     },(err)=>console.log(err));
   }
-
+  tableTruncateMaster(): void {
+    let token: any = '';
+    if(this.appData.token){
+      token = this.appData.token;
+    }
+        this.apiService.tableTruncateMaster(token).subscribe((data:any)=> {
+          this.reportSearchForm.value.selectReport = 'master';
+          this.reportSearchForm.updateValueAndValidity();   
+});
+  }
+  tableTruncatePcg(): void {
+    let token: any = '';
+    if(this.appData.token){
+      token = this.appData.token;
+    }
+        this.apiService.tableTruncatePcg(token).subscribe((data:any)=> {
+          this.reportSearchForm.value.selectReport = 'master';
+          this.reportSearchForm.updateValueAndValidity();
+});
+  }
+  open(content: any) {
+    this.modalService.open(content,
+    { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+    }, (reason) => {
+    });
+  }
   ngOnDestroy(){
     this.dtTrigger.unsubscribe();
   }
-
   openSection() {
     this.router.navigateByUrl("/file-upload");
   }
-
   getDTOption(innerWidth: Number){
     console.log(this.reportSearchForm.value.selectReport);
     let dtOptions: DataTables.Settings = {};
     dtOptions =  this._getDTOption();
     return dtOptions;
   }
-
   keyPressNumeric(e:any) {
     if (!isNaN(e.key)) {
       return true;
     }
     return false;
   }
-
   _getDTOption(){
     const that = this;
     let responsiveTag = {};
@@ -479,8 +483,14 @@ export class ViewRecordComponent implements OnInit {
       ];
     // }
   }
-
+  deleteRow(index: number){
+    var delBtn = confirm(" Do you want to delete ?");
+    if ( delBtn == true ) {
+      this.reportData.splice(index, 1 );
+    }   
+  } 
   sanitizeText(text: string){
     return text;
   }
+
 }
