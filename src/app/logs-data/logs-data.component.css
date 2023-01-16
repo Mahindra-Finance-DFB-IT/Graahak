@@ -81,3 +81,10 @@ tr:nth-child(even) {
 .no_padding {
     padding: 0px;
 }
+.hide_chart {
+    display: none;
+}
+.show_chart {
+    height: 300px;
+    margin-bottom: 20px;
+}

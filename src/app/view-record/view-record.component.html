@@ -17,29 +17,26 @@
       </label>
     </div>
 
-    <button *ngIf="reportSearchForm.value.selectReport == 'master'"  class="float-end filter_button" (click)="open(content)">Delete Scheme Records</button>
-    <button *ngIf="reportSearchForm.value.selectReport == 'pcg'" class="float-end filter_button" (click)="open(content)">Delete Pcg Records</button>
+    <button *ngIf="reportSearchForm.value.selectReport == 'master'"  class="float-end filter_button" (click)="openConfirmationDialog(content)">Delete Scheme Records</button>
+    <button *ngIf="reportSearchForm.value.selectReport == 'pcg'" class="float-end filter_button" (click)="openConfirmationDialog(content)">Delete Pcg Records</button>
 
     <ng-template #content let-modal>
-      <form class="modal_content">
+      <form class="modal-content">
         <div class="box-filter">
-          <div>
-            <button type="button" class="fitlerbttn">Confirm Delete</button>
-            <button type="button" class="float-end canclebttn" aria-label="Close"
-              (click)="modal.dismiss('Cross click')">
+          <div class="display_flex">
+            <div class="fitlerbttn display_inline_block ">Confirm Delete</div>
+            <button type="button" class="float-end cancel_btn display_inline_block" aria-label="Close" (click)="modal.dismiss('Cross click')">
               <span aria-hidden="true">×</span>
             </button>
           </div>
-          <div class="body-text">
-            Are you sure ypu want to delete?
-          </div>
+          <div class="body-text">Are you sure you want to delete?</div>
         </div>
       </form>
       <div class="modal_content modal-footer">
         <div class="float-end mt-4 lastbtn">
-          <button type="button" class="reset me-2" (click)=" modal.close('Save click')">Cancel</button>
-          <button *ngIf="reportSearchForm.value.selectReport == 'master'" type="button" class="apply border-outline-danger" (click)="tableTruncateMaster(); modal.close('Save click')">Yes</button>
-          <button *ngIf="reportSearchForm.value.selectReport == 'pcg'" type="button" class="apply border-outline-danger" (click)="tableTruncatePcg(); modal.close('Save click')">Yes</button>
+          <button type="button" class="reset" (click)=" modal.close('Save click')">Cancel</button>
+          <button *ngIf="reportSearchForm.value.selectReport == 'master'" type="button" class="apply border-outline-danger" (click)="deleteRecord('master'); modal.close('Save click')">Yes</button>
+          <button *ngIf="reportSearchForm.value.selectReport == 'pcg'" type="button" class="apply border-outline-danger" (click)="deleteRecord('pcg'); modal.close('Save click')">Yes</button>
         </div>
       </div>
     </ng-template>

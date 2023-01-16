@@ -15,24 +15,26 @@
       </mat-card-actions>
     </mat-card>
   </div>
-  <div class="row record_table" [ngClass]="(selectedApi != '' && selectedApi != undefined) && selectRecord == 'user_logs' ? '' : 'hide_table'">
+  <div [ngClass]="selectRecord == 'name_match' ? 'show_chart' : 'hide_chart'">
+    <canvas id="areaChart"></canvas>
+  </div>
+  <div class="row record_table" [ngClass]="(selectedApi != '' && selectedApi != undefined) && (selectRecord == 'user_logs' || selectRecord == 'name_match') ? '' : 'hide_table'">
     <div class="col-md-12 mb-3">
       <table datatable [dtTrigger]="dtTrigger" class="table table-striped display nowrap mb-3"></table>
     </div>
   </div>
-  <table *ngIf="selectRecord == 'name_match'">
+  <!-- <table *ngIf="selectRecord == 'name_match'">
     <tr>
       <th class="sorting_disabled">ID</th>
       <th class="sorting_disabled">Count</th>
       <th class="sorting_disabled">Date</th>
-      <!-- <th class="sorting_disabled">Country</th> -->
     </tr>
     <tr *ngFor="let logs of nameMatch; index as i">
       <td>{{i+1}}</td>
       <td>{{logs.cnt}}</td>
       <td>{{logs.Count}}</td>
     </tr>
-  </table>
+  </table> -->
   <div class="no_padding" *ngIf="selectRecord == 'server_data'">
     <h3>Total Records</h3>
     <table>

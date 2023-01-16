@@ -48,10 +48,12 @@ export class ViewRecordComponent implements OnInit {
       this.appData = obj;
     });
   }
+
   ngAfterViewInit(): void {
     let options =  this.getDTOption(this.innerWidth);
     this.dtTrigger.next(options);
   }
+
   ngOnInit(): void {
     this.innerWidth = window.innerWidth;
     this.reportSearchForm.valueChanges.subscribe(data=>{
@@ -67,50 +69,53 @@ export class ViewRecordComponent implements OnInit {
       })
     },(err)=>console.log(err));
   }
-  tableTruncateMaster(): void {
+
+  deleteRecord(type: string): void {
     let token: any = '';
-    if(this.appData.token){
+    if (this.appData.token) {
       token = this.appData.token;
     }
-        this.apiService.tableTruncateMaster(token).subscribe((data:any)=> {
-          this.reportSearchForm.value.selectReport = 'master';
-          this.reportSearchForm.updateValueAndValidity();   
-});
-  }
-  tableTruncatePcg(): void {
-    let token: any = '';
-    if(this.appData.token){
-      token = this.appData.token;
+    if (type == 'master') {
+      this.apiService.deleteMaster(token).subscribe((data:any)=> {
+        this.reportSearchForm.value.selectReport = 'master';
+        this.reportSearchForm.updateValueAndValidity();   
+      });
+    } 
+    if (type == 'pcg') {
+      this.apiService.deletePcg(token).subscribe((data:any)=> {
+        this.reportSearchForm.value.selectReport = 'pcg';
+        this.reportSearchForm.updateValueAndValidity();
+      });
     }
-        this.apiService.tableTruncatePcg(token).subscribe((data:any)=> {
-          this.reportSearchForm.value.selectReport = 'master';
-          this.reportSearchForm.updateValueAndValidity();
-});
   }
-  open(content: any) {
-    this.modalService.open(content,
-    { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-    }, (reason) => {
-    });
+
+  openConfirmationDialog(content: any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title' })
+    .result.then((result) => {}, (reason) => {});
   }
+
   ngOnDestroy(){
     this.dtTrigger.unsubscribe();
   }
+
   openSection() {
     this.router.navigateByUrl("/file-upload");
   }
+
   getDTOption(innerWidth: Number){
     console.log(this.reportSearchForm.value.selectReport);
     let dtOptions: DataTables.Settings = {};
     dtOptions =  this._getDTOption();
     return dtOptions;
   }
+
   keyPressNumeric(e:any) {
     if (!isNaN(e.key)) {
       return true;
     }
     return false;
   }
+
   _getDTOption(){
     const that = this;
     let responsiveTag = {};
@@ -483,12 +488,7 @@ export class ViewRecordComponent implements OnInit {
       ];
     // }
   }
-  deleteRow(index: number){
-    var delBtn = confirm(" Do you want to delete ?");
-    if ( delBtn == true ) {
-      this.reportData.splice(index, 1 );
-    }   
-  } 
+
   sanitizeText(text: string){
     return text;
   }

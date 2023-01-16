@@ -95,9 +95,13 @@ export class FileUploadComponent implements OnInit {
         this.currentFile = file;
         this.uploadService.uploadMasterFile(this.currentFile,token).subscribe((data:any) => {
           if (data && data?.body && data?.body?.res == 'success') {
-          loaderRef.close();
-          this.resetFile();
-          this.setMessage('File uploaded successfully', 'success');
+            loaderRef.close();
+            this.resetFile();
+            var successmMsg = "Master File uploaded successfully <br/> \
+              Total Records: " + data.body.totalCount + " <br/>\
+              Added Records: " + data.body.validRows + " <br/>\
+              Invalid Records: " + data.body.invalidRows + " <br/>";
+            this.setMessage(successmMsg, 'success');
           }
         }, (err: any) => {
           loaderRef.close();
@@ -106,15 +110,21 @@ export class FileUploadComponent implements OnInit {
           if (err.status == 401) {
             this.doLogOut();
           } else {
-            if (err.error && err.error.message) {
-              this.setMessage('Uploading failed! Please try again', 'error');
+            var errMsg = '';
+            if (err.status == 500 && err.error && err.error.message) {
+              errMsg = "Uploading failed! <br/> \
+                Total Records: " + err.error.totalCount + " <br/>\
+                Added Records: " + err.error.validRows + " <br/>\
+                Invalid Records: " + err.error.invalidRows + " <br/>";
+            } else if (err.status == 501) {
+              errMsg = err.error.message;
             } else {
-              this.setMessage('Uploading failed! Please try again', 'error');
+              errMsg = 'Uploading failed! Please try again';
             }
+            this.setMessage(errMsg, 'error');
           }
         });
-      }
-      else{
+      } else {
         loaderRef.close();
         this.resetFile()
       }

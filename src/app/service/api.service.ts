@@ -119,12 +119,12 @@ export class ApiService{
         let newHeaders = {...this.headers,"Authorization":"Bearer "+token} 
         return this.http.post(url,{searchData},{headers:newHeaders});
     }
-    tableTruncateMaster(token:String) {
+    deleteMaster(token:String) {
         const url = environment.apiHostName+"customer_details/deleteMaster";
         let newHeaders = {...this.headers,"Authorization":"Bearer "+token} 
         return this.http.post(url,{},{headers:newHeaders});
     }
-    tableTruncatePcg(token:String) {
+    deletePcg(token:String) {
         const url = environment.apiHostName+"customer_details/deletePcg";
         let newHeaders = {...this.headers,"Authorization":"Bearer "+token} 
         return this.http.post(url,{},{headers:newHeaders});
